@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f884639-0cc4-4eee-babb-e4fda5f4bf1e" name="Default Changelist" comment="" />
+    <list default="true" id="1f884639-0cc4-4eee-babb-e4fda5f4bf1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/database/FamilyMap.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database/FamilyMap.db" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,10 +16,28 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="757">
+              <caret line="94" column="53" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="-1193">
+              <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="107" column="65" selection-start-line="107" selection-start-column="65" selection-end-line="107" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -23,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="125" column="43" lean-forward="true" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
+            <state relative-caret-position="534">
+              <caret line="118" column="25" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -37,6 +59,9 @@
       <find>Username</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -46,13 +71,13 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" />
-        <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java" />
+        <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java" />
       </list>
     </option>
   </component>
@@ -62,6 +87,7 @@
     <option name="width" value="1380" />
     <option name="height" value="998" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -130,7 +156,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550863401407" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550866668582" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -149,7 +175,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserDAOTest">
+  <component name="RunManager" selected="JUnit.com.teranpeterson.server.dao in FamilyMapServer">
     <configuration name="PersonDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
@@ -212,7 +238,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAOTest.findPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="com.teranpeterson.server.dao in FamilyMapServer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
@@ -221,20 +247,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.teranpeterson.server.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.dao.UserDAOTest" />
-      <option name="METHOD_NAME" value="findPass" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.com.teranpeterson.server.dao in FamilyMapServer" />
         <item itemvalue="JUnit.UserDAOTest" />
         <item itemvalue="JUnit.PersonDAOTest" />
         <item itemvalue="JUnit.UserDAOTest.clearPass" />
         <item itemvalue="JUnit.UserDAOTest.findFail" />
-        <item itemvalue="JUnit.UserDAOTest.findPass" />
       </list>
     </recent_temporary>
   </component>
@@ -252,18 +276,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DatabaseTest - 2019.02.22 at 11h 49m 39s.xml">
-      <configuration name="DatabaseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest - 2019.02.22 at 11h 50m 32s.xml">
-      <configuration name="UserDAOTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest - 2019.02.22 at 11h 52m 17s.xml">
-      <configuration name="UserDAOTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest - 2019.02.22 at 11h 54m 29s.xml">
-      <configuration name="UserDAOTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DatabaseTest - 2019.02.22 at 12h 00m 03s.xml">
       <configuration name="DatabaseTest" configurationId="JUnit" />
     </history-entry>
@@ -282,12 +294,23 @@
     <history-entry file="PersonDAOTest - 2019.02.22 at 12h 10m 18s.xml">
       <configuration name="PersonDAOTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PersonDAOTest - 2019.02.22 at 12h 22m 50s.xml">
+      <configuration name="PersonDAOTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDAOTest - 2019.02.22 at 12h 23m 23s.xml">
+      <configuration name="UserDAOTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDAOTest - 2019.02.22 at 12h 48m 43s.xml">
+      <configuration name="UserDAOTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_teranpeterson_server_dao_in_FamilyMapServer - 2019.02.22 at 12h 48m 49s.xml">
+      <configuration name="com.teranpeterson.server.dao in FamilyMapServer" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2497332" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -297,14 +320,14 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32969433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -389,13 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="9" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -405,29 +421,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="101" column="43" lean-forward="true" selection-start-line="101" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="757">
+          <caret line="94" column="53" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
+        <state relative-caret-position="412">
           <caret line="107" column="65" selection-start-line="107" selection-start-column="65" selection-end-line="107" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1193">
+          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="125" column="43" lean-forward="true" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
+        <state relative-caret-position="534">
+          <caret line="118" column="25" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="25" />
         </state>
       </provider>
     </entry>
