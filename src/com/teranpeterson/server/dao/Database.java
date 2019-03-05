@@ -102,11 +102,10 @@ public class Database {
         // Create Events table
         openConnection();
         try (Statement stmt = conn.createStatement()) {
-            String sql = "CREATE TABLE IF NOT EXISTS `Events` ( `event_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, `person_id` TEXT NOT NULL, " +
-                    "`latitude` REAL NOT NULL, `longitute` REAL NOT NULL, `country` TEXT NOT NULL, `city` TEXT NOT NULL, " +
-                    "`type` TEXT NOT NULL CHECK(type == \"birth\" OR type == \"baptism\" OR type == \"christening\" OR type == \"marriage\" OR " +
-                    "type == \"death\" OR type == \"burial\"), `year` INTEGER NOT NULL, FOREIGN KEY(`descendant`) REFERENCES `Users`(`username`), " +
-                    "PRIMARY KEY(`event_id`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
+            String sql = "CREATE TABLE IF NOT EXISTS `Events` ( `event_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
+                    "`person_id` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitute` REAL NOT NULL, `country` TEXT NOT NULL, " +
+                    "`city` TEXT NOT NULL, `type` TEXT NOT NULL, `year` INTEGER NOT NULL, FOREIGN KEY(`descendant`) REFERENCES " +
+                    "`Users`(`username`), PRIMARY KEY(`event_id`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);

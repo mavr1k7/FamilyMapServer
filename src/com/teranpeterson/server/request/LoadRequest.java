@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Teran Peterson
  * @version v0.0.1
  */
-public class LoadRequest extends Request {
+public class LoadRequest {
     /**
      * List of users to load into the database
      */
