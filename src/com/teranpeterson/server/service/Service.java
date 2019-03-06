@@ -2,6 +2,7 @@ package com.teranpeterson.server.service;
 
 import com.teranpeterson.server.dao.AuthTokenDAO;
 import com.teranpeterson.server.dao.DAOException;
+import com.teranpeterson.server.dao.EventDAO;
 import com.teranpeterson.server.dao.PersonDAO;
 import com.teranpeterson.server.model.AuthToken;
 import com.teranpeterson.server.model.Person;
@@ -17,11 +18,17 @@ import java.sql.Connection;
  */
 public class Service {
     protected void generate(Connection conn, User user, int n) throws DAOException {
+        PersonDAO pDAO = new PersonDAO(conn);
+        EventDAO eDAO = new EventDAO(conn);
+
+        // Clear events and persons related to user
+        pDAO.deleteRelatives(user.getUsername());
+        eDAO.deleteEvents(user.getUsername());
+
         // Generation 0
         Person newPerson = new Person(user.getPersonID(), null, user.getFirstname(), user.getLastname(), user.getGender(), null, null, null);
-        PersonDAO pDAO = new PersonDAO(conn);
         pDAO.insert(newPerson);
-        // TODO
+        // TODO: All the hard stuff...
     }
 
     protected String login(Connection conn, String username) throws DAOException {
