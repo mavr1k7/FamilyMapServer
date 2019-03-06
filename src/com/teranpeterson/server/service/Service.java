@@ -14,7 +14,7 @@ import java.sql.Connection;
  * Base class that all service classes must extend. Used to provide similar methods to all service objects.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class Service {
     protected void generate(Connection conn, User user, int n) throws DAOException {
@@ -22,8 +22,8 @@ public class Service {
         EventDAO eDAO = new EventDAO(conn);
 
         // Clear events and persons related to user
-        pDAO.deleteRelatives(user.getUserName());
-        eDAO.deleteEvents(user.getUserName());
+//        pDAO.deleteRelatives(user.getUserName());
+//        eDAO.deleteEvents(user.getUserName());
 
         // Generation 0
         Person newPerson = new Person(user.getPersonID(), null, user.getFirstName(), user.getLastName(), user.getGender(), null, null, null);

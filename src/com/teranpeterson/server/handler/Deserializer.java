@@ -14,16 +14,10 @@ import java.io.Reader;
  */
 public class Deserializer {
     public static RegisterRequest registerRequest(Reader reader) {
-        Gson gson = new Gson();
-        RegisterRequest request = gson.fromJson(reader, RegisterRequest.class);
-        System.out.println("3" + request.getFirstName());
-        return request;
+        return new Gson().fromJson(reader, RegisterRequest.class);
     }
 
     public static LoginRequest loginRequest(Reader reader) {
-        LoginRequest out;
-        Gson gson = new Gson();
-        out = gson.fromJson(reader, LoginRequest.class);
-        return out;
+        return new Gson().fromJson(reader, LoginRequest.class);
     }
 }

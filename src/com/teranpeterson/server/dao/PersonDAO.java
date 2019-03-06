@@ -132,6 +132,7 @@ public class PersonDAO {
             stmt.setString(1, userName);
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to delete relatives for user '" + userName + "' from database");
         }
     }

@@ -17,16 +17,10 @@ import java.io.*;
 public class RegisterHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("Called register handler");
-
         RegisterService service = new RegisterService();
 
         Reader reader = new InputStreamReader(exchange.getRequestBody());
-
-        System.out.println("1" + reader.read());
         RegisterRequest request = Deserializer.registerRequest(reader);
-        System.out.println("2" + request.getFirstName());
-
         RegisterResult result = service.register(request);
 
         if (result.isSuccess()) {
