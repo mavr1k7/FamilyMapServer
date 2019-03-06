@@ -1,11 +1,10 @@
 package com.teranpeterson.server.dao;
 
 /**
- * Data access exception
+ * Exception while accessing information in the database
  */
 public class DAOException extends Exception {
-    DAOException(String message)
-    {
+    DAOException(String message) {
         super(message);
     }
 }

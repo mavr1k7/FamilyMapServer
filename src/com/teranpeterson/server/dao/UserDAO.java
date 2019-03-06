@@ -1,6 +1,7 @@
 package com.teranpeterson.server.dao;
 
 import com.teranpeterson.server.model.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
  * Controller used to connect to and modify users in the database
  *
  * @author Teran Peterson
- * @version v0.0.4
+ * @version v0.1.1
  */
 public class UserDAO {
     /**
@@ -19,7 +20,7 @@ public class UserDAO {
     private Connection conn;
 
     /**
-     * Creates an empty user dao
+     * Creates a dao with a database connection
      */
     public UserDAO(Connection conn) {
         this.conn = conn;
@@ -27,6 +28,7 @@ public class UserDAO {
 
     /**
      * Adds a new user to the database
+     *
      * @param user User to add to the database
      * @throws DAOException Problem executing sql statements
      */
@@ -43,12 +45,13 @@ public class UserDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Couldn't insert user into database");
+            throw new DAOException("ERROR: Unable to insert user '" + user.getUsername() + "' into database");
         }
     }
 
     /**
      * Find a user in the database
+     *
      * @param username Username of the user to find
      * @return If the user is found, return it, otherwise null
      * @throws DAOException Problem executing sql statements
@@ -66,7 +69,7 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Couldn't find user in the database");
+            throw new DAOException("ERROR: Unable to find user '" + username + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -82,9 +85,11 @@ public class UserDAO {
 
     /**
      * Checks if a given username and password match and are in the database
+     *
      * @param username Username of user logging in
      * @param password Password attempt to check
      * @return True if the login credentials match, otherwise false
+     * @throws DAOException Problem executing sql statements
      */
     public User authenticate(String username, String password) throws DAOException {
         ResultSet result = null;
@@ -100,7 +105,7 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Couldn't find user in the database");
+            throw new DAOException("ERROR: Unable to authenticate user '" + username + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -116,6 +121,7 @@ public class UserDAO {
 
     /**
      * Delete all users from the database
+     *
      * @throws DAOException Problem executing sql statements
      */
     public void clear() throws DAOException {
@@ -123,7 +129,7 @@ public class UserDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Couldn't clear users from the database");
+            throw new DAOException("ERROR: Unable to clear users from database");
         }
     }
 }

@@ -1,60 +1,156 @@
 package com.teranpeterson.server.dao;
 
 import com.teranpeterson.server.model.Event;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller used to connect to and modify events in the database
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class EventDAO {
     /**
-     * Creates an empty event dao
+     * Connection to database
      */
-    public EventDAO() {
+    private Connection conn;
 
+    /**
+     * Creates a dao with a database connection
+     */
+    public EventDAO(Connection conn) {
+        this.conn = conn;
     }
 
     /**
      * Add an event to the database
+     *
      * @param event Event to add to the database
+     * @throws DAOException Problem executing sql statements
      */
-    public void insert(Event event) {
+    public void insert(Event event) throws DAOException {
+        String sql = "INSERT INTO `Events`(`event_id`,`descendant`,`person_id`,`latitude`,`longitude`,`country`,`city`,`type`,`year`) VALUES (?,?,?,?,?,?,?,?,?)";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, event.getEventID());
+            stmt.setString(2, event.getDescendant());
+            stmt.setString(3, event.getPersonID());
+            stmt.setDouble(4, event.getLatitude());
+            stmt.setDouble(5, event.getLongitude());
+            stmt.setString(6, event.getCountry());
+            stmt.setString(7, event.getCity());
+            stmt.setString(8, event.getType());
+            stmt.setInt(9, event.getYear());
 
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("ERROR: Unable to insert event '" + event.getEventID() + "' into database");
+        }
     }
 
     /**
      * Find an event in the database
+     *
      * @param eventID ID of the event to find
      * @return If the event is found, return it, otherwise return null
+     * @throws DAOException Problem executing sql statements
      */
-    public Event find(String eventID) {
+    public Event find(String eventID) throws DAOException {
+        ResultSet result = null;
+
+        String sql = "SELECT * FROM `Events` WHERE `event_id` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, eventID);
+            result = stmt.executeQuery();
+            if (result.next()) {
+                return new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
+                        result.getDouble("latitude"), result.getDouble("longitude"), result.getString("country"),
+                        result.getString("city"), result.getString("type"), result.getInt("year"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException("ERROR: Unable to find event '" + eventID + "' in database");
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
         return null;
     }
 
     /**
-     * Return a list of all events related to a person
-     * @param personID ID of the person to find events for
+     * Return a list of all events related to a user
+     *
+     * @param username Username of the user to find events for
      * @return List of all events related to person, or null if none are found
+     * @throws DAOException Problem executing sql statements
      */
-    public ArrayList<Event> personEvents(String personID) {
-        return null;
+    public List<Event> personEvents(String username) throws DAOException {
+        List<Event> list = new ArrayList<>();
+        ResultSet result = null;
+
+        String sql = "SELECT * FROM `Events` WHERE `descendant` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            result = stmt.executeQuery();
+            while (result.next()) {
+                list.add(new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
+                        result.getDouble("latitude"), result.getDouble("longitude"), result.getString("country"),
+                        result.getString("city"), result.getString("type"), result.getInt("year")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException("ERROR: Unable to find events for person '" + username + "' in database");
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return list;
     }
 
     /**
      * Delete all events associated with a user
+     *
      * @param username User to delete events for
+     * @throws DAOException Problem executing sql statements
      */
-    public void deleteEvents(String username) {
-
+    public void deleteEvents(String username) throws DAOException {
+        String sql = "DELETE * FROM `Events` WHERE `descendant` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("ERROR: Unable to delete events for user '" + username + "' from database");
+        }
     }
 
     /**
      * Delete all events from database
+     *
+     * @throws DAOException Problem executing sql statements
      */
-    public void clear() {
-
+    public void clear() throws DAOException {
+        String sql = "DELETE * FROM `Events`";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("ERROR: Unable to clear events from database");
+        }
     }
 }

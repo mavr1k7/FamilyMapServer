@@ -4,13 +4,14 @@ import com.teranpeterson.server.model.AuthToken;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  * Controller used to connect to and modify auth tokens in the database
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class AuthTokenDAO {
     /**
@@ -19,7 +20,7 @@ public class AuthTokenDAO {
     private Connection conn;
 
     /**
-     * Creates an empty auth token dao
+     * Creates a dao with a database connection
      */
     public AuthTokenDAO(Connection conn) {
         this.conn = conn;
@@ -27,7 +28,9 @@ public class AuthTokenDAO {
 
     /**
      * Adds new authentication token to database
+     *
      * @param token Authentication token for a given user
+     * @throws DAOException Problem executing sql statements
      */
     public void insert(AuthToken token) throws DAOException {
         String sql = "INSERT INTO `AuthTokens`(`token`,`username`) VALUES (?,?)";
@@ -37,31 +40,73 @@ public class AuthTokenDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Couldn't insert user into database");
+            throw new DAOException("ERROR: Unable to insert user '" + token.getUsername() + "' into database");
         }
     }
 
     /**
      * Check if an authentication token is in the database
+     *
      * @param token Authentication token to look for
      * @return True if the token is valid (in the database), otherwise false
+     * @throws DAOException Problem executing sql statements
      */
-    public boolean isValid(AuthToken token) {
-        return true;
+    public boolean validate(AuthToken token) throws DAOException {
+        ResultSet result = null;
+
+        String sql = "SELECT * FROM `AuthTokens` WHERE `token` = ? AND `username` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, token.getToken());
+            stmt.setString(2, token.getUsername());
+
+            result = stmt.executeQuery();
+            if (result.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException("ERROR: Unable to validate user '" + token.getUsername() + "' in database");
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return false;
     }
 
     /**
      * Deletes an authentication token from the database. Tokens expire after an hour of no use
+     *
      * @param token Authentication token to remove from database
+     * @throws DAOException Problem executing sql statements
      */
-    public void expire(AuthToken token) {
+    public void expire(AuthToken token) throws DAOException {
+        String sql = "DELETE * FROM `AuthTokens` WHERE `token` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, token.getToken());
 
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("ERROR: Unable to expire token '" + token.getToken() + "' from database");
+        }
     }
 
     /**
      * Delete all authentication tokens from the database
+     *
+     * @throws DAOException Problem executing sql statements
      */
-    public void clear() {
-
+    public void clear() throws DAOException {
+        String sql = "DELETE * FROM `AuthTokens`";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("ERROR: Unable to clear auth tokens from database");
+        }
     }
 }

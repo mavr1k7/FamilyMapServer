@@ -9,7 +9,7 @@ import java.sql.Statement;
  * Creates and maintains a connection the database used by the server
  *
  * @author Teran Peterson
- * @version v0.1.3
+ * @version v0.1.7
  */
 public class Database {
     /**
@@ -103,7 +103,7 @@ public class Database {
         openConnection();
         try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS `Events` ( `event_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
-                    "`person_id` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitute` REAL NOT NULL, `country` TEXT NOT NULL, " +
+                    "`person_id` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `country` TEXT NOT NULL, " +
                     "`city` TEXT NOT NULL, `type` TEXT NOT NULL, `year` INTEGER NOT NULL, FOREIGN KEY(`descendant`) REFERENCES " +
                     "`Users`(`username`), PRIMARY KEY(`event_id`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
 
@@ -129,7 +129,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
-            throw new DAOException("ERROR: Unable to create authtokens table");
+            throw new DAOException("ERROR: Unable to create auth tokens table");
         }
     }
 
@@ -191,7 +191,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
-            throw new DAOException("ERROR: Unable to drop authtokens table");
+            throw new DAOException("ERROR: Unable to drop auth tokens table");
         }
     }
 }

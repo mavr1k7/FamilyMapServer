@@ -66,7 +66,8 @@ public class Event {
      * @param type Type of event (birth, baptism, christening, marriage, death, or burial)
      * @param year Year the event took place
      */
-    public Event(String descendant, String personID, double latitude, double longitude, String country, String city, String type, int year) {
+    public Event(String eventID, String descendant, String personID, double latitude, double longitude, String country, String city, String type, int year) {
+        this.eventID = eventID;
         this.descendant = descendant;
         this.personID = personID;
         this.latitude = latitude;
