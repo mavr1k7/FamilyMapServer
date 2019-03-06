@@ -46,11 +46,13 @@ public class LoadService extends Service {
             UserDAO uDAO = new UserDAO(conn);
             for (User u : request.getUsers()) {
                 uDAO.insert(u);
+                ++y;
             }
             int z = 0;
             EventDAO eDAO = new EventDAO(conn);
             for (Event e : request.getEvents()) {
                 eDAO.insert(e);
+                ++z;
             }
             db.closeConnection(true);
             return new LoadResult(x, y, z);
