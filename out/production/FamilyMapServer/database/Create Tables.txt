@@ -37,7 +37,7 @@ CREATE TABLE `Events` (
 	`longitute`	REAL NOT NULL,
 	`country`	TEXT NOT NULL,
 	`city`	TEXT NOT NULL,
-	`type`	TEXT NOT NULL CHECK(type == "birth" OR type == "baptism" OR type == "christening" OR type == "marriage" OR type == "death" OR type == "burial"),
+	`type`	TEXT NOT NULL,
 	`year`	INTEGER NOT NULL,
 	FOREIGN KEY(`descendant`) REFERENCES `Users`(`username`),
 	PRIMARY KEY(`event_id`),
