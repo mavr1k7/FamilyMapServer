@@ -10,7 +10,7 @@ import java.nio.file.*;
  * Handler for the web interface
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class WebUIHandler implements HttpHandler {
     @Override

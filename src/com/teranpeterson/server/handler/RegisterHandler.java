@@ -12,7 +12,7 @@ import java.io.*;
  * Handler for Register Requests. URL: /user/register
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class RegisterHandler implements HttpHandler {
     @Override

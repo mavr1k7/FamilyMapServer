@@ -1,8 +1,7 @@
 package com.teranpeterson.server.handler;
 
 import com.google.gson.Gson;
-import com.teranpeterson.server.request.LoginRequest;
-import com.teranpeterson.server.request.RegisterRequest;
+import com.teranpeterson.server.request.*;
 
 import java.io.Reader;
 
@@ -12,12 +11,28 @@ import java.io.Reader;
  * @author Teran Peterson
  * @version v0.1.1
  */
-public class Deserializer {
-    public static RegisterRequest registerRequest(Reader reader) {
+class Deserializer {
+    static RegisterRequest registerRequest(Reader reader) {
         return new Gson().fromJson(reader, RegisterRequest.class);
     }
 
-    public static LoginRequest loginRequest(Reader reader) {
+    static LoginRequest loginRequest(Reader reader) {
         return new Gson().fromJson(reader, LoginRequest.class);
+    }
+
+    static FillRequest fillRequest(Reader reader) {
+        return new Gson().fromJson(reader, FillRequest.class);
+    }
+
+    static LoadRequest loadRequest(Reader reader) {
+        return new Gson().fromJson(reader, LoadRequest.class);
+    }
+
+    static PersonRequest personRequest(Reader reader) {
+        return new Gson().fromJson(reader, PersonRequest.class);
+    }
+
+    static EventRequest eventRequest(Reader reader) {
+        return new Gson().fromJson(reader, EventRequest.class);
     }
 }
