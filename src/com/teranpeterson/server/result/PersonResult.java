@@ -2,7 +2,7 @@ package com.teranpeterson.server.result;
 
 import com.teranpeterson.server.model.Person;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains information about the results of a Person(s) Request
@@ -14,7 +14,7 @@ public class PersonResult extends Result {
     /**
      * List of all the people to return
      */
-    private ArrayList<Person> persons;
+    private List<Person> persons;
     /**
      * Person to return
      */
@@ -25,7 +25,7 @@ public class PersonResult extends Result {
      *
      * @param persons Stores persons
      */
-    public PersonResult(ArrayList<Person> persons) {
+    public PersonResult(List<Person> persons) {
         this.persons = persons;
         super.success = true;
     }
@@ -55,7 +55,7 @@ public class PersonResult extends Result {
      *
      * @return List of all the persons related to the user
      */
-    public ArrayList<Person> getPersons() {
+    public List<Person> getPersons() {
         return persons;
     }
 
@@ -64,7 +64,7 @@ public class PersonResult extends Result {
      *
      * @param persons List of all the persons related to the user
      */
-    public void setPersons(ArrayList<Person> persons) {
+    public void setPersons(List<Person> persons) {
         this.persons = persons;
     }
 

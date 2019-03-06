@@ -2,7 +2,7 @@ package com.teranpeterson.server.result;
 
 import com.teranpeterson.server.model.Event;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains information about the results of an Event(s) Request
@@ -14,7 +14,7 @@ public class EventResult extends Result {
     /**
      * List of all the events to return
      */
-    private ArrayList<Event> events;
+    private List<Event> events;
     /**
      * Event to return
      */
@@ -25,7 +25,7 @@ public class EventResult extends Result {
      *
      * @param events Stores the events
      */
-    public EventResult(ArrayList<Event> events) {
+    public EventResult(List<Event> events) {
         this.events = events;
         super.success = true;
     }
@@ -55,7 +55,7 @@ public class EventResult extends Result {
      *
      * @return List of all the events related to the user
      */
-    public ArrayList<Event> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
@@ -64,7 +64,7 @@ public class EventResult extends Result {
      *
      * @param events List of all the events related to the user
      */
-    public void setEvents(ArrayList<Event> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 

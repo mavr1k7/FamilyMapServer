@@ -51,21 +51,20 @@ public class AuthTokenDAO {
      * @return True if the token is valid (in the database), otherwise false
      * @throws DAOException Problem executing sql statements
      */
-    public boolean validate(AuthToken token) throws DAOException {
+    public String validate(String token) throws DAOException {
         ResultSet result = null;
 
-        String sql = "SELECT * FROM `AuthTokens` WHERE `token` = ? AND `username` = ?";
+        String sql = "SELECT * FROM `AuthTokens` WHERE `token` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, token.getToken());
-            stmt.setString(2, token.getUsername());
+            stmt.setString(1, token);
 
             result = stmt.executeQuery();
             if (result.next()) {
-                return true;
+                return result.getString("username");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Unable to validate user '" + token.getUsername() + "' in database");
+            throw new DAOException("ERROR: Unable to validate token '" + token + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -76,7 +75,7 @@ public class AuthTokenDAO {
             }
 
         }
-        return false;
+        return null;
     }
 
     /**
