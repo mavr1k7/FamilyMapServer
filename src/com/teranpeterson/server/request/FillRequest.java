@@ -4,7 +4,7 @@ package com.teranpeterson.server.request;
  * Contains information about the Fill Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class FillRequest {
     /**
@@ -18,6 +18,7 @@ public class FillRequest {
 
     /**
      * Creates a fill request with the given information and default 4 generations
+     *
      * @param username User's username
      */
     public FillRequest(String username) {
@@ -26,7 +27,8 @@ public class FillRequest {
 
     /**
      * Creates a fill request with the given information
-     * @param username User's username
+     *
+     * @param username    User's username
      * @param generations Number of generations to create
      */
     public FillRequest(String username, int generations) {
@@ -36,6 +38,7 @@ public class FillRequest {
 
     /**
      * Gets the user's username
+     *
      * @return User's username
      */
     public String getUsername() {
@@ -44,6 +47,7 @@ public class FillRequest {
 
     /**
      * Sets the user's username
+     *
      * @param username User's username
      */
     public void setUsername(String username) {
@@ -52,6 +56,7 @@ public class FillRequest {
 
     /**
      * Gets the number of generations to create
+     *
      * @return Number of generations to create
      */
     public int getGenerations() {
@@ -60,6 +65,7 @@ public class FillRequest {
 
     /**
      * Sets the number of generations to create
+     *
      * @param generations Number of generations to create
      */
     public void setGenerations(int generations) {

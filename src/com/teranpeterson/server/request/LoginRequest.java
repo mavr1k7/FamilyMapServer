@@ -4,7 +4,7 @@ package com.teranpeterson.server.request;
  * Contains information about the Login Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class LoginRequest {
     /**
@@ -18,6 +18,7 @@ public class LoginRequest {
 
     /**
      * Creates a login request with the given information
+     *
      * @param username User's username
      * @param password Password to authenticate with
      */
@@ -28,6 +29,7 @@ public class LoginRequest {
 
     /**
      * Gets the user's username
+     *
      * @return User's username
      */
     public String getUsername() {
@@ -36,6 +38,7 @@ public class LoginRequest {
 
     /**
      * Sets the user's username
+     *
      * @param username User's username
      */
     public void setUsername(String username) {
@@ -44,6 +47,7 @@ public class LoginRequest {
 
     /**
      * Gets the password to authenticate with
+     *
      * @return Password to authenticate with
      */
     public String getPassword() {
@@ -52,6 +56,7 @@ public class LoginRequest {
 
     /**
      * Sets the password to authenticate with
+     *
      * @param password Password to authenticate with
      */
     public void setPassword(String password) {

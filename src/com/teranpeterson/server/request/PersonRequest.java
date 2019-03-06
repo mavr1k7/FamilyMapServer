@@ -4,7 +4,7 @@ package com.teranpeterson.server.request;
  * Contains information about the Person(s) Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class PersonRequest {
     /**
@@ -18,15 +18,18 @@ public class PersonRequest {
 
     /**
      * Creates a person request for ALL persons related to the current user
+     *
      * @param authToken Authentication token of the current user
      */
     public PersonRequest(String authToken) {
+        this.personID = "ALL";
         this.authToken = authToken;
     }
 
     /**
      * Creates a person request for the given personID
-     * @param personID ID of the person to load
+     *
+     * @param personID  ID of the person to load
      * @param authToken Authentication token of the current user
      */
     public PersonRequest(String personID, String authToken) {
@@ -36,6 +39,7 @@ public class PersonRequest {
 
     /**
      * Gets the ID of the person to load
+     *
      * @return ID of the person to load
      */
     public String getPersonID() {
@@ -44,6 +48,7 @@ public class PersonRequest {
 
     /**
      * Sets the ID of the person to load
+     *
      * @param personID ID of the person to load
      */
     public void setPersonID(String personID) {
@@ -52,6 +57,7 @@ public class PersonRequest {
 
     /**
      * Gets the user's authentication token
+     *
      * @return User's authentication token
      */
     public String getAuthToken() {
@@ -60,6 +66,7 @@ public class PersonRequest {
 
     /**
      * Sets the user's authentication token
+     *
      * @param authToken User's authentication token
      */
     public void setAuthToken(String authToken) {

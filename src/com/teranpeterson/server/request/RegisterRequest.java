@@ -4,7 +4,7 @@ package com.teranpeterson.server.request;
  * Contains information about the Register Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class RegisterRequest {
     /**
@@ -34,12 +34,13 @@ public class RegisterRequest {
 
     /**
      * Creates a register request with the given information
-     * @param username User's username
-     * @param password User's password
-     * @param email User's email
+     *
+     * @param username  User's username
+     * @param password  User's password
+     * @param email     User's email
      * @param firstname User's first name
-     * @param lastname User's last name
-     * @param gender User's gender
+     * @param lastname  User's last name
+     * @param gender    User's gender
      */
     public RegisterRequest(String username, String password, String email, String firstname, String lastname, String gender) {
         this.username = username;
@@ -52,6 +53,7 @@ public class RegisterRequest {
 
     /**
      * Gets the user's username
+     *
      * @return User's username
      */
     public String getUsername() {
@@ -60,6 +62,7 @@ public class RegisterRequest {
 
     /**
      * Sets the user's username
+     *
      * @param username User's username
      */
     public void setUsername(String username) {
@@ -68,6 +71,7 @@ public class RegisterRequest {
 
     /**
      * Gets the password to authenticate with
+     *
      * @return Password to authenticate with
      */
     public String getPassword() {
@@ -76,6 +80,7 @@ public class RegisterRequest {
 
     /**
      * Sets the password to authenticate with
+     *
      * @param password Password to authenticate with
      */
     public void setPassword(String password) {
@@ -84,6 +89,7 @@ public class RegisterRequest {
 
     /**
      * Gets the user's email
+     *
      * @return User's email
      */
     public String getEmail() {
@@ -92,6 +98,7 @@ public class RegisterRequest {
 
     /**
      * Sets the user's email
+     *
      * @param email User's email
      */
     public void setEmail(String email) {
@@ -100,6 +107,7 @@ public class RegisterRequest {
 
     /**
      * Gets the user's first name
+     *
      * @return User's first name
      */
     public String getFirstname() {
@@ -108,6 +116,7 @@ public class RegisterRequest {
 
     /**
      * Sets the user's first name
+     *
      * @param firstname User's first name
      */
     public void setFirstname(String firstname) {
@@ -116,6 +125,7 @@ public class RegisterRequest {
 
     /**
      * Gets the user's last name
+     *
      * @return User's last name
      */
     public String getLastname() {
@@ -124,6 +134,7 @@ public class RegisterRequest {
 
     /**
      * Sets the user's last name
+     *
      * @param lastname User's last name
      */
     public void setLastname(String lastname) {
@@ -132,6 +143,7 @@ public class RegisterRequest {
 
     /**
      * Gets the user's gender ('m' or 'f')
+     *
      * @return User's gender ('m' or 'f')
      */
     public String getGender() {
@@ -140,6 +152,7 @@ public class RegisterRequest {
 
     /**
      * Sets the user's gender ('m' or 'f')
+     *
      * @param gender User's gender ('m' or 'f')
      */
     public void setGender(String gender) {
