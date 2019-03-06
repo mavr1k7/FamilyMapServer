@@ -4,7 +4,7 @@ package com.teranpeterson.server.result;
  * Contains information about the results of a Register Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class RegisterResult extends Result {
     /**
@@ -22,24 +22,31 @@ public class RegisterResult extends Result {
 
     /**
      * Creates a failing register result with the given error message
+     *
      * @param message Description of the error
      */
     public RegisterResult(String message) {
-
+        super.message = message;
+        super.success = false;
     }
 
     /**
      * Creates a successful register result with users session information
-     * @param token Authentication token for the active user session
+     *
+     * @param token    Authentication token for the active user session
      * @param username Username of registered user
-     * @param id PersonID of person created for the user
+     * @param id       PersonID of person created for the user
      */
     public RegisterResult(String token, String username, String id) {
-
+        this.authToken = token;
+        this.username = username;
+        this.personID = id;
+        super.success = true;
     }
 
     /**
      * Gets the users new authentication token
+     *
      * @return Active authentication token
      */
     public String getAuthToken() {
@@ -48,6 +55,7 @@ public class RegisterResult extends Result {
 
     /**
      * Sets a new authentication token for the user
+     *
      * @param authToken User's authentication token
      */
     public void setAuthToken(String authToken) {
@@ -56,6 +64,7 @@ public class RegisterResult extends Result {
 
     /**
      * Gets the user's username
+     *
      * @return User's username
      */
     public String getUsername() {
@@ -64,6 +73,7 @@ public class RegisterResult extends Result {
 
     /**
      * Sets the user's username
+     *
      * @param username User's username
      */
     public void setUsername(String username) {
@@ -72,6 +82,7 @@ public class RegisterResult extends Result {
 
     /**
      * Gets the personID that corresponds with the user
+     *
      * @return User's personID
      */
     public String getPersonID() {
@@ -80,6 +91,7 @@ public class RegisterResult extends Result {
 
     /**
      * Sets the personID that corresponds with the user
+     *
      * @param personID User's personID
      */
     public void setPersonID(String personID) {

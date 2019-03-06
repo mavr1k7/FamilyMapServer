@@ -1,13 +1,14 @@
 package com.teranpeterson.server.result;
 
 import com.teranpeterson.server.model.Event;
+
 import java.util.ArrayList;
 
 /**
  * Contains information about the results of an Event(s) Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class EventResult extends Result {
     /**
@@ -21,30 +22,37 @@ public class EventResult extends Result {
 
     /**
      * Creates a successful event result with information about ALL the events
-     * @param events
+     *
+     * @param events Stores the events
      */
     public EventResult(ArrayList<Event> events) {
-
+        this.events = events;
+        super.success = true;
     }
 
     /**
      * Creates a successful event result with information about the event
-     * @param event
+     *
+     * @param event Stores the event
      */
     public EventResult(Event event) {
-
+        this.event = event;
+        super.success = true;
     }
 
     /**
      * Creates a failing event result with the given error message
+     *
      * @param message Description of the error
      */
     public EventResult(String message) {
-
+        super.message = message;
+        super.success = false;
     }
 
     /**
      * Gets a list of all the events related to the user
+     *
      * @return List of all the events related to the user
      */
     public ArrayList<Event> getEvents() {
@@ -53,6 +61,7 @@ public class EventResult extends Result {
 
     /**
      * Sets a list of all the events related to the user
+     *
      * @param events List of all the events related to the user
      */
     public void setEvents(ArrayList<Event> events) {
@@ -61,14 +70,16 @@ public class EventResult extends Result {
 
     /**
      * Adds a event to the list of events related to the user
+     *
      * @param event Event related to the user
      */
     public void addEvent(Event event) {
-
+        this.events.add(event);
     }
 
     /**
      * Gets the event related to the user
+     *
      * @return Event related to the user
      */
     public Event getEvent() {
@@ -77,6 +88,7 @@ public class EventResult extends Result {
 
     /**
      * Sets the event related to the user
+     *
      * @param event Event related to the user
      */
     public void setEvent(Event event) {

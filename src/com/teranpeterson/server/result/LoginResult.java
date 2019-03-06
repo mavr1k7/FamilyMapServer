@@ -4,7 +4,7 @@ package com.teranpeterson.server.result;
  * Contains information about the results of a Login Request
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class LoginResult extends Result {
     /**
@@ -22,6 +22,7 @@ public class LoginResult extends Result {
 
     /**
      * Creates a failing login result with the given error message
+     *
      * @param message Description of the error
      */
     public LoginResult(String message) {
@@ -31,9 +32,10 @@ public class LoginResult extends Result {
 
     /**
      * Creates a successful login result with users session information
-     * @param token Authentication token for the active user session
+     *
+     * @param token    Authentication token for the active user session
      * @param username Username of logged in user
-     * @param id PersonID of person created for the user
+     * @param id       PersonID of person created for the user
      */
     public LoginResult(String token, String username, String id) {
         this.authToken = token;
@@ -44,6 +46,7 @@ public class LoginResult extends Result {
 
     /**
      * Gets the users new authentication token
+     *
      * @return Active authentication token
      */
     public String getAuthToken() {
@@ -52,6 +55,7 @@ public class LoginResult extends Result {
 
     /**
      * Sets a new authentication token for the user
+     *
      * @param authToken User's authentication token
      */
     public void setAuthToken(String authToken) {
@@ -60,6 +64,7 @@ public class LoginResult extends Result {
 
     /**
      * Gets the user's username
+     *
      * @return User's username
      */
     public String getUsername() {
@@ -68,6 +73,7 @@ public class LoginResult extends Result {
 
     /**
      * Sets the user's username
+     *
      * @param username User's username
      */
     public void setUsername(String username) {
@@ -76,6 +82,7 @@ public class LoginResult extends Result {
 
     /**
      * Gets the personID that corresponds with the user
+     *
      * @return User's personID
      */
     public String getPersonID() {
@@ -84,6 +91,7 @@ public class LoginResult extends Result {
 
     /**
      * Sets the personID that corresponds with the user
+     *
      * @param personID User's personID
      */
     public void setPersonID(String personID) {

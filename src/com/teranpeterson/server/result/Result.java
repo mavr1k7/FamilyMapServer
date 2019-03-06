@@ -4,7 +4,7 @@ package com.teranpeterson.server.result;
  * Base class that all result classes extend. Used to provide similar methods to all result objects.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class Result {
     /**
@@ -18,6 +18,7 @@ public class Result {
 
     /**
      * Checks if the request was successful or not
+     *
      * @return True if successful, otherwise false
      */
     public boolean isSuccess() {
@@ -26,6 +27,7 @@ public class Result {
 
     /**
      * Sets the success or failure of the request
+     *
      * @param success True if successful, otherwise false
      */
     public void setSuccess(boolean success) {
@@ -34,6 +36,7 @@ public class Result {
 
     /**
      * Gets the error message that occurred while processing the request
+     *
      * @return Information about the error
      */
     public String getMessage() {
@@ -42,6 +45,7 @@ public class Result {
 
     /**
      * Sets the error message that occurred while processing the request
+     *
      * @param message Information about the error
      */
     public void setMessage(String message) {
