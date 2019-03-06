@@ -1,6 +1,7 @@
 package com.teranpeterson.server.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Authentication Tokens are used to establish and maintain user sessions for security and convenience. Tokens are
@@ -25,7 +26,8 @@ public class AuthToken {
      * @param username Username of the user who is logging in
      */
     public AuthToken(String username) {
-
+        this.username = username;
+        this.token = UUID.randomUUID().toString();
     }
 
     /**
@@ -34,7 +36,8 @@ public class AuthToken {
      * @param token String to act as authentication token
      */
     public AuthToken(String username, String token) {
-
+        this.username = username;
+        this.token = token;
     }
 
     /**
@@ -51,6 +54,14 @@ public class AuthToken {
      */
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

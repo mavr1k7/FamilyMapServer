@@ -25,7 +25,8 @@ public class LoginResult extends Result {
      * @param message Description of the error
      */
     public LoginResult(String message) {
-
+        super.message = message;
+        super.success = false;
     }
 
     /**
@@ -35,7 +36,10 @@ public class LoginResult extends Result {
      * @param id PersonID of person created for the user
      */
     public LoginResult(String token, String username, String id) {
-
+        this.authToken = token;
+        this.username = username;
+        this.personID = id;
+        super.success = true;
     }
 
     /**

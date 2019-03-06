@@ -86,8 +86,32 @@ public class UserDAO {
      * @param password Password attempt to check
      * @return True if the login credentials match, otherwise false
      */
-    public boolean authenticate(String username, String password) {
-        return true;
+    public User authenticate(String username, String password) throws DAOException {
+        ResultSet result = null;
+
+        String sql = "SELECT * FROM `Users` WHERE `username` = ? AND `password` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            result = stmt.executeQuery();
+            if (result.next()) {
+                return new User(result.getString("username"), result.getString("password"), result.getString("email"), result.getString("firstname"),
+                        result.getString("lastname"), result.getString("gender"), result.getString("person_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException("ERROR: Couldn't find user in the database");
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return null;
     }
 
     /**

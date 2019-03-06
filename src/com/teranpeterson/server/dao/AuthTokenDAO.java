@@ -2,6 +2,10 @@ package com.teranpeterson.server.dao;
 
 import com.teranpeterson.server.model.AuthToken;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  * Controller used to connect to and modify auth tokens in the database
  *
@@ -10,18 +14,31 @@ import com.teranpeterson.server.model.AuthToken;
  */
 public class AuthTokenDAO {
     /**
+     * Connection to database
+     */
+    private Connection conn;
+
+    /**
      * Creates an empty auth token dao
      */
-    public AuthTokenDAO() {
-
+    public AuthTokenDAO(Connection conn) {
+        this.conn = conn;
     }
 
     /**
      * Adds new authentication token to database
      * @param token Authentication token for a given user
      */
-    public void insert(AuthToken token) {
+    public void insert(AuthToken token) throws DAOException {
+        String sql = "INSERT INTO `AuthTokens`(`token`,`username`) VALUES (?,?)";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, token.getToken());
+            stmt.setString(2, token.getUsername());
 
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("ERROR: Couldn't insert user into database");
+        }
     }
 
     /**

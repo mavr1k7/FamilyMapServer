@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f884639-0cc4-4eee-babb-e4fda5f4bf1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/teran.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/com/teranpeterson/server/service/LoginServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/ClearRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/ClearRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/EventRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/EventRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/FillRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/FillRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/LoadRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/LoadRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/PersonRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/PersonRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/request/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/request/Request.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/database/Create Tables.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database/Create Tables.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/database/FamilyMap.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database/FamilyMap.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/database/FamilyMap.db-journal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/service/Service.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,27 +27,131 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="94" column="53" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
+            <state relative-caret-position="210">
+              <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+              <folding>
+                <element signature="e#510#511#0" expanded="true" />
+                <element signature="e#542#543#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+                <element signature="e#482#483#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-75">
+              <caret line="19" column="16" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/service/LoginServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="699">
-              <caret line="113" column="20" lean-forward="true" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="20" />
+            <state relative-caret-position="-195">
+              <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2175">
+              <caret line="188" column="37" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="37" />
+              <folding>
+                <element signature="e#4967#4968#0" expanded="true" />
+                <element signature="e#5068#5069#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1677#1678#0" expanded="true" />
+                <element signature="e#1725#1726#0" expanded="true" />
+                <element signature="e#1765#1766#0" expanded="true" />
+                <element signature="e#1812#1813#0" expanded="true" />
+                <element signature="e#1864#1865#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/result/Result.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>UserDAO</find>
       <find>Username</find>
+      <find>return</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -58,11 +164,8 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java" />
@@ -74,6 +177,14 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/request/EventRequest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/request/ClearRequest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/Service.java" />
+        <option value="$PROJECT_DIR$/resources/database/Create Tables.txt" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java" />
+        <option value="$PROJECT_DIR$/test/com/teranpeterson/server/service/LoginServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" />
       </list>
     </option>
   </component>
@@ -111,6 +222,12 @@
             <path>
               <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -125,6 +242,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
@@ -150,13 +274,34 @@
             <path>
               <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -166,12 +311,22 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550866702351" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551834184039" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.teranpeterson.server.service" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -185,8 +340,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.teranpeterson.server.dao in FamilyMapServer">
-    <configuration name="PersonDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.LoginServiceTest">
+    <configuration name="DatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
@@ -195,8 +350,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.teranpeterson.server.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.dao.PersonDAOTest" />
+      <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.dao.DatabaseTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FamilyMapServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.teranpeterson.server.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.teranpeterson.server.service" />
+      <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.service.LoginServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginServiceTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FamilyMapServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.teranpeterson.server.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.teranpeterson.server.service" />
+      <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.service.LoginServiceTest" />
+      <option name="METHOD_NAME" value="login" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -216,7 +402,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAOTest.clearPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserDAOTest.insertPass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FamilyMapServer" />
       <extension name="coverage">
         <pattern>
@@ -226,49 +412,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.teranpeterson.server.dao" />
       <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.dao.UserDAOTest" />
-      <option name="METHOD_NAME" value="clearPass" />
+      <option name="METHOD_NAME" value="insertPass" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDAOTest.findFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FamilyMapServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.teranpeterson.server.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.teranpeterson.server.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.teranpeterson.server.dao.UserDAOTest" />
-      <option name="METHOD_NAME" value="findFail" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.teranpeterson.server.dao in FamilyMapServer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FamilyMapServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.teranpeterson.server.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.teranpeterson.server.dao" />
-      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.com.teranpeterson.server.dao in FamilyMapServer" />
+        <item itemvalue="JUnit.LoginServiceTest" />
         <item itemvalue="JUnit.UserDAOTest" />
-        <item itemvalue="JUnit.PersonDAOTest" />
-        <item itemvalue="JUnit.UserDAOTest.clearPass" />
-        <item itemvalue="JUnit.UserDAOTest.findFail" />
+        <item itemvalue="JUnit.DatabaseTest" />
+        <item itemvalue="JUnit.UserDAOTest.insertPass" />
+        <item itemvalue="JUnit.LoginServiceTest.login" />
       </list>
     </recent_temporary>
   </component>
@@ -297,31 +453,24 @@
       <option name="project" value="LOCAL" />
       <updated>1550866701159</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Made changes by TA recommendation. Didn't add load many method to daos">
+      <created>1551828007087</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1551828007088</updated>
+    </task>
+    <task id="LOCAL-00004" summary="New file">
+      <created>1551828029968</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1551828029969</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DatabaseTest - 2019.02.22 at 12h 00m 03s.xml">
-      <configuration name="DatabaseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest_findPass - 2019.02.22 at 12h 03m 35s.xml">
-      <configuration name="UserDAOTest.findPass" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest_findFail - 2019.02.22 at 12h 03m 40s.xml">
-      <configuration name="UserDAOTest.findFail" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest_clearPass - 2019.02.22 at 12h 05m 53s.xml">
-      <configuration name="UserDAOTest.clearPass" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserDAOTest - 2019.02.22 at 12h 10m 11s.xml">
-      <configuration name="UserDAOTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PersonDAOTest - 2019.02.22 at 12h 10m 18s.xml">
-      <configuration name="PersonDAOTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PersonDAOTest - 2019.02.22 at 12h 22m 50s.xml">
-      <configuration name="PersonDAOTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserDAOTest - 2019.02.22 at 12h 23m 23s.xml">
       <configuration name="UserDAOTest" configurationId="JUnit" />
     </history-entry>
@@ -330,6 +479,27 @@
     </history-entry>
     <history-entry file="com_teranpeterson_server_dao_in_FamilyMapServer - 2019.02.22 at 12h 48m 49s.xml">
       <configuration name="com.teranpeterson.server.dao in FamilyMapServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginServiceTest_login - 2019.03.05 at 17h 49m 55s.xml">
+      <configuration name="LoginServiceTest.login" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDAOTest_insertPass - 2019.03.05 at 17h 50m 09s.xml">
+      <configuration name="UserDAOTest.insertPass" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DatabaseTest - 2019.03.05 at 17h 50m 34s.xml">
+      <configuration name="DatabaseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DatabaseTest - 2019.03.05 at 17h 51m 15s.xml">
+      <configuration name="DatabaseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDAOTest - 2019.03.05 at 17h 51m 27s.xml">
+      <configuration name="UserDAOTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginServiceTest - 2019.03.05 at 17h 51m 33s.xml">
+      <configuration name="LoginServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginServiceTest - 2019.03.05 at 17h 56m 09s.xml">
+      <configuration name="LoginServiceTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -345,7 +515,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32969433" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32969433" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -366,22 +536,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finished junit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished junit tests" />
+    <MESSAGE value="Made changes by TA recommendation. Didn't add load many method to daos" />
+    <MESSAGE value="New file" />
+    <option name="LAST_COMMIT_MESSAGE" value="New file" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="188" column="37" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="37" />
-          <folding>
-            <element signature="e#4263#4264#0" expanded="true" />
-            <element signature="e#4303#4304#0" expanded="true" />
-            <element signature="e#4967#4968#0" expanded="true" />
-            <element signature="e#5068#5069#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -404,26 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="56" column="37" selection-start-line="56" selection-start-column="37" selection-end-line="56" selection-end-column="37" />
-          <folding>
-            <element signature="e#1382#1383#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/DatabaseTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -442,20 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="9" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
@@ -463,24 +588,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/request/RegisterRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/request/PersonRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/request/LoginRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -526,17 +637,146 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/request/RegisterRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="94" column="53" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
+        <state relative-caret-position="-60">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/request/LoginRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/database/Create Tables.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2175">
+          <caret line="188" column="37" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="37" />
+          <folding>
+            <element signature="e#4967#4968#0" expanded="true" />
+            <element signature="e#5068#5069#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="113" column="20" lean-forward="true" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="20" />
+        <state relative-caret-position="-195">
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/result/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/DatabaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/service/LoginServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1677#1678#0" expanded="true" />
+            <element signature="e#1725#1726#0" expanded="true" />
+            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#1812#1813#0" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+          <folding>
+            <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
         </state>
       </provider>
     </entry>

@@ -7,4 +7,5 @@ package com.teranpeterson.server.service;
  * @version v0.0.1
  */
 public class Service {
+
 }
