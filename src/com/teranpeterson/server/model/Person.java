@@ -16,17 +16,17 @@ public class Person {
      */
     private String personID;
     /**
-     * Username of the user the person belongs to (can be null)
+     * UserName of the user the person belongs to (can be null)
      */
     private String descendant;
     /**
      * First name of the person
      */
-    private String firstname;
+    private String firstName;
     /**
      * Last name of the person
      */
-    private String lastname;
+    private String lastName;
     /**
      * Gender of the person ('m' or 'f')
      */
@@ -54,19 +54,19 @@ public class Person {
     /**
      * Creates a person with the given data and automatically assigns a personID
      *
-     * @param descendant Username of the user the person belongs to (default null)
-     * @param firstname  First name of the person
-     * @param lastname   Last name of the person
+     * @param descendant UserName of the user the person belongs to (default null)
+     * @param firstName  First name of the person
+     * @param lastName   Last name of the person
      * @param gender     Gender of the person ('m' or 'f')
      * @param father     Father of the person (default null)
      * @param mother     Mother of the person (default null)
      * @param spouse     Spouse of the person (default null)
      */
-    public Person(String personID, String descendant, String firstname, String lastname, String gender, String father, String mother, String spouse) {
+    public Person(String personID, String descendant, String firstName, String lastName, String gender, String father, String mother, String spouse) {
         this.personID = personID;
         this.descendant = descendant;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
         this.father = father;
         this.mother = mother;
@@ -92,9 +92,9 @@ public class Person {
     }
 
     /**
-     * Gets the descendant's username
+     * Gets the descendant's userName
      *
-     * @return The descendant's username
+     * @return The descendant's userName
      */
     public String getDescendant() {
         return descendant;
@@ -103,7 +103,7 @@ public class Person {
     /**
      * Sets a new descendant
      *
-     * @param descendant Username of the descendant
+     * @param descendant UserName of the descendant
      */
     public void setDescendant(String descendant) {
         this.descendant = descendant;
@@ -114,17 +114,17 @@ public class Person {
      *
      * @return The person's first name
      */
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
      * Sets the person's first name
      *
-     * @param firstname The person's first name
+     * @param firstName The person's first name
      */
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     /**
@@ -132,17 +132,17 @@ public class Person {
      *
      * @return The person's last name
      */
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
      * Sets the person's last name
      *
-     * @param lastname The person's last name
+     * @param lastName The person's last name
      */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**
@@ -224,8 +224,8 @@ public class Person {
         Person person = (Person) o;
         return Objects.equals(personID, person.personID) &&
                 Objects.equals(descendant, person.descendant) &&
-                Objects.equals(firstname, person.firstname) &&
-                Objects.equals(lastname, person.lastname) &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
                 Objects.equals(gender, person.gender) &&
                 Objects.equals(father, person.father) &&
                 Objects.equals(mother, person.mother) &&
@@ -234,6 +234,6 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(personID, descendant, firstname, lastname, gender, father, mother, spouse);
+        return Objects.hash(personID, descendant, firstName, lastName, gender, father, mother, spouse);
     }
 }

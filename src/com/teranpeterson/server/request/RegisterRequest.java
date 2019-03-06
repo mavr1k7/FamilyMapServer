@@ -8,9 +8,9 @@ package com.teranpeterson.server.request;
  */
 public class RegisterRequest {
     /**
-     * User's username
+     * User's userName
      */
-    private String username;
+    private String userName;
     /**
      * User's password
      */
@@ -22,11 +22,11 @@ public class RegisterRequest {
     /**
      * User's first name
      */
-    private String firstname;
+    private String firstName;
     /**
      * User's last name
      */
-    private String lastname;
+    private String lastName;
     /**
      * User's gender ('m' or 'f')
      */
@@ -35,38 +35,38 @@ public class RegisterRequest {
     /**
      * Creates a register request with the given information
      *
-     * @param username  User's username
+     * @param userName  User's userName
      * @param password  User's password
      * @param email     User's email
-     * @param firstname User's first name
-     * @param lastname  User's last name
+     * @param firstName User's first name
+     * @param lastName  User's last name
      * @param gender    User's gender
      */
-    public RegisterRequest(String username, String password, String email, String firstname, String lastname, String gender) {
-        this.username = username;
+    public RegisterRequest(String userName, String password, String email, String firstName, String lastName, String gender) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return User's username
+     * @return User's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**
@@ -110,17 +110,17 @@ public class RegisterRequest {
      *
      * @return User's first name
      */
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
      * Sets the user's first name
      *
-     * @param firstname User's first name
+     * @param firstName User's first name
      */
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     /**
@@ -128,17 +128,17 @@ public class RegisterRequest {
      *
      * @return User's last name
      */
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
      * Sets the user's last name
      *
-     * @param lastname User's last name
+     * @param lastName User's last name
      */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**

@@ -33,14 +33,14 @@ public class AuthTokenDAO {
      * @throws DAOException Problem executing sql statements
      */
     public void insert(AuthToken token) throws DAOException {
-        String sql = "INSERT INTO `AuthTokens`(`token`,`username`) VALUES (?,?)";
+        String sql = "INSERT INTO `AuthTokens`(`token`,`userName`) VALUES (?,?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, token.getToken());
-            stmt.setString(2, token.getUsername());
+            stmt.setString(2, token.getUserName());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Unable to insert user '" + token.getUsername() + "' into database");
+            throw new DAOException("ERROR: Unable to insert user '" + token.getUserName() + "' into database");
         }
     }
 
@@ -60,7 +60,7 @@ public class AuthTokenDAO {
 
             result = stmt.executeQuery();
             if (result.next()) {
-                return result.getString("username");
+                return result.getString("userName");
             }
         } catch (SQLException e) {
             e.printStackTrace();

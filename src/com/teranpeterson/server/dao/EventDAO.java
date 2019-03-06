@@ -91,17 +91,17 @@ public class EventDAO {
     /**
      * Return a list of all events related to a user
      *
-     * @param username Username of the user to find events for
+     * @param userName UserName of the user to find events for
      * @return List of all events related to person, or null if none are found
      * @throws DAOException Problem executing sql statements
      */
-    public List<Event> personEvents(String username) throws DAOException {
+    public List<Event> personEvents(String userName) throws DAOException {
         List<Event> list = new ArrayList<>();
         ResultSet result = null;
 
         String sql = "SELECT * FROM `Events` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, userName);
             result = stmt.executeQuery();
             while (result.next()) {
                 list.add(new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
@@ -110,7 +110,7 @@ public class EventDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Unable to find events for person '" + username + "' in database");
+            throw new DAOException("ERROR: Unable to find events for person '" + userName + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -127,16 +127,16 @@ public class EventDAO {
     /**
      * Delete all events associated with a user
      *
-     * @param username User to delete events for
+     * @param userName User to delete events for
      * @throws DAOException Problem executing sql statements
      */
-    public void deleteEvents(String username) throws DAOException {
+    public void deleteEvents(String userName) throws DAOException {
         String sql = "DELETE * FROM `Events` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, userName);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Unable to delete events for user '" + username + "' from database");
+            throw new DAOException("ERROR: Unable to delete events for user '" + userName + "' from database");
         }
     }
 

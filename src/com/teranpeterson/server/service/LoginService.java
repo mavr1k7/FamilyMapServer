@@ -37,14 +37,14 @@ public class LoginService extends Service {
             db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
-            User user = uDAO.authenticate(request.getUsername(), request.getPassword());
+            User user = uDAO.authenticate(request.getUserName(), request.getPassword());
             if (user != null) {
-                String token = super.login(conn, user.getUsername());
+                String token = super.login(conn, user.getUserName());
                 db.closeConnection(true);
-                return new LoginResult(token, user.getUsername(), user.getPersonID());
+                return new LoginResult(token, user.getUserName(), user.getPersonID());
             } else {
                 db.closeConnection(false);
-                return new LoginResult("ERROR: Invalid username or password");
+                return new LoginResult("ERROR: Invalid userName or password");
             }
         } catch (DAOException e) {
             try {

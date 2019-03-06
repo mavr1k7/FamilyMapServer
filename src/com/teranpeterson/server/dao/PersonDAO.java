@@ -35,12 +35,12 @@ public class PersonDAO {
      * @throws DAOException Problem executing sql statements
      */
     public void insert(Person person) throws DAOException {
-        String sql = "INSERT INTO `Persons`(`person_id`,`descendant`,`firstname`,`lastname`,`gender`,`father`,`mother`,`spouse`) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `Persons`(`person_id`,`descendant`,`firstName`,`lastName`,`gender`,`father`,`mother`,`spouse`) VALUES (?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, person.getPersonID());
             stmt.setString(2, person.getDescendant());
-            stmt.setString(3, person.getFirstname());
-            stmt.setString(4, person.getLastname());
+            stmt.setString(3, person.getFirstName());
+            stmt.setString(4, person.getLastName());
             stmt.setString(5, person.getGender());
             stmt.setString(6, person.getFather());
             stmt.setString(7, person.getMother());
@@ -67,8 +67,8 @@ public class PersonDAO {
             stmt.setString(1, personID);
             result = stmt.executeQuery();
             if (result.next()) {
-                return new Person(result.getString("person_id"), result.getString("descendant"), result.getString("firstname"),
-                        result.getString("lastname"), result.getString("gender"), result.getString("father"), result.getString("mother"), result.getString("spouse"));
+                return new Person(result.getString("person_id"), result.getString("descendant"), result.getString("firstName"),
+                        result.getString("lastName"), result.getString("gender"), result.getString("father"), result.getString("mother"), result.getString("spouse"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -89,24 +89,24 @@ public class PersonDAO {
     /**
      * Return a list of all persons related to a user
      *
-     * @param username Username of the user to find relatives for
+     * @param userName userName of the user to find relatives for
      * @return List of relatives, or null if none are found
      */
-    public List<Person> findRelatives(String username) throws DAOException {
+    public List<Person> findRelatives(String userName) throws DAOException {
         List<Person> list = new ArrayList<>();
         ResultSet result = null;
 
         String sql = "SELECT * FROM `Persons` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, userName);
             result = stmt.executeQuery();
             while (result.next()) {
-                list.add(new Person(result.getString("person_id"), result.getString("descendant"), result.getString("firstname"),
-                        result.getString("lastname"), result.getString("gender"), result.getString("father"), result.getString("mother"), result.getString("spouse")));
+                list.add(new Person(result.getString("person_id"), result.getString("descendant"), result.getString("firstName"),
+                        result.getString("lastName"), result.getString("gender"), result.getString("father"), result.getString("mother"), result.getString("spouse")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Unable to find relatives for user '" + username + "' in database");
+            throw new DAOException("ERROR: Unable to find relatives for user '" + userName + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -123,16 +123,16 @@ public class PersonDAO {
     /**
      * Delete all persons related to a user
      *
-     * @param username Username of the user to delete relatives for
+     * @param userName userName of the user to delete relatives for
      * @throws DAOException Problem executing sql statements
      */
-    public void deleteRelatives(String username) throws DAOException {
+    public void deleteRelatives(String userName) throws DAOException {
         String sql = "DELETE * FROM `Persons` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, userName);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Unable to delete relatives for user '" + username + "' from database");
+            throw new DAOException("ERROR: Unable to delete relatives for user '" + userName + "' from database");
         }
     }
 

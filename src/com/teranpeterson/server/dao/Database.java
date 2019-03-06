@@ -69,8 +69,8 @@ public class Database {
         openConnection();
         try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS 'Persons' ( `person_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
-                    "`firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
-                    "`father` TEXT, `mother` TEXT, `spouse` TEXT, PRIMARY KEY(`person_id`), FOREIGN KEY(`descendant`) REFERENCES `Users`(`username`) )";
+                    "`firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
+                    "`father` TEXT, `mother` TEXT, `spouse` TEXT, PRIMARY KEY(`person_id`), FOREIGN KEY(`descendant`) REFERENCES `Users`(`userName`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
@@ -85,9 +85,9 @@ public class Database {
         // Create Users table
         openConnection();
         try (Statement stmt = conn.createStatement()) {
-            String sql = "CREATE TABLE IF NOT EXISTS 'Users' ( `username` TEXT NOT NULL UNIQUE, `password` TEXT NOT NULL, " +
-                    "`email` TEXT NOT NULL UNIQUE, `firstname` TEXT NOT NULL, `lastname` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
-                    "`person_id` TEXT NOT NULL UNIQUE, PRIMARY KEY(`username`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
+            String sql = "CREATE TABLE IF NOT EXISTS 'Users' ( `userName` TEXT NOT NULL UNIQUE, `password` TEXT NOT NULL, " +
+                    "`email` TEXT NOT NULL UNIQUE, `firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
+                    "`person_id` TEXT NOT NULL UNIQUE, PRIMARY KEY(`userName`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
@@ -105,7 +105,7 @@ public class Database {
             String sql = "CREATE TABLE IF NOT EXISTS `Events` ( `event_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
                     "`person_id` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `country` TEXT NOT NULL, " +
                     "`city` TEXT NOT NULL, `type` TEXT NOT NULL, `year` INTEGER NOT NULL, FOREIGN KEY(`descendant`) REFERENCES " +
-                    "`Users`(`username`), PRIMARY KEY(`event_id`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
+                    "`Users`(`userName`), PRIMARY KEY(`event_id`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
@@ -120,7 +120,7 @@ public class Database {
         // Create AuthTokens table
         openConnection();
         try (Statement stmt = conn.createStatement()) {
-            String sql = "CREATE TABLE IF NOT EXISTS `AuthTokens` ( `token` TEXT NOT NULL UNIQUE, `username` TEXT NOT NULL, PRIMARY KEY(`token`) )";
+            String sql = "CREATE TABLE IF NOT EXISTS `AuthTokens` ( `token` TEXT NOT NULL UNIQUE, `userName` TEXT NOT NULL, PRIMARY KEY(`token`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);

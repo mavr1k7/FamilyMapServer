@@ -12,9 +12,9 @@ public class RegisterResult extends Result {
      */
     private String authToken;
     /**
-     * Username of registered user
+     * UserName of registered user
      */
-    private String username;
+    private String userName;
     /**
      * PersonID of person created for the user
      */
@@ -34,12 +34,12 @@ public class RegisterResult extends Result {
      * Creates a successful register result with users session information
      *
      * @param token    Authentication token for the active user session
-     * @param username Username of registered user
+     * @param userName UserName of registered user
      * @param id       PersonID of person created for the user
      */
-    public RegisterResult(String token, String username, String id) {
+    public RegisterResult(String token, String userName, String id) {
         this.authToken = token;
-        this.username = username;
+        this.userName = userName;
         this.personID = id;
         super.success = true;
     }
@@ -63,21 +63,21 @@ public class RegisterResult extends Result {
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return User's username
+     * @return User's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**

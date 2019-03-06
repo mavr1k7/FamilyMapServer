@@ -16,7 +16,7 @@ public class Event {
      */
     private String eventID;
     /**
-     * Username of the user the event belongs to
+     * UserName of the user the event belongs to
      */
     private String descendant;
     /**
@@ -58,7 +58,7 @@ public class Event {
     /**
      * Creates an event with the given data and automatically assigns an eventID
      *
-     * @param descendant Username of the user this event belongs to
+     * @param descendant UserName of the user this event belongs to
      * @param personID   ID of the person the event happened to
      * @param latitude   Latitude where the event took place
      * @param longitude  Longitude where the event took place
@@ -98,9 +98,9 @@ public class Event {
     }
 
     /**
-     * Gets the descendant's username
+     * Gets the descendant's userName
      *
-     * @return The descendant's username
+     * @return The descendant's userName
      */
     public String getDescendant() {
         return descendant;
@@ -109,7 +109,7 @@ public class Event {
     /**
      * Sets a new descendant
      *
-     * @param descendant Username of the descendant
+     * @param descendant UserName of the descendant
      */
     public void setDescendant(String descendant) {
         this.descendant = descendant;

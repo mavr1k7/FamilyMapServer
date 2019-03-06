@@ -8,41 +8,45 @@ package com.teranpeterson.server.request;
  */
 public class LoginRequest {
     /**
-     * User's username
+     * User's userName
      */
-    private String username;
+    private String userName;
     /**
      * Password to authenticate with
      */
     private String password;
 
+    public LoginRequest() {
+
+    }
+
     /**
      * Creates a login request with the given information
      *
-     * @param username User's username
+     * @param userName User's userName
      * @param password Password to authenticate with
      */
-    public LoginRequest(String username, String password) {
-        this.username = username;
+    public LoginRequest(String userName, String password) {
+        this.userName = userName;
         this.password = password;
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return User's username
+     * @return User's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Users are able to access the system and see their ancestors family history information. Each user has a unique
- * username, email and password that are used to login to the system. Passwords are stored hashed and salted in the
+ * userName, email and password that are used to login to the system. Passwords are stored hashed and salted in the
  * database for security. The users basic information is also stored. Each user has a corresponding Person object.
  *
  * @author Teran Peterson
@@ -12,9 +12,9 @@ import java.util.Objects;
  */
 public class User {
     /**
-     * User's username
+     * User's userName
      */
-    private String username;
+    private String userName;
     /**
      * User's password
      */
@@ -26,11 +26,11 @@ public class User {
     /**
      * User's first name
      */
-    private String firstname;
+    private String firstName;
     /**
      * User's last name
      */
-    private String lastname;
+    private String lastName;
     /**
      * User's gender ('m' or 'f')
      */
@@ -50,39 +50,39 @@ public class User {
     /**
      * Creates a new user with the given information and automatically generates a new person and personID
      *
-     * @param username  User's username
+     * @param userName  User's userName
      * @param password  User's password
      * @param email     User's email
-     * @param firstname User's first name
-     * @param lastname  User's last name
+     * @param firstName User's first name
+     * @param lastName  User's last name
      * @param gender    User's gender ('m' or 'f')
      */
-    public User(String username, String password, String email, String firstname, String lastname, String gender, String personID) {
-        this.username = username;
+    public User(String userName, String password, String email, String firstName, String lastName, String gender, String personID) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
         this.personID = personID;
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return The user's username
+     * @return The user's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username A new username for the user
+     * @param userName A new userName for the user
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**
@@ -126,17 +126,17 @@ public class User {
      *
      * @return The user's first name
      */
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
      * Sets the user's first name
      *
-     * @param firstname The user's first name
+     * @param firstName The user's first name
      */
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     /**
@@ -144,17 +144,17 @@ public class User {
      *
      * @return The user's last name
      */
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
      * Sets the user's last name
      *
-     * @param lastname The user's last name
+     * @param lastName The user's last name
      */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**
@@ -198,17 +198,17 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(username, user.username) &&
+        return Objects.equals(userName, user.userName) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(firstname, user.firstname) &&
-                Objects.equals(lastname, user.lastname) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
                 Objects.equals(gender, user.gender) &&
                 Objects.equals(personID, user.personID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, email, firstname, lastname, gender, personID);
+        return Objects.hash(userName, password, email, firstName, lastName, gender, personID);
     }
 }

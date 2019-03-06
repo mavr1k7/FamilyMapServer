@@ -13,9 +13,9 @@ import java.util.UUID;
  */
 public class AuthToken {
     /**
-     * Username of the user who's token this is
+     * UserName of the user who's token this is
      */
-    private String username;
+    private String userName;
     /**
      * Randomly generated unique string used for authentication
      */
@@ -24,21 +24,21 @@ public class AuthToken {
     /**
      * Assigns a randomly generated token for the given user
      *
-     * @param username Username of the user who is logging in
+     * @param userName UserName of the user who is logging in
      */
-    public AuthToken(String username) {
-        this.username = username;
+    public AuthToken(String userName) {
+        this.userName = userName;
         this.token = UUID.randomUUID().toString();
     }
 
     /**
-     * Creates a new AuthToken object with a given username and token
+     * Creates a new AuthToken object with a given userName and token
      *
-     * @param username Username of the user
+     * @param userName UserName of the user
      * @param token    String to act as authentication token
      */
-    public AuthToken(String username, String token) {
-        this.username = username;
+    public AuthToken(String userName, String token) {
+        this.userName = userName;
         this.token = token;
     }
 
@@ -61,21 +61,21 @@ public class AuthToken {
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return User's username
+     * @return User's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
@@ -83,12 +83,12 @@ public class AuthToken {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AuthToken authToken = (AuthToken) o;
-        return Objects.equals(username, authToken.username) &&
+        return Objects.equals(userName, authToken.userName) &&
                 Objects.equals(token, authToken.token);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, token);
+        return Objects.hash(userName, token);
     }
 }

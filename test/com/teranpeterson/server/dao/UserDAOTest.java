@@ -32,7 +32,7 @@ public class UserDAOTest {
             Connection conn = db.openConnection();
             UserDAO dao = new UserDAO(conn);
             dao.insert(user);
-            insertTest = dao.find(user.getUsername());
+            insertTest = dao.find(user.getUserName());
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
@@ -68,7 +68,7 @@ public class UserDAOTest {
             Connection conn = db.openConnection();
             UserDAO dao = new UserDAO(conn);
             dao.insert(user);
-            findTest = dao.find(user.getUsername());
+            findTest = dao.find(user.getUserName());
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
@@ -104,7 +104,7 @@ public class UserDAOTest {
             UserDAO dao = new UserDAO(conn);
             dao.insert(user);
             dao.clear();
-            clearTest = dao.find(user.getUsername());
+            clearTest = dao.find(user.getUserName());
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);

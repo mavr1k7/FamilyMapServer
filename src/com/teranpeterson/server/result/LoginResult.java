@@ -12,9 +12,9 @@ public class LoginResult extends Result {
      */
     private String authToken;
     /**
-     * Username of logged in user
+     * UserName of logged in user
      */
-    private String username;
+    private String userName;
     /**
      * PersonID of person created for the user
      */
@@ -34,12 +34,12 @@ public class LoginResult extends Result {
      * Creates a successful login result with users session information
      *
      * @param token    Authentication token for the active user session
-     * @param username Username of logged in user
+     * @param userName UserName of logged in user
      * @param id       PersonID of person created for the user
      */
-    public LoginResult(String token, String username, String id) {
+    public LoginResult(String token, String userName, String id) {
         this.authToken = token;
-        this.username = username;
+        this.userName = userName;
         this.personID = id;
         super.success = true;
     }
@@ -63,21 +63,21 @@ public class LoginResult extends Result {
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return User's username
+     * @return User's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**

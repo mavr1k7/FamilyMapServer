@@ -33,43 +33,43 @@ public class UserDAO {
      * @throws DAOException Problem executing sql statements
      */
     public void insert(User user) throws DAOException {
-        String sql = "INSERT INTO `Users`(`username`,`password`,`email`,`firstname`,`lastname`,`gender`,`person_id`) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `Users`(`userName`,`password`,`email`,`firstName`,`lastname`,`gender`,`person_id`) VALUES (?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, user.getUsername());
+            stmt.setString(1, user.getUserName());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getEmail());
-            stmt.setString(4, user.getFirstname());
-            stmt.setString(5, user.getLastname());
+            stmt.setString(4, user.getFirstName());
+            stmt.setString(5, user.getLastName());
             stmt.setString(6, user.getGender());
             stmt.setString(7, user.getPersonID());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("ERROR: Unable to insert user '" + user.getUsername() + "' into database");
+            throw new DAOException("ERROR: Unable to insert user '" + user.getUserName() + "' into database");
         }
     }
 
     /**
      * Find a user in the database
      *
-     * @param username Username of the user to find
+     * @param userName UserName of the user to find
      * @return If the user is found, return it, otherwise null
      * @throws DAOException Problem executing sql statements
      */
-    public User find(String username) throws DAOException {
+    public User find(String userName) throws DAOException {
         ResultSet result = null;
 
-        String sql = "SELECT * FROM `Users` WHERE `username` = ?";
+        String sql = "SELECT * FROM `Users` WHERE `userName` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, userName);
             result = stmt.executeQuery();
             if (result.next()) {
-                return new User(result.getString("username"), result.getString("password"), result.getString("email"), result.getString("firstname"),
+                return new User(result.getString("userName"), result.getString("password"), result.getString("email"), result.getString("firstName"),
                         result.getString("lastname"), result.getString("gender"), result.getString("person_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Unable to find user '" + username + "' in database");
+            throw new DAOException("ERROR: Unable to find user '" + userName + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -84,28 +84,28 @@ public class UserDAO {
     }
 
     /**
-     * Checks if a given username and password match and are in the database
+     * Checks if a given userName and password match and are in the database
      *
-     * @param username Username of user logging in
+     * @param userName UserName of user logging in
      * @param password Password attempt to check
      * @return True if the login credentials match, otherwise false
      * @throws DAOException Problem executing sql statements
      */
-    public User authenticate(String username, String password) throws DAOException {
+    public User authenticate(String userName, String password) throws DAOException {
         ResultSet result = null;
 
-        String sql = "SELECT * FROM `Users` WHERE `username` = ? AND `password` = ?";
+        String sql = "SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, username);
+            stmt.setString(1, userName);
             stmt.setString(2, password);
             result = stmt.executeQuery();
             if (result.next()) {
-                return new User(result.getString("username"), result.getString("password"), result.getString("email"), result.getString("firstname"),
+                return new User(result.getString("userName"), result.getString("password"), result.getString("email"), result.getString("firstName"),
                         result.getString("lastname"), result.getString("gender"), result.getString("person_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Unable to authenticate user '" + username + "' in database");
+            throw new DAOException("ERROR: Unable to authenticate user '" + userName + "' in database");
         } finally {
             if (result != null) {
                 try {

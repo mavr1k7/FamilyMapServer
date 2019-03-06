@@ -32,7 +32,7 @@ public class RegisterService extends Service {
      */
     public RegisterResult register(RegisterRequest request) {
         String id = UUID.randomUUID().toString().substring(0, 6);
-        User newUser = new User(request.getUsername(), request.getPassword(), request.getEmail(), request.getFirstname(), request.getLastname(), request.getGender(), id);
+        User newUser = new User(request.getUserName(), request.getPassword(), request.getEmail(), request.getFirstName(), request.getLastName(), request.getGender(), id);
         Database db = new Database();
         try {
             db.createTables();
@@ -40,9 +40,9 @@ public class RegisterService extends Service {
             super.generate(conn, newUser, 4);
             UserDAO uDAO = new UserDAO(conn);
             uDAO.insert(newUser);
-            String token = super.login(conn, newUser.getUsername());
+            String token = super.login(conn, newUser.getUserName());
             db.closeConnection(true);
-            return new RegisterResult(token, newUser.getUsername(), id);
+            return new RegisterResult(token, newUser.getUserName(), id);
         } catch (DAOException e) {
             try {
                 db.closeConnection(false);

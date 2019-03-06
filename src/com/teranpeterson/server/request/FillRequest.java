@@ -8,9 +8,9 @@ package com.teranpeterson.server.request;
  */
 public class FillRequest {
     /**
-     * User's username
+     * User's userName
      */
-    private String username;
+    private String userName;
     /**
      * Number of generations to create
      */
@@ -19,39 +19,39 @@ public class FillRequest {
     /**
      * Creates a fill request with the given information and default 4 generations
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public FillRequest(String username) {
-        this(username, 4);
+    public FillRequest(String userName) {
+        this(userName, 4);
     }
 
     /**
      * Creates a fill request with the given information
      *
-     * @param username    User's username
+     * @param userName    User's userName
      * @param generations Number of generations to create
      */
-    public FillRequest(String username, int generations) {
-        this.username = username;
+    public FillRequest(String userName, int generations) {
+        this.userName = userName;
         this.generations = generations;
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return User's username
+     * @return User's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username User's username
+     * @param userName User's userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**

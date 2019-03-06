@@ -25,7 +25,7 @@ public class FillService extends Service {
 
     /**
      * Populates the server's database with generated data for the specified user name.
-     * The required "username" parameter must be a user already registered with the server. If there is
+     * The required "userName" parameter must be a user already registered with the server. If there is
      * any data in the database already associated with the given user name, it is deleted. The
      * optional “generations” parameter lets the caller specify the number of generations of ancestors
      * to be generated, and must be a non-negative integer (the default is 4)
@@ -39,8 +39,8 @@ public class FillService extends Service {
             db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
-            User user = uDAO.find(request.getUsername());
-            if (user == null) return new FillResult("ERROR: Invalid username");
+            User user = uDAO.find(request.getUserName());
+            if (user == null) return new FillResult("ERROR: Invalid userName");
             super.generate(conn, user, request.getGenerations());
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons 2^(n+1) - 1
             db.closeConnection(true);
