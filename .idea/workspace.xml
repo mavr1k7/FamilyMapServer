@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f884639-0cc4-4eee-babb-e4fda5f4bf1e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/teran.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/teran.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,59 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="59" selection-start-line="59" selection-end-line="82" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#510#511#0" expanded="true" />
-                <element signature="e#542#543#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="144" selection-start-line="144" selection-end-line="149" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="60" />
-              <folding>
-                <element signature="e#470#471#0" expanded="true" />
-                <element signature="e#502#503#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -86,6 +32,7 @@
       <find>Username</find>
       <find>return</find>
       <find>long</find>
+      <find>longitude</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,8 +42,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/DatabaseTest.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/request/RegisterRequest.java" />
@@ -111,14 +56,16 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/service/LoginServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java" />
       </list>
     </option>
   </component>
@@ -152,13 +99,6 @@
               <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FamilyMapServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FamilyMapServer" type="b2602c69:ProjectViewProjectNode" />
@@ -203,7 +143,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551836593690" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551836726684" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
@@ -373,7 +313,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551834232987</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Finished DAOs version 1.1. Ready for testing">
+      <created>1551836700638</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1551836700638</updated>
+    </task>
+    <task id="LOCAL-00008" summary="New file">
+      <created>1551836724971</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1551836724971</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -410,9 +364,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -428,7 +381,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.3286026" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.3286026" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -443,10 +396,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finished junit tests" />
     <MESSAGE value="Made changes by TA recommendation. Didn't add load many method to daos" />
-    <MESSAGE value="New file" />
     <MESSAGE value="Added working login service. Plain text passwords" />
     <MESSAGE value="Compiled code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Compiled code" />
+    <MESSAGE value="Finished DAOs version 1.1. Ready for testing" />
+    <MESSAGE value="New file" />
+    <option name="LAST_COMMIT_MESSAGE" value="New file" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/dao/PersonDAOTest.java">
@@ -571,32 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="188" column="37" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="37" />
-          <folding>
-            <element signature="e#4967#4968#0" expanded="true" />
-            <element signature="e#5068#5069#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#1765#1766#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/result/LoginResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -611,6 +539,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="45" column="15" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/AuthToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1646#1647#0" expanded="true" />
+            <element signature="e#1677#1678#0" expanded="true" />
+            <element signature="e#1851#1852#0" expanded="true" />
+            <element signature="e#1891#1892#0" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+            <element signature="e#2312#2313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="92" column="33" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/DAOException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -620,68 +594,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="239" column="25" selection-start-line="239" selection-start-column="25" selection-end-line="239" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
+          <folding>
+            <element signature="e#2275#2276#0" expanded="true" />
+            <element signature="e#2306#2307#0" expanded="true" />
+            <element signature="e#4967#4968#0" expanded="true" />
+            <element signature="e#5068#5069#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1968">
-          <caret line="203" column="37" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/model/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="70" column="37" lean-forward="true" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/EventDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="60" />
-          <folding>
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="59" selection-start-line="59" selection-end-line="82" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="144" selection-start-line="144" selection-end-line="149" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/AuthTokenDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="113">
+          <caret line="213" column="38" selection-start-line="213" selection-start-column="38" selection-end-line="213" selection-end-column="38" />
         </state>
       </provider>
     </entry>

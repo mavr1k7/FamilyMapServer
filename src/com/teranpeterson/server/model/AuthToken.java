@@ -9,7 +9,7 @@ import java.util.UUID;
  * to different clients.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class AuthToken {
     /**
@@ -23,6 +23,7 @@ public class AuthToken {
 
     /**
      * Assigns a randomly generated token for the given user
+     *
      * @param username Username of the user who is logging in
      */
     public AuthToken(String username) {
@@ -32,8 +33,9 @@ public class AuthToken {
 
     /**
      * Creates a new AuthToken object with a given username and token
+     *
      * @param username Username of the user
-     * @param token String to act as authentication token
+     * @param token    String to act as authentication token
      */
     public AuthToken(String username, String token) {
         this.username = username;
@@ -42,6 +44,7 @@ public class AuthToken {
 
     /**
      * Gets the users token for authentication
+     *
      * @return A valid authentication token to use in place of logging in
      */
     public String getToken() {
@@ -50,16 +53,27 @@ public class AuthToken {
 
     /**
      * Sets the users authentication token
+     *
      * @param token Randomly generated string used for authentication
      */
     public void setToken(String token) {
         this.token = token;
     }
 
+    /**
+     * Gets the user's username
+     *
+     * @return User's username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the user's username
+     *
+     * @param username User's username
+     */
     public void setUsername(String username) {
         this.username = username;
     }

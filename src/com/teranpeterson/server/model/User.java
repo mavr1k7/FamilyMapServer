@@ -8,7 +8,7 @@ import java.util.Objects;
  * database for security. The users basic information is also stored. Each user has a corresponding Person object.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class User {
     /**
@@ -49,12 +49,13 @@ public class User {
 
     /**
      * Creates a new user with the given information and automatically generates a new person and personID
-     * @param username User's username
-     * @param password User's password
-     * @param email User's email
+     *
+     * @param username  User's username
+     * @param password  User's password
+     * @param email     User's email
      * @param firstname User's first name
-     * @param lastname User's last name
-     * @param gender User's gender ('m' or 'f')
+     * @param lastname  User's last name
+     * @param gender    User's gender ('m' or 'f')
      */
     public User(String username, String password, String email, String firstname, String lastname, String gender, String personID) {
         this.username = username;
@@ -67,16 +68,8 @@ public class User {
     }
 
     /**
-     * Hashes the users login attempt password and compares it with the stored password
-     * @param pass Password the user entered to login
-     * @return True if the passwords matched, otherwise false
-     */
-    public boolean checkPassword(String pass) {
-        return false;
-    }
-
-    /**
      * Gets the user's username
+     *
      * @return The user's username
      */
     public String getUsername() {
@@ -85,6 +78,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param username A new username for the user
      */
     public void setUsername(String username) {
@@ -93,12 +87,16 @@ public class User {
 
     /**
      * Gets the user's password
+     *
      * @return The user's password
      */
-    public String getPassword() { return password; }
+    public String getPassword() {
+        return password;
+    }
 
     /**
      * Sets the user's password
+     *
      * @param password The user's password
      */
     public void setPassword(String password) {
@@ -107,6 +105,7 @@ public class User {
 
     /**
      * Gets the user's email
+     *
      * @return The user's email
      */
     public String getEmail() {
@@ -115,6 +114,7 @@ public class User {
 
     /**
      * Sets the user's email
+     *
      * @param email A new email for the user
      */
     public void setEmail(String email) {
@@ -123,6 +123,7 @@ public class User {
 
     /**
      * Gets the user's first name
+     *
      * @return The user's first name
      */
     public String getFirstname() {
@@ -131,6 +132,7 @@ public class User {
 
     /**
      * Sets the user's first name
+     *
      * @param firstname The user's first name
      */
     public void setFirstname(String firstname) {
@@ -139,6 +141,7 @@ public class User {
 
     /**
      * Gets the user's last name
+     *
      * @return The user's last name
      */
     public String getLastname() {
@@ -147,6 +150,7 @@ public class User {
 
     /**
      * Sets the user's last name
+     *
      * @param lastname The user's last name
      */
     public void setLastname(String lastname) {
@@ -155,7 +159,8 @@ public class User {
 
     /**
      * Gets the user's gender
-     * @return ('m' or 'f')
+     *
+     * @return (' m ' or ' f ')
      */
     public String getGender() {
         return gender;
@@ -163,6 +168,7 @@ public class User {
 
     /**
      * Sets the user's gender
+     *
      * @param gender ('m' or 'f')
      */
     public void setGender(String gender) {
@@ -171,6 +177,7 @@ public class User {
 
     /**
      * Gets the user's personID
+     *
      * @return The user's personID
      */
     public String getPersonID() {
@@ -179,6 +186,7 @@ public class User {
 
     /**
      * Sets the user's personID
+     *
      * @param personID User's personID
      */
     public void setPersonID(String personID) {

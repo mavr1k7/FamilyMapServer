@@ -8,7 +8,7 @@ import java.util.Objects;
  * to map these events.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class Event {
     /**
@@ -57,14 +57,15 @@ public class Event {
 
     /**
      * Creates an event with the given data and automatically assigns an eventID
+     *
      * @param descendant Username of the user this event belongs to
-     * @param personID ID of the person the event happened to
-     * @param latitude Latitude where the event took place
-     * @param longitude Longitude where the event took place
-     * @param country Country where the event took place
-     * @param city City where the event took place
-     * @param type Type of event (birth, baptism, christening, marriage, death, or burial)
-     * @param year Year the event took place
+     * @param personID   ID of the person the event happened to
+     * @param latitude   Latitude where the event took place
+     * @param longitude  Longitude where the event took place
+     * @param country    Country where the event took place
+     * @param city       City where the event took place
+     * @param type       Type of event (birth, baptism, christening, marriage, death, or burial)
+     * @param year       Year the event took place
      */
     public Event(String eventID, String descendant, String personID, double latitude, double longitude, String country, String city, String type, int year) {
         this.eventID = eventID;
@@ -80,6 +81,7 @@ public class Event {
 
     /**
      * Gets the eventID
+     *
      * @return The event's ID
      */
     public String getEventID() {
@@ -88,6 +90,7 @@ public class Event {
 
     /**
      * Sets a new eventID
+     *
      * @param eventID Unique id for the event
      */
     public void setEventID(String eventID) {
@@ -96,6 +99,7 @@ public class Event {
 
     /**
      * Gets the descendant's username
+     *
      * @return The descendant's username
      */
     public String getDescendant() {
@@ -104,6 +108,7 @@ public class Event {
 
     /**
      * Sets a new descendant
+     *
      * @param descendant Username of the descendant
      */
     public void setDescendant(String descendant) {
@@ -112,6 +117,7 @@ public class Event {
 
     /**
      * Gets the personID of the person this even happened to
+     *
      * @return A personID
      */
     public String getPersonID() {
@@ -120,6 +126,7 @@ public class Event {
 
     /**
      * Sets the person that the event 'happened' to
+     *
      * @param personID PersonID of person
      */
     public void setPersonID(String personID) {
@@ -128,6 +135,7 @@ public class Event {
 
     /**
      * Gets the latitude where the event took place
+     *
      * @return A floating point number for latitude
      */
     public double getLatitude() {
@@ -136,6 +144,7 @@ public class Event {
 
     /**
      * Sets the latitude where the event took place
+     *
      * @param latitude Floating point number for latitude
      */
     public void setLatitude(double latitude) {
@@ -144,6 +153,7 @@ public class Event {
 
     /**
      * Gets the longitude where the event took place
+     *
      * @return A floating point number for longitude
      */
     public double getLongitude() {
@@ -152,6 +162,7 @@ public class Event {
 
     /**
      * Sets the longitude where the event took place
+     *
      * @param longitude Floating point number for longitude
      */
     public void setLongitude(double longitude) {
@@ -160,6 +171,7 @@ public class Event {
 
     /**
      * Gets the country where the event took place
+     *
      * @return Country name where the event took place
      */
     public String getCountry() {
@@ -168,6 +180,7 @@ public class Event {
 
     /**
      * Sets the country where the event took place
+     *
      * @param country Country name where the event took place
      */
     public void setCountry(String country) {
@@ -176,6 +189,7 @@ public class Event {
 
     /**
      * Gets the city where the event took place
+     *
      * @return City where the event took place
      */
     public String getCity() {
@@ -184,6 +198,7 @@ public class Event {
 
     /**
      * Sets the city where the event took place
+     *
      * @param city City where the event took place
      */
     public void setCity(String city) {
@@ -192,6 +207,7 @@ public class Event {
 
     /**
      * Gets the ype of event
+     *
      * @return birth, baptism, christening, marriage, death, or burial
      */
     public String getType() {
@@ -200,6 +216,7 @@ public class Event {
 
     /**
      * Sets the type of event
+     *
      * @param type birth, baptism, christening, marriage, death, or burial
      */
     public void setType(String type) {
@@ -208,6 +225,7 @@ public class Event {
 
     /**
      * Gets the year the event took place
+     *
      * @return Year the event took place
      */
     public int getYear() {
@@ -216,6 +234,7 @@ public class Event {
 
     /**
      * Sets the year the event took place
+     *
      * @param year Year the event took place
      */
     public void setYear(int year) {

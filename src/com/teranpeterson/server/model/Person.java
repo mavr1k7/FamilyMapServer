@@ -8,7 +8,7 @@ import java.util.Objects;
  * are not based on real data but are instead randomly generated.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class Person {
     /**
@@ -53,13 +53,14 @@ public class Person {
 
     /**
      * Creates a person with the given data and automatically assigns a personID
+     *
      * @param descendant Username of the user the person belongs to (default null)
-     * @param firstname First name of the person
-     * @param lastname Last name of the person
-     * @param gender Gender of the person ('m' or 'f')
-     * @param father Father of the person (default null)
-     * @param mother Mother of the person (default null)
-     * @param spouse Spouse of the person (default null)
+     * @param firstname  First name of the person
+     * @param lastname   Last name of the person
+     * @param gender     Gender of the person ('m' or 'f')
+     * @param father     Father of the person (default null)
+     * @param mother     Mother of the person (default null)
+     * @param spouse     Spouse of the person (default null)
      */
     public Person(String personID, String descendant, String firstname, String lastname, String gender, String father, String mother, String spouse) {
         this.personID = personID;
@@ -74,6 +75,7 @@ public class Person {
 
     /**
      * Gets the personID
+     *
      * @return The person's id
      */
     public String getPersonID() {
@@ -82,6 +84,7 @@ public class Person {
 
     /**
      * Sets a new personID
+     *
      * @param personID Unique id for the person
      */
     public void setPersonID(String personID) {
@@ -90,6 +93,7 @@ public class Person {
 
     /**
      * Gets the descendant's username
+     *
      * @return The descendant's username
      */
     public String getDescendant() {
@@ -98,6 +102,7 @@ public class Person {
 
     /**
      * Sets a new descendant
+     *
      * @param descendant Username of the descendant
      */
     public void setDescendant(String descendant) {
@@ -106,6 +111,7 @@ public class Person {
 
     /**
      * Gets the person's first name
+     *
      * @return The person's first name
      */
     public String getFirstname() {
@@ -114,6 +120,7 @@ public class Person {
 
     /**
      * Sets the person's first name
+     *
      * @param firstname The person's first name
      */
     public void setFirstname(String firstname) {
@@ -122,6 +129,7 @@ public class Person {
 
     /**
      * Gets the person's last name
+     *
      * @return The person's last name
      */
     public String getLastname() {
@@ -130,6 +138,7 @@ public class Person {
 
     /**
      * Sets the person's last name
+     *
      * @param lastname The person's last name
      */
     public void setLastname(String lastname) {
@@ -138,6 +147,7 @@ public class Person {
 
     /**
      * Gets the person's gender
+     *
      * @return 'm' or 'f'
      */
     public String getGender() {
@@ -146,6 +156,7 @@ public class Person {
 
     /**
      * Sets the person's gender
+     *
      * @param gender 'm' or 'f'
      */
     public void setGender(String gender) {
@@ -154,6 +165,7 @@ public class Person {
 
     /**
      * Gets the personID for the person's father
+     *
      * @return Father's personID
      */
     public String getFather() {
@@ -162,6 +174,7 @@ public class Person {
 
     /**
      * Sets the personID for the person's father
+     *
      * @param father Father's personID
      */
     public void setFather(String father) {
@@ -170,6 +183,7 @@ public class Person {
 
     /**
      * Gets the personID for the person's mother
+     *
      * @return Mother's personID
      */
     public String getMother() {
@@ -178,6 +192,7 @@ public class Person {
 
     /**
      * Sets the personID for the person's mother
+     *
      * @param mother Mother's personID
      */
     public void setMother(String mother) {
@@ -186,6 +201,7 @@ public class Person {
 
     /**
      * Gets the personID for the person's spouse
+     *
      * @return Spouse's personID
      */
     public String getSpouse() {
@@ -194,6 +210,7 @@ public class Person {
 
     /**
      * Sets the personID for the person's spouse
+     *
      * @param spouse Spouse's personID
      */
     public void setSpouse(String spouse) {

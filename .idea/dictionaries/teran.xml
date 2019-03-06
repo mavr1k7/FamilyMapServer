@@ -2,7 +2,9 @@
   <dictionary name="teran">
     <words>
       <w>firstname</w>
+      <w>jdbc</w>
       <w>lastname</w>
+      <w>sqlite</w>
     </words>
   </dictionary>
 </component>
