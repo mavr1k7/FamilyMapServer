@@ -15,7 +15,7 @@ import java.sql.Connection;
  * Logs in the user and returns an auth token.
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class LoginService extends Service {
     /**
@@ -39,13 +39,10 @@ public class LoginService extends Service {
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.authenticate(request.getUsername(), request.getPassword());
             if (user != null) {
-                AuthToken token = new AuthToken(user.getUsername());
-                AuthTokenDAO aDAO = new AuthTokenDAO(conn);
-                aDAO.insert(token);
+                String token = super.login(conn, user.getUsername());
                 db.closeConnection(true);
-                return new LoginResult(token.getToken(), user.getUsername(), user.getPersonID());
-            }
-            else {
+                return new LoginResult(token, user.getUsername(), user.getPersonID());
+            } else {
                 db.closeConnection(false);
                 return new LoginResult("ERROR: Invalid username or password");
             }

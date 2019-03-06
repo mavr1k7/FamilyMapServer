@@ -10,11 +10,11 @@ public class Result {
     /**
      * True if the request was successful, otherwise false
      */
-    boolean success;
+    protected boolean success;
     /**
      * Information about errors that happened while processing the request
      */
-    String message;
+    protected String message;
 
     /**
      * Checks if the request was successful or not
