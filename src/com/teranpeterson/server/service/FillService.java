@@ -36,12 +36,14 @@ public class FillService extends Service {
     public FillResult fill(FillRequest request) {
         Database db = new Database();
         try {
+            db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.find(request.getUsername());
             if (user == null) return new FillResult("ERROR: Invalid username");
             super.generate(conn, user, request.getGenerations());
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons 2^(n+1) - 1
+            db.closeConnection(true);
             return new FillResult(x, (x * 3)); // Calculate number of events - 3 per person
         } catch (DAOException e) {
             try {
