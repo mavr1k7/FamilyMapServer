@@ -13,7 +13,7 @@ import java.sql.Connection;
  * Populates the server's database with generated data for the specified user name.
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class FillService extends Service {
     /**
@@ -34,24 +34,28 @@ public class FillService extends Service {
      * @return Information about the generated persons
      */
     public FillResult fill(FillRequest request) {
+        if (request.getGenerations() < 0) return new FillResult("ERROR: Invalid number of generations");
+
         Database db = new Database();
         try {
             db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.find(request.getUserName());
+
             if (user == null) {
                 try {
                     db.closeConnection(false);
                     return new FillResult("ERROR: Invalid userName");
-                } catch (DAOException d) {
-                    return new FillResult(d.getMessage());
+                } catch (DAOException e) {
+                    return new FillResult(e.getMessage());
                 }
             }
+
             //super.generate(conn, user, request.getGenerations());
-            int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons 2^(n+1) - 1
+            int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons (2^(n+1) - 1)
             db.closeConnection(true);
-            return new FillResult(x, (x * 3)); // Calculate number of events - 3 per person
+            return new FillResult(x, (x * 3)); // Calculate number of events (3 per person)
         } catch (DAOException e) {
             try {
                 db.closeConnection(false);

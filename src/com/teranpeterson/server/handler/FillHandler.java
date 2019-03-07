@@ -26,7 +26,7 @@ public class FillHandler implements HttpHandler {
             FillRequest request = null;
             if (params.length == 1) {
                 request = new FillRequest(params[0]);
-            } else if (params.length == 4) {
+            } else if (params.length == 2) {
                 try {
                     request = new FillRequest(params[0], Integer.parseInt(params[1]));
                 } catch (NumberFormatException e) {
