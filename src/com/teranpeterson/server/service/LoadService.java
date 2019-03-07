@@ -36,24 +36,28 @@ public class LoadService extends Service {
             db.clear();
             db.createTables();
             Connection conn = db.openConnection();
+
             int x = 0;
             PersonDAO pDAO = new PersonDAO(conn);
             for (Person p : request.getPersons()) {
                 pDAO.insert(p);
                 ++x;
             }
+
             int y = 0;
             UserDAO uDAO = new UserDAO(conn);
             for (User u : request.getUsers()) {
                 uDAO.insert(u);
                 ++y;
             }
+
             int z = 0;
             EventDAO eDAO = new EventDAO(conn);
             for (Event e : request.getEvents()) {
                 eDAO.insert(e);
                 ++z;
             }
+
             db.closeConnection(true);
             return new LoadResult(x, y, z);
         } catch (DAOException e) {
