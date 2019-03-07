@@ -6,6 +6,7 @@ import com.teranpeterson.server.result.ClearResult;
 import com.teranpeterson.server.service.ClearService;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 
 /**
  * Handler for Clear Requests. URL: /clear
@@ -16,22 +17,24 @@ import java.io.*;
 public class ClearHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        ClearService service = new ClearService();
+        try {
+            ClearResult result = new ClearService().clear();
 
-        ClearResult result = service.clear();
+            if (result.isSuccess()) {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+            } else {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+            }
 
-        if (result.isSuccess()) {
-            exchange.sendResponseHeaders(200, 0);
             String response = "{\"message\" : \"" + result.getMessage() + "\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
             writer.flush();
             body.close();
-        }
-        else {
-            exchange.sendResponseHeaders(400, 0);
-            String response = "{\"message\" : \"" + result.getMessage() + "\"}";
+        } catch (IOException e) {
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
+            String response = "{\"message\" : \"ERROR: Internal server error\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
