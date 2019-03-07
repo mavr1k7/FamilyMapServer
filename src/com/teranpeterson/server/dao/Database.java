@@ -69,8 +69,8 @@ public class Database {
         openConnection();
         try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS 'Persons' ( `person_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
-                    "`firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
-                    "`father` TEXT, `mother` TEXT, `spouse` TEXT, PRIMARY KEY(`person_id`), FOREIGN KEY(`descendant`) REFERENCES `Users`(`userName`) )";
+                    "`firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `gender` TEXT NOT NULL, " +
+                    "`father` TEXT, `mother` TEXT, `spouse` TEXT, PRIMARY KEY(`person_id`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
@@ -86,8 +86,8 @@ public class Database {
         openConnection();
         try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS 'Users' ( `userName` TEXT NOT NULL UNIQUE, `password` TEXT NOT NULL, " +
-                    "`email` TEXT NOT NULL UNIQUE, `firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
-                    "`person_id` TEXT NOT NULL UNIQUE, PRIMARY KEY(`userName`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
+                    "`email` TEXT NOT NULL, `firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `gender` TEXT NOT NULL CHECK(gender == 'f' OR gender == 'm'), " +
+                    "`person_id` TEXT NOT NULL, PRIMARY KEY(`userName`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
@@ -104,8 +104,7 @@ public class Database {
         try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS `Events` ( `event_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
                     "`person_id` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `country` TEXT NOT NULL, " +
-                    "`city` TEXT NOT NULL, `type` TEXT NOT NULL, `year` INTEGER NOT NULL, FOREIGN KEY(`descendant`) REFERENCES " +
-                    "`Users`(`userName`), PRIMARY KEY(`event_id`), FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`) )";
+                    "`city` TEXT NOT NULL, `type` TEXT NOT NULL, `year` INTEGER NOT NULL, PRIMARY KEY(`event_id`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
