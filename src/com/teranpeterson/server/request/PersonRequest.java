@@ -22,7 +22,6 @@ public class PersonRequest {
      * @param authToken Authentication token of the current user
      */
     public PersonRequest(String authToken) {
-        this.personID = "ALL";
         this.authToken = authToken;
     }
 

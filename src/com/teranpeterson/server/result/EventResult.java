@@ -12,21 +12,21 @@ import java.util.List;
  */
 public class EventResult extends Result {
     /**
-     * List of all the events to return
+     * List of all the data to return
      */
-    private List<Event> events;
+    private List<Event> data;
     /**
      * Event to return
      */
     private Event event;
 
     /**
-     * Creates a successful event result with information about ALL the events
+     * Creates a successful event result with information about ALL the data
      *
-     * @param events Stores the events
+     * @param data Stores the data
      */
-    public EventResult(List<Event> events) {
-        this.events = events;
+    public EventResult(List<Event> data) {
+        this.data = data;
         super.success = true;
     }
 
@@ -51,30 +51,30 @@ public class EventResult extends Result {
     }
 
     /**
-     * Gets a list of all the events related to the user
+     * Gets a list of all the data related to the user
      *
-     * @return List of all the events related to the user
+     * @return List of all the data related to the user
      */
-    public List<Event> getEvents() {
-        return events;
+    public List<Event> getData() {
+        return data;
     }
 
     /**
-     * Sets a list of all the events related to the user
+     * Sets a list of all the data related to the user
      *
-     * @param events List of all the events related to the user
+     * @param data List of all the data related to the user
      */
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public void setData(List<Event> data) {
+        this.data = data;
     }
 
     /**
-     * Adds a event to the list of events related to the user
+     * Adds a event to the list of data related to the user
      *
      * @param event Event related to the user
      */
     public void addEvent(Event event) {
-        this.events.add(event);
+        this.data.add(event);
     }
 
     /**

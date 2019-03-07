@@ -39,6 +39,7 @@ public class PersonService extends Service {
             Connection conn = db.openConnection();
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);
             String userName = aDAO.validate(request.getAuthToken());
+
             if (userName == null) {
                 try {
                     db.closeConnection(false);
@@ -47,16 +48,18 @@ public class PersonService extends Service {
                     return new PersonResult(d.getMessage());
                 }
             }
+
             PersonDAO pDAO = new PersonDAO(conn);
-            if (request.getPersonID().equals("ALL")) {
+            if (request.getPersonID() == null) {
                 List<Person> list = pDAO.findRelatives(userName);
                 db.closeConnection(true);
                 return new PersonResult(list);
-            }
-            else {
+            } else {
                 Person person = pDAO.find(request.getPersonID());
                 db.closeConnection(true);
-                return new PersonResult(person);
+                if (person == null) return new PersonResult("ERROR: Invalid personID");
+                else if (!person.getDescendant().equals(userName)) return new PersonResult("ERROR: Person is not related to you");
+                else return new PersonResult(person);
             }
         } catch (DAOException e) {
             try {

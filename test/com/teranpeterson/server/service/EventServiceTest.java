@@ -26,7 +26,7 @@ public class EventServiceTest {
         EventService service = new EventService();
         EventResult result = service.event(request);
         if (result.isSuccess()) {
-            for (Event e : result.getEvents()) {
+            for (Event e : result.getData()) {
                 System.out.println(e.getEventID());
             }
         }

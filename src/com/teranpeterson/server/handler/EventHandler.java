@@ -7,6 +7,7 @@ import com.teranpeterson.server.result.EventResult;
 import com.teranpeterson.server.service.EventService;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 
 /**
  * Handler for Event(s) Requests. URL: /event/{eventID} or /event
@@ -17,37 +18,42 @@ import java.io.*;
 public class EventHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        EventService service = new EventService();
+        try {
+            String url = exchange.getRequestURI().toString().substring(6);
+            String token = exchange.getRequestHeaders().getFirst("Authorization");
+            String[] params = url.split("/");
 
-        String url = exchange.getRequestURI().toString();
-        String[] params = url.split("/");
+            boolean success = true;
+            EventRequest request = null;
+            if (params.length == 0 || params.length == 1) {
+                request = new EventRequest(token);
+            } else if (params.length == 2) {
+                request = new EventRequest(params[1], token);
+            } else {
+                success = false;
+            }
 
-        EventRequest request = null;
+            EventResult result;
+            if (success) result = new EventService().event(request);
+            else result = new EventResult("ERROR: Invalid parameters");
 
-        if (params.length == 2) {
-            request = new EventRequest("token");
-        }
-        else if (params.length == 3) {
-            request = new EventRequest(params[2], "token");
-        }
-        else {
-            System.out.println("Invalid params");
-        }
+            String response;
+            if (result.isSuccess()) {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+                response = Serializer.serialize(result);
+            } else {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+                response = "{\"message\" : \"" + result.getMessage() + "\"}";
+            }
 
-        EventResult result = service.event(request);
-
-        if (result.isSuccess()) {
-            exchange.sendResponseHeaders(200, 0);
-            String response = Serializer.serialize(result);
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
             writer.flush();
             body.close();
-        }
-        else {
-            exchange.sendResponseHeaders(400, 0);
-            String response = "{\"message\" : \"" + result.getMessage() + "\"}";
+        } catch (IOException e) {
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
+            String response = "{\"message\" : \"ERROR: Internal server error\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);

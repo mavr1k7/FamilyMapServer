@@ -27,7 +27,7 @@ public class PersonServiceTest {
         PersonService service = new PersonService();
         PersonResult result = service.person(request);
         if (result.isSuccess()) {
-            for (Person e : result.getPersons()) {
+            for (Person e : result.getData()) {
                 System.out.println(e.getPersonID());
             }
         }

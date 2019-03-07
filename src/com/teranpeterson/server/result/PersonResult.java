@@ -14,19 +14,19 @@ public class PersonResult extends Result {
     /**
      * List of all the people to return
      */
-    private List<Person> persons;
+    private List<Person> data;
     /**
      * Person to return
      */
     private Person person;
 
     /**
-     * Creates a successful person result with information about ALL the persons
+     * Creates a successful person result with information about ALL the data
      *
-     * @param persons Stores persons
+     * @param data Stores data
      */
-    public PersonResult(List<Person> persons) {
-        this.persons = persons;
+    public PersonResult(List<Person> data) {
+        this.data = data;
         super.success = true;
     }
 
@@ -51,30 +51,30 @@ public class PersonResult extends Result {
     }
 
     /**
-     * Gets a list of all the persons related to the user
+     * Gets a list of all the data related to the user
      *
-     * @return List of all the persons related to the user
+     * @return List of all the data related to the user
      */
-    public List<Person> getPersons() {
-        return persons;
+    public List<Person> getData() {
+        return data;
     }
 
     /**
-     * Sets a list of all the persons related to the user
+     * Sets a list of all the data related to the user
      *
-     * @param persons List of all the persons related to the user
+     * @param data List of all the data related to the user
      */
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public void setData(List<Person> data) {
+        this.data = data;
     }
 
     /**
-     * Adds a person to the list of persons related to the user
+     * Adds a person to the list of data related to the user
      *
      * @param person Person related to the user
      */
-    public void addPerson(Person person) {
-        this.persons.add(person);
+    public void addData(Person person) {
+        this.data.add(person);
     }
 
     /**
