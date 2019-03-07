@@ -21,6 +21,7 @@ public class PersonHandler implements HttpHandler {
 
         String url = exchange.getRequestURI().toString();
         String[] params = url.split("/");
+        String authToken = exchange.getRequestHeaders().getFirst("Authorization");
 
         PersonRequest request = null;
 

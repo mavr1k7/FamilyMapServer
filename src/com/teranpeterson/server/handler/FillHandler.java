@@ -7,6 +7,7 @@ import com.teranpeterson.server.result.FillResult;
 import com.teranpeterson.server.service.FillService;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 
 /**
  * Handler for Fill Requests. URL: /fill/{username}/{generations}
@@ -17,47 +18,43 @@ import java.io.*;
 public class FillHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        FillService service = new FillService();
+        try {
+            String url = exchange.getRequestURI().toString().substring(6);
+            String[] params = url.split("/");
 
-        String url = exchange.getRequestURI().toString();
-        String[] params = url.split("/");
-
-        if(exchange.getRequestHeaders().containsKey("Authorization")) {
-            String authToken = exchange.getRequestHeaders().getFirst("Authorization");
-            exchange.getRequestMethod().toLowerCase().equals("get");
-        }
-
-        FillRequest request = null;
-
-        if (params.length == 3) {
-            request = new FillRequest(params[2]);
-        }
-        else if (params.length == 4) {
-            try {
-                int n = Integer.parseInt(params[3]);
-                request = new FillRequest(params[2], n);
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
+            boolean success = true;
+            FillRequest request = null;
+            if (params.length == 1) {
+                request = new FillRequest(params[0]);
+            } else if (params.length == 4) {
+                try {
+                    request = new FillRequest(params[0], Integer.parseInt(params[1]));
+                } catch (NumberFormatException e) {
+                    success = false;
+                }
+            } else {
+                success = false;
             }
-        }
-        else {
-            System.out.println("Invalid params");
-        }
 
-        FillResult result = service.fill(request);
+            FillResult result;
+            if (success) result = new FillService().fill(request);
+            else result = new FillResult("ERROR: Invalid parameters");
 
-        if (result.isSuccess()) {
-            exchange.sendResponseHeaders(200, 0);
+            if (result.isSuccess()) {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+            } else {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+            }
+
             String response = "{\"message\" : \"" + result.getMessage() + "\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
             writer.flush();
             body.close();
-        }
-        else {
-            exchange.sendResponseHeaders(400, 0);
-            String response = "{\"message\" : \"" + result.getMessage() + "\"}";
+        } catch (IOException e) {
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
+            String response = "{\"message\" : \"ERROR: Internal server error\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
