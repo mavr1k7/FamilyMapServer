@@ -40,7 +40,14 @@ public class FillService extends Service {
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.find(request.getUserName());
-            if (user == null) return new FillResult("ERROR: Invalid userName");
+            if (user == null) {
+                try {
+                    db.closeConnection(false);
+                    return new FillResult("ERROR: Invalid userName");
+                } catch (DAOException d) {
+                    return new FillResult(d.getMessage());
+                }
+            }
             super.generate(conn, user, request.getGenerations());
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons 2^(n+1) - 1
             db.closeConnection(true);

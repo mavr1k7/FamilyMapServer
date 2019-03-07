@@ -39,7 +39,14 @@ public class EventService extends Service {
             Connection conn = db.openConnection();
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);
             String userName = aDAO.validate(request.getAuthToken());
-            if (userName == null) return new EventResult("ERROR: Invalid auth token");
+            if (userName == null) {
+                try {
+                    db.closeConnection(false);
+                    return new EventResult("ERROR: Invalid auth token");
+                } catch (DAOException d) {
+                    return new EventResult(d.getMessage());
+                }
+            }
             EventDAO eDAO = new EventDAO(conn);
             if (request.getEventID().equals("ALL")) {
                 List<Event> list = eDAO.personEvents(userName);

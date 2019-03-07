@@ -27,7 +27,7 @@ public class RegisterResult extends Result {
      */
     public RegisterResult(String message) {
         super.message = message;
-        super.success = false;
+//        super.success = false;
     }
 
     /**
@@ -41,7 +41,7 @@ public class RegisterResult extends Result {
         this.authToken = token;
         this.userName = userName;
         this.personID = id;
-        super.success = true;
+//        super.success = true;
     }
 
     /**

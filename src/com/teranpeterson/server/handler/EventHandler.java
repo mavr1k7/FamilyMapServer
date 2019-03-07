@@ -19,8 +19,21 @@ public class EventHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         EventService service = new EventService();
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody()); // TODO: No request body
-        EventRequest request = Deserializer.eventRequest(reader);
+        String url = exchange.getRequestURI().toString();
+        String[] params = url.split("/");
+
+        EventRequest request = null;
+
+        if (params.length == 2) {
+            request = new EventRequest("token");
+        }
+        else if (params.length == 3) {
+            request = new EventRequest(params[2], "token");
+        }
+        else {
+            System.out.println("Invalid params");
+        }
+
         EventResult result = service.event(request);
 
         if (result.isSuccess()) {

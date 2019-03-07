@@ -7,6 +7,7 @@ import com.teranpeterson.server.result.RegisterResult;
 import com.teranpeterson.server.service.RegisterService;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 
 /**
  * Handler for Register Requests. URL: /user/register
@@ -17,24 +18,28 @@ import java.io.*;
 public class RegisterHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        RegisterService service = new RegisterService();
+        try {
+            Reader reader = new InputStreamReader(exchange.getRequestBody());
+            RegisterRequest request = Deserializer.registerRequest(reader);
+            RegisterResult result = new RegisterService().register(request);
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody());
-        RegisterRequest request = Deserializer.registerRequest(reader);
-        RegisterResult result = service.register(request);
+            String response;
+            if (result.getMessage() == null) {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+                response = Serializer.serialize(result);
+            } else {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+                response = "{\"message\" : \"" + result.getMessage() + "\"}";
+            }
 
-        if (result.isSuccess()) {
-            exchange.sendResponseHeaders(200, 0);
-            String response = Serializer.serialize(result);
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
             writer.flush();
             body.close();
-        }
-        else {
-            exchange.sendResponseHeaders(400, 0);
-            String response = "{\"message\" : \"" + result.getMessage() + "\"}";
+        } catch (IOException e) {
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
+            String response = "{\"message\" : \"ERROR: Internal server error\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);

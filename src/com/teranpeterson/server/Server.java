@@ -38,7 +38,7 @@ public class Server {
         } catch (NumberFormatException e) {
             System.out.println("ERROR: Invalid port number");
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: Handle server errors?
         }
     }
 

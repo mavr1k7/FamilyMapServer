@@ -20,19 +20,7 @@ class Deserializer {
         return new Gson().fromJson(reader, LoginRequest.class);
     }
 
-    static FillRequest fillRequest(Reader reader) {
-        return new Gson().fromJson(reader, FillRequest.class);
-    }
-
     static LoadRequest loadRequest(Reader reader) {
         return new Gson().fromJson(reader, LoadRequest.class);
-    }
-
-    static PersonRequest personRequest(Reader reader) {
-        return new Gson().fromJson(reader, PersonRequest.class);
-    }
-
-    static EventRequest eventRequest(Reader reader) {
-        return new Gson().fromJson(reader, EventRequest.class);
     }
 }

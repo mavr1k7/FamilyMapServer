@@ -12,15 +12,28 @@ import java.io.*;
  * Handler for Person(s) Requests. URL: /person/{personID} or /person
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.2
  */
 public class PersonHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         PersonService service = new PersonService();
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody()); // TODO: No request body
-        PersonRequest request = Deserializer.personRequest(reader);
+        String url = exchange.getRequestURI().toString();
+        String[] params = url.split("/");
+
+        PersonRequest request = null;
+
+        if (params.length == 2) {
+            request = new PersonRequest("token");
+        }
+        else if (params.length == 3) {
+            request = new PersonRequest(params[2], "token");
+        }
+        else {
+            System.out.println("Invalid params");
+        }
+
         PersonResult result = service.person(request);
 
         if (result.isSuccess()) {

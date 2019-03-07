@@ -1,6 +1,7 @@
 package com.teranpeterson.server.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Users are able to access the system and see their ancestors family history information. Each user has a unique
@@ -48,7 +49,7 @@ public class User {
     }
 
     /**
-     * Creates a new user with the given information and automatically generates a new person and personID
+     * Creates a new user with the given information
      *
      * @param userName  User's userName
      * @param password  User's password
@@ -56,6 +57,7 @@ public class User {
      * @param firstName User's first name
      * @param lastName  User's last name
      * @param gender    User's gender ('m' or 'f')
+     * @param personID  User's person id
      */
     public User(String userName, String password, String email, String firstName, String lastName, String gender, String personID) {
         this.userName = userName;
@@ -65,6 +67,20 @@ public class User {
         this.lastName = lastName;
         this.gender = gender;
         this.personID = personID;
+    }
+
+    /**
+     * Creates a new user with the given information and automatically generates a personID
+     *
+     * @param userName  User's userName
+     * @param password  User's password
+     * @param email     User's email
+     * @param firstName User's first name
+     * @param lastName  User's last name
+     * @param gender    User's gender ('m' or 'f')
+     */
+    public User(String userName, String password, String email, String firstName, String lastName, String gender) {
+        this(userName, password, email, firstName, lastName, gender, UUID.randomUUID().toString().substring(0, 6));
     }
 
     /**

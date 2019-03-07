@@ -39,7 +39,14 @@ public class PersonService extends Service {
             Connection conn = db.openConnection();
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);
             String userName = aDAO.validate(request.getAuthToken());
-            if (userName == null) return new PersonResult("ERROR: Invalid auth token");
+            if (userName == null) {
+                try {
+                    db.closeConnection(false);
+                    return new PersonResult("ERROR: Invalid auth token");
+                } catch (DAOException d) {
+                    return new PersonResult(d.getMessage());
+                }
+            }
             PersonDAO pDAO = new PersonDAO(conn);
             if (request.getPersonID().equals("ALL")) {
                 List<Person> list = pDAO.findRelatives(userName);

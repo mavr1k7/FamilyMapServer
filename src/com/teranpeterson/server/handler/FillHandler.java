@@ -12,15 +12,38 @@ import java.io.*;
  * Handler for Fill Requests. URL: /fill/{username}/{generations}
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.2
  */
 public class FillHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         FillService service = new FillService();
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody()); // TODO: No request body
-        FillRequest request = Deserializer.fillRequest(reader);
+        String url = exchange.getRequestURI().toString();
+        String[] params = url.split("/");
+
+        if(exchange.getRequestHeaders().containsKey("Authorization")) {
+            String authToken = exchange.getRequestHeaders().getFirst("Authorization");
+            exchange.getRequestMethod().toLowerCase().equals("get");
+        }
+
+        FillRequest request = null;
+
+        if (params.length == 3) {
+            request = new FillRequest(params[2]);
+        }
+        else if (params.length == 4) {
+            try {
+                int n = Integer.parseInt(params[3]);
+                request = new FillRequest(params[2], n);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            System.out.println("Invalid params");
+        }
+
         FillResult result = service.fill(request);
 
         if (result.isSuccess()) {
