@@ -40,6 +40,7 @@ public class AuthTokenDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to insert user '" + token.getUserName() + "' into database");
         }
     }
@@ -91,6 +92,7 @@ public class AuthTokenDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to expire token '" + token.getToken() + "' from database");
         }
     }
@@ -105,6 +107,7 @@ public class AuthTokenDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to clear auth tokens from database");
         }
     }

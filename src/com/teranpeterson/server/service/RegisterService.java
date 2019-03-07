@@ -57,6 +57,7 @@ public class RegisterService extends Service {
                     db.closeConnection(false);
                     return new LoginResult("ERROR: Username is already in use");
                 } catch (DAOException e) {
+                    e.printStackTrace();
                     return new LoginResult(e.getMessage());
                 }
             }
@@ -71,10 +72,12 @@ public class RegisterService extends Service {
             db.closeConnection(true);
             return new LoginResult(token, newUser.getUserName(), newUser.getPersonID(), newPerson);
         } catch (DAOException e) {
+            e.printStackTrace();
             try {
                 db.closeConnection(false);
                 return new LoginResult(e.getMessage());
             } catch (DAOException d) {
+                d.printStackTrace();
                 return new LoginResult(d.getMessage());
             }
         }

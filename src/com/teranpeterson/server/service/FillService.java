@@ -48,6 +48,7 @@ public class FillService extends Service {
                     db.closeConnection(false);
                     return new FillResult("ERROR: Invalid userName");
                 } catch (DAOException e) {
+                    e.printStackTrace();
                     return new FillResult(e.getMessage());
                 }
             }
@@ -57,10 +58,12 @@ public class FillService extends Service {
             db.closeConnection(true);
             return new FillResult(x, (x * 3)); // Calculate number of events (3 per person)
         } catch (DAOException e) {
+            e.printStackTrace();
             try {
                 db.closeConnection(false);
                 return new FillResult(e.getMessage());
             } catch (DAOException d) {
+                d.printStackTrace();
                 return new FillResult(d.getMessage());
             }
         }

@@ -45,6 +45,7 @@ public class UserDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to insert user '" + user.getUserName() + "' into database");
         }
     }
@@ -155,6 +156,7 @@ public class UserDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to clear users from database");
         }
     }

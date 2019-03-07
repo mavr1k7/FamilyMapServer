@@ -31,6 +31,7 @@ public class ClearService extends Service {
             db.clear();
             return new ClearResult();
         } catch (DAOException e) {
+            e.printStackTrace();
             return new ClearResult(e.getMessage());
         }
     }

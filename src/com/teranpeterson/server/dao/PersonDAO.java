@@ -48,6 +48,7 @@ public class PersonDAO {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to insert person '" + person.getPersonID() + "' into database");
         }
     }
@@ -147,6 +148,7 @@ public class PersonDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to clear persons from database");
         }
     }

@@ -35,7 +35,7 @@ public class EventDAO {
      * @throws DAOException Problem executing sql statements
      */
     public void insert(Event event) throws DAOException {
-        String sql = "INSERT INTO `Events`(`event_id`,`descendant`,`person_id`,`latitude`,`longitude`,`country`,`city`,`type`,`year`) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `Events`(`event_id`,`descendant`,`person_id`,`latitude`,`longitude`,`country`,`city`,`eventType`,`year`) VALUES (?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, event.getEventID());
             stmt.setString(2, event.getDescendant());
@@ -44,11 +44,12 @@ public class EventDAO {
             stmt.setDouble(5, event.getLongitude());
             stmt.setString(6, event.getCountry());
             stmt.setString(7, event.getCity());
-            stmt.setString(8, event.getType());
+            stmt.setString(8, event.getEventType());
             stmt.setInt(9, event.getYear());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to insert event '" + event.getEventID() + "' into database");
         }
     }
@@ -70,7 +71,7 @@ public class EventDAO {
             if (result.next()) {
                 return new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
                         result.getDouble("latitude"), result.getDouble("longitude"), result.getString("country"),
-                        result.getString("city"), result.getString("type"), result.getInt("year"));
+                        result.getString("city"), result.getString("eventType"), result.getInt("year"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,7 +107,7 @@ public class EventDAO {
             while (result.next()) {
                 list.add(new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
                         result.getDouble("latitude"), result.getDouble("longitude"), result.getString("country"),
-                        result.getString("city"), result.getString("type"), result.getInt("year")));
+                        result.getString("city"), result.getString("eventType"), result.getInt("year")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,6 +137,7 @@ public class EventDAO {
             stmt.setString(1, userName);
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to delete events for user '" + userName + "' from database");
         }
     }
@@ -150,6 +152,7 @@ public class EventDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to clear events from database");
         }
     }

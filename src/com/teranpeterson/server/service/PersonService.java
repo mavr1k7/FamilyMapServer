@@ -44,8 +44,9 @@ public class PersonService extends Service {
                 try {
                     db.closeConnection(false);
                     return new PersonResult("ERROR: Invalid auth token");
-                } catch (DAOException d) {
-                    return new PersonResult(d.getMessage());
+                } catch (DAOException e) {
+                    e.printStackTrace();
+                    return new PersonResult(e.getMessage());
                 }
             }
 
@@ -62,10 +63,12 @@ public class PersonService extends Service {
                 else return new PersonResult(person);
             }
         } catch (DAOException e) {
+            e.printStackTrace();
             try {
                 db.closeConnection(false);
                 return new PersonResult(e.getMessage());
             } catch (DAOException d) {
+                d.printStackTrace();
                 return new PersonResult(d.getMessage());
             }
         }

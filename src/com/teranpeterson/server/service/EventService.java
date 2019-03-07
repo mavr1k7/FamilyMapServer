@@ -44,8 +44,9 @@ public class EventService extends Service {
                 try {
                     db.closeConnection(false);
                     return new EventResult("ERROR: Invalid auth token");
-                } catch (DAOException d) {
-                    return new EventResult(d.getMessage());
+                } catch (DAOException e) {
+                    e.printStackTrace();
+                    return new EventResult(e.getMessage());
                 }
             }
 
@@ -62,10 +63,12 @@ public class EventService extends Service {
                 else return new EventResult(event);
             }
         } catch (DAOException e) {
+            e.printStackTrace();
             try {
                 db.closeConnection(false);
                 return new EventResult(e.getMessage());
             } catch (DAOException d) {
+                d.printStackTrace();
                 return new EventResult(d.getMessage());
             }
         }

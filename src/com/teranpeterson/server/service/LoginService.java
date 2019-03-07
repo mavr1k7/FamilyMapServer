@@ -54,10 +54,12 @@ public class LoginService extends Service {
                 return new LoginResult("ERROR: Invalid userName or password");
             }
         } catch (DAOException e) {
+            e.printStackTrace();
             try {
                 db.closeConnection(false);
                 return new LoginResult(e.getMessage());
             } catch (DAOException d) {
+                d.printStackTrace();
                 return new LoginResult(d.getMessage());
             }
         }

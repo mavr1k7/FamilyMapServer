@@ -52,6 +52,7 @@ public class EventHandler implements HttpHandler {
             writer.flush();
             body.close();
         } catch (IOException e) {
+            e.printStackTrace();
             exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
             String response = "{\"message\" : \"ERROR: Internal server error\"}";
             OutputStream body = exchange.getResponseBody();

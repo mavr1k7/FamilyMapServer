@@ -38,16 +38,16 @@ public class LoadService extends Service {
             Connection conn = db.openConnection();
 
             int x = 0;
-            PersonDAO pDAO = new PersonDAO(conn);
-            for (Person p : request.getPersons()) {
-                pDAO.insert(p);
+            UserDAO uDAO = new UserDAO(conn);
+            for (User u : request.getUsers()) {
+                uDAO.insert(u);
                 ++x;
             }
 
             int y = 0;
-            UserDAO uDAO = new UserDAO(conn);
-            for (User u : request.getUsers()) {
-                uDAO.insert(u);
+            PersonDAO pDAO = new PersonDAO(conn);
+            for (Person p : request.getPersons()) {
+                pDAO.insert(p);
                 ++y;
             }
 
@@ -61,10 +61,12 @@ public class LoadService extends Service {
             db.closeConnection(true);
             return new LoadResult(x, y, z);
         } catch (DAOException e) {
+            e.printStackTrace();
             try {
                 db.closeConnection(false);
                 return new LoadResult(e.getMessage());
             } catch (DAOException d) {
+                d.printStackTrace();
                 return new LoadResult(d.getMessage());
             }
         }

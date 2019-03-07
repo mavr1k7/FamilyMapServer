@@ -79,6 +79,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to create persons table");
         }
 
@@ -96,6 +97,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to create users table");
         }
 
@@ -104,7 +106,7 @@ public class Database {
         try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS `Events` ( `event_id` TEXT NOT NULL UNIQUE, `descendant` TEXT, " +
                     "`person_id` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `country` TEXT NOT NULL, " +
-                    "`city` TEXT NOT NULL, `type` TEXT NOT NULL, `year` INTEGER NOT NULL, PRIMARY KEY(`event_id`) )";
+                    "`city` TEXT NOT NULL, `eventType` TEXT NOT NULL, `year` INTEGER NOT NULL, PRIMARY KEY(`event_id`) )";
 
             stmt.executeUpdate(sql);
             closeConnection(true);
@@ -113,6 +115,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to create events table");
         }
 
@@ -128,6 +131,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to create auth tokens table");
         }
     }
@@ -145,6 +149,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to drop persons table");
         }
 
@@ -160,6 +165,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to drop users table");
         }
 
@@ -175,6 +181,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to drop events table");
         }
 
@@ -190,6 +197,7 @@ public class Database {
             throw e;
         } catch (SQLException e) {
             closeConnection(false);
+            e.printStackTrace();
             throw new DAOException("ERROR: Unable to drop auth tokens table");
         }
     }

@@ -42,7 +42,7 @@ public class Event {
     /**
      * Type of event (birth, baptism, christening, marriage, death, or burial)
      */
-    private String type;
+    private String eventType;
     /**
      * Year the event took place
      */
@@ -64,10 +64,10 @@ public class Event {
      * @param longitude  Longitude where the event took place
      * @param country    Country where the event took place
      * @param city       City where the event took place
-     * @param type       Type of event (birth, baptism, christening, marriage, death, or burial)
+     * @param eventType       Type of event (birth, baptism, christening, marriage, death, or burial)
      * @param year       Year the event took place
      */
-    public Event(String eventID, String descendant, String personID, double latitude, double longitude, String country, String city, String type, int year) {
+    public Event(String eventID, String descendant, String personID, double latitude, double longitude, String country, String city, String eventType, int year) {
         this.eventID = eventID;
         this.descendant = descendant;
         this.personID = personID;
@@ -75,7 +75,7 @@ public class Event {
         this.longitude = longitude;
         this.country = country;
         this.city = city;
-        this.type = type;
+        this.eventType = eventType;
         this.year = year;
     }
 
@@ -210,17 +210,17 @@ public class Event {
      *
      * @return birth, baptism, christening, marriage, death, or burial
      */
-    public String getType() {
-        return type;
+    public String getEventType() {
+        return eventType;
     }
 
     /**
-     * Sets the type of event
+     * Sets the eventType of event
      *
-     * @param type birth, baptism, christening, marriage, death, or burial
+     * @param eventType birth, baptism, christening, marriage, death, or burial
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
     /**
@@ -254,11 +254,11 @@ public class Event {
                 Objects.equals(personID, event.personID) &&
                 Objects.equals(country, event.country) &&
                 Objects.equals(city, event.city) &&
-                Objects.equals(type, event.type);
+                Objects.equals(eventType, event.eventType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eventID, descendant, personID, latitude, longitude, country, city, type, year);
+        return Objects.hash(eventID, descendant, personID, latitude, longitude, country, city, eventType, year);
     }
 }
