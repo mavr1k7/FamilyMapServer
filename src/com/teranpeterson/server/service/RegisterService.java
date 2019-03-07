@@ -32,13 +32,22 @@ public class RegisterService extends Service {
      */
     public RegisterResult register(RegisterRequest request) {
         String id = UUID.randomUUID().toString().substring(0, 6);
+        if (!request.getGender().equals("m") && !request.getGender().equals("f")) return new RegisterResult("ERROR: Invalid gender parameter");
         User newUser = new User(request.getUserName(), request.getPassword(), request.getEmail(), request.getFirstName(), request.getLastName(), request.getGender(), id);
         Database db = new Database();
         try {
             db.createTables();
             Connection conn = db.openConnection();
-            super.generate(conn, newUser, 4);
             UserDAO uDAO = new UserDAO(conn);
+            if (!uDAO.check(newUser.getUserName())) {
+                try {
+                    db.closeConnection(false);
+                    return new RegisterResult("ERROR: Username is already in use");
+                } catch (DAOException d) {
+                    return new RegisterResult(d.getMessage());
+                }
+            }
+            super.generate(conn, newUser, 4);
             uDAO.insert(newUser);
             String token = super.login(conn, newUser.getUserName());
             db.closeConnection(true);

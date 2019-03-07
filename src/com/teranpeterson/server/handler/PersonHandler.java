@@ -19,7 +19,7 @@ public class PersonHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         PersonService service = new PersonService();
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody());
+        Reader reader = new InputStreamReader(exchange.getRequestBody()); // TODO: No request body
         PersonRequest request = Deserializer.personRequest(reader);
         PersonResult result = service.person(request);
 

@@ -19,7 +19,7 @@ public class FillHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         FillService service = new FillService();
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody());
+        Reader reader = new InputStreamReader(exchange.getRequestBody()); // TODO: No request body
         FillRequest request = Deserializer.fillRequest(reader);
         FillResult result = service.fill(request);
 

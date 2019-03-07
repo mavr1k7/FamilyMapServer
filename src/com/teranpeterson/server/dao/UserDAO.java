@@ -119,6 +119,32 @@ public class UserDAO {
         return null;
     }
 
+    public boolean check(String userName) throws DAOException {
+        ResultSet result = null;
+
+        String sql = "SELECT * FROM `Users` WHERE `userName` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, userName);
+            result = stmt.executeQuery();
+            if (result.next()) {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException("ERROR: Unable to check userName '" + userName + "' in database");
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return true;
+    }
+
     /**
      * Delete all users from the database
      *

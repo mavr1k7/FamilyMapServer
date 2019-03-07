@@ -12,14 +12,14 @@ import java.io.*;
  * Handler for Event(s) Requests. URL: /event/{eventID} or /event
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.1
  */
 public class EventHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         EventService service = new EventService();
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody());
+        Reader reader = new InputStreamReader(exchange.getRequestBody()); // TODO: No request body
         EventRequest request = Deserializer.eventRequest(reader);
         EventResult result = service.event(request);
 
