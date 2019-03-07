@@ -24,7 +24,7 @@ public class RegisterHandler implements HttpHandler {
             RegisterResult result = new RegisterService().register(request);
 
             String response;
-            if (result.getMessage() == null) {
+            if (result.isSuccess()) {
                 exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
                 response = Serializer.serialize(result);
             } else {

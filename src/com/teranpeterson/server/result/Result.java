@@ -10,7 +10,7 @@ public class Result {
     /**
      * True if the request was successful, otherwise false
      */
-    protected boolean success;
+    protected transient boolean success;
     /**
      * Information about errors that happened while processing the request
      */

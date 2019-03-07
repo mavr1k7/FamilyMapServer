@@ -52,8 +52,9 @@ public class Person {
     }
 
     /**
-     * Creates a person with the given data and automatically assigns a personID
+     * Creates a person with the given data
      *
+     * @param personID   Person's id
      * @param descendant UserName of the user the person belongs to (default null)
      * @param firstName  First name of the person
      * @param lastName   Last name of the person
@@ -71,6 +72,18 @@ public class Person {
         this.father = father;
         this.mother = mother;
         this.spouse = spouse;
+    }
+
+    /**
+     * Creates a person with the given data and sets relatives all to null
+     *
+     * @param personID   Person's id
+     * @param firstName  First name of the person
+     * @param lastName   Last name of the person
+     * @param gender     Gender of the person ('m' or 'f')
+     */
+    public Person(String personID, String firstName, String lastName, String gender) {
+        this(personID, null, firstName, lastName, gender, null, null, null);
     }
 
     /**

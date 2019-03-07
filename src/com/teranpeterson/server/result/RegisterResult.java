@@ -1,5 +1,7 @@
 package com.teranpeterson.server.result;
 
+import com.teranpeterson.server.model.Person;
+
 /**
  * Contains information about the results of a Register Request
  *
@@ -19,6 +21,10 @@ public class RegisterResult extends Result {
      * PersonID of person created for the user
      */
     private String personID;
+    /**
+     * Person object created for the user
+     */
+    private Person person;
 
     /**
      * Creates a failing register result with the given error message
@@ -27,7 +33,7 @@ public class RegisterResult extends Result {
      */
     public RegisterResult(String message) {
         super.message = message;
-//        super.success = false;
+        super.success = false;
     }
 
     /**
@@ -37,11 +43,12 @@ public class RegisterResult extends Result {
      * @param userName UserName of registered user
      * @param id       PersonID of person created for the user
      */
-    public RegisterResult(String token, String userName, String id) {
+    public RegisterResult(String token, String userName, String id, Person person) {
         this.authToken = token;
         this.userName = userName;
         this.personID = id;
-//        super.success = true;
+        this.person = person;
+        super.success = true;
     }
 
     /**

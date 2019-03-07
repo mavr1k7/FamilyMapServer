@@ -48,7 +48,7 @@ public class FillService extends Service {
                     return new FillResult(d.getMessage());
                 }
             }
-            super.generate(conn, user, request.getGenerations());
+            //super.generate(conn, user, request.getGenerations());
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons 2^(n+1) - 1
             db.closeConnection(true);
             return new FillResult(x, (x * 3)); // Calculate number of events - 3 per person

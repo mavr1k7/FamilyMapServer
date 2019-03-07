@@ -17,19 +17,15 @@ import java.sql.Connection;
  * @version v0.1.1
  */
 public class Service {
-    protected void generate(Connection conn, User user, int n) throws DAOException {
-        PersonDAO pDAO = new PersonDAO(conn);
-        EventDAO eDAO = new EventDAO(conn);
-
-        // Clear events and persons related to user
+//    protected void generate(Connection conn, User user, int n) throws DAOException {
+//        PersonDAO pDAO = new PersonDAO(conn);
+//        EventDAO eDAO = new EventDAO(conn);
+//
+//        Clear events and persons related to user
 //        pDAO.deleteRelatives(user.getUserName());
 //        eDAO.deleteEvents(user.getUserName());
-
-        // Generation 0
-        Person newPerson = new Person(user.getPersonID(), null, user.getFirstName(), user.getLastName(), user.getGender(), null, null, null);
-        pDAO.insert(newPerson);
-        // TODO: All the hard stuff...
-    }
+//        // TODO: All the hard stuff...
+//    }
 
     protected String login(Connection conn, String userName) throws DAOException {
         AuthToken token = new AuthToken(userName);
