@@ -2,7 +2,9 @@ package com.teranpeterson.server.service;
 
 import com.teranpeterson.server.dao.DAOException;
 import com.teranpeterson.server.dao.Database;
+import com.teranpeterson.server.dao.PersonDAO;
 import com.teranpeterson.server.dao.UserDAO;
+import com.teranpeterson.server.model.Person;
 import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.LoginRequest;
 import com.teranpeterson.server.result.LoginResult;
@@ -43,8 +45,10 @@ public class LoginService extends Service {
 
             if (user != null) {
                 String token = super.login(conn, user.getUserName());
+                PersonDAO pDAO = new PersonDAO(conn);
+                Person person = pDAO.find(user.getPersonID());
                 db.closeConnection(true);
-                return new LoginResult(token, user.getUserName(), user.getPersonID());
+                return new LoginResult(token, user.getUserName(), user.getPersonID(), person);
             } else {
                 db.closeConnection(false);
                 return new LoginResult("ERROR: Invalid userName or password");

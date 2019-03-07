@@ -3,7 +3,7 @@ package com.teranpeterson.server.handler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.teranpeterson.server.request.RegisterRequest;
-import com.teranpeterson.server.result.RegisterResult;
+import com.teranpeterson.server.result.LoginResult;
 import com.teranpeterson.server.service.RegisterService;
 
 import java.io.*;
@@ -21,7 +21,7 @@ public class RegisterHandler implements HttpHandler {
         try {
             Reader reader = new InputStreamReader(exchange.getRequestBody());
             RegisterRequest request = Deserializer.registerRequest(reader);
-            RegisterResult result = new RegisterService().register(request);
+            LoginResult result = new RegisterService().register(request);
 
             String response;
             if (result.isSuccess()) {

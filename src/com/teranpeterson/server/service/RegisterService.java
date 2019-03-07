@@ -4,7 +4,7 @@ import com.teranpeterson.server.dao.*;
 import com.teranpeterson.server.model.Person;
 import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.RegisterRequest;
-import com.teranpeterson.server.result.RegisterResult;
+import com.teranpeterson.server.result.LoginResult;
 
 import java.sql.Connection;
 
@@ -29,21 +29,21 @@ public class RegisterService extends Service {
      * @param request Information about the user registering
      * @return Information about the person created or an error
      */
-    public RegisterResult register(RegisterRequest request) {
+    public LoginResult register(RegisterRequest request) {
         if (request.getUserName() == null || request.getUserName().isEmpty())
-            return new RegisterResult("ERROR: Missing userName parameter");
+            return new LoginResult("ERROR: Missing userName parameter");
         if (request.getPassword() == null || request.getPassword().isEmpty())
-            return new RegisterResult("ERROR: Missing password parameter");
+            return new LoginResult("ERROR: Missing password parameter");
         if (request.getEmail() == null || request.getEmail().isEmpty())
-            return new RegisterResult("ERROR: Missing email parameter");
+            return new LoginResult("ERROR: Missing email parameter");
         if (request.getFirstName() == null || request.getFirstName().isEmpty())
-            return new RegisterResult("ERROR: Missing firstName parameter");
+            return new LoginResult("ERROR: Missing firstName parameter");
         if (request.getLastName() == null || request.getLastName().isEmpty())
-            return new RegisterResult("ERROR: Missing lastName parameter");
+            return new LoginResult("ERROR: Missing lastName parameter");
         if (request.getGender() == null || request.getGender().isEmpty())
-            return new RegisterResult("ERROR: Missing gender parameter");
+            return new LoginResult("ERROR: Missing gender parameter");
         if (!request.getGender().equals("m") && !request.getGender().equals("f"))
-            return new RegisterResult("ERROR: Invalid gender parameter");
+            return new LoginResult("ERROR: Invalid gender parameter");
         User newUser = new User(request.getUserName(), request.getPassword(), request.getEmail(), request.getFirstName(), request.getLastName(), request.getGender());
 
         Database db = new Database();
@@ -55,9 +55,9 @@ public class RegisterService extends Service {
             if (!uDAO.check(newUser.getUserName())) {
                 try {
                     db.closeConnection(false);
-                    return new RegisterResult("ERROR: Username is already in use");
+                    return new LoginResult("ERROR: Username is already in use");
                 } catch (DAOException e) {
-                    return new RegisterResult(e.getMessage());
+                    return new LoginResult(e.getMessage());
                 }
             }
 
@@ -69,13 +69,13 @@ public class RegisterService extends Service {
             uDAO.insert(newUser);
             String token = super.login(conn, newUser.getUserName());
             db.closeConnection(true);
-            return new RegisterResult(token, newUser.getUserName(), newUser.getPersonID(), newPerson);
+            return new LoginResult(token, newUser.getUserName(), newUser.getPersonID(), newPerson);
         } catch (DAOException e) {
             try {
                 db.closeConnection(false);
-                return new RegisterResult(e.getMessage());
+                return new LoginResult(e.getMessage());
             } catch (DAOException d) {
-                return new RegisterResult(d.getMessage());
+                return new LoginResult(d.getMessage());
             }
         }
     }

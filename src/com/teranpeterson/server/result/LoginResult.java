@@ -1,7 +1,9 @@
 package com.teranpeterson.server.result;
 
+import com.teranpeterson.server.model.Person;
+
 /**
- * Contains information about the results of a Login Request
+ * Contains information about the results of a Register Request
  *
  * @author Teran Peterson
  * @version v0.1.1
@@ -12,16 +14,20 @@ public class LoginResult extends Result {
      */
     private String authToken;
     /**
-     * UserName of logged in user
+     * UserName of registered user
      */
     private String userName;
     /**
      * PersonID of person created for the user
      */
     private String personID;
+    /**
+     * Person object created for the user
+     */
+    private Person person;
 
     /**
-     * Creates a failing login result with the given error message
+     * Creates a failing register result with the given error message
      *
      * @param message Description of the error
      */
@@ -31,16 +37,17 @@ public class LoginResult extends Result {
     }
 
     /**
-     * Creates a successful login result with users session information
+     * Creates a successful register result with users session information
      *
      * @param token    Authentication token for the active user session
-     * @param userName UserName of logged in user
+     * @param userName UserName of registered user
      * @param id       PersonID of person created for the user
      */
-    public LoginResult(String token, String userName, String id) {
+    public LoginResult(String token, String userName, String id, Person person) {
         this.authToken = token;
         this.userName = userName;
         this.personID = id;
+        this.person = person;
         super.success = true;
     }
 
