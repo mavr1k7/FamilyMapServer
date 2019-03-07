@@ -1,10 +1,8 @@
 package com.teranpeterson.server.service;
 
-import com.teranpeterson.server.dao.AuthTokenDAO;
 import com.teranpeterson.server.dao.DAOException;
 import com.teranpeterson.server.dao.Database;
 import com.teranpeterson.server.dao.UserDAO;
-import com.teranpeterson.server.model.AuthToken;
 import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.LoginRequest;
 import com.teranpeterson.server.result.LoginResult;
@@ -22,7 +20,6 @@ public class LoginService extends Service {
      * Creates a blank login service object
      */
     public LoginService() {
-
     }
 
     /**
@@ -32,12 +29,18 @@ public class LoginService extends Service {
      * @return Information the user with an auth token for the active session
      */
     public LoginResult login(LoginRequest request) {
+        if (request.getUserName() == null || request.getUserName().isEmpty())
+            return new LoginResult("ERROR: Missing userName parameter");
+        if (request.getPassword() == null || request.getPassword().isEmpty())
+            return new LoginResult("ERROR: Missing password parameter");
+
         Database db = new Database();
         try {
             db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.authenticate(request.getUserName(), request.getPassword());
+
             if (user != null) {
                 String token = super.login(conn, user.getUserName());
                 db.closeConnection(true);

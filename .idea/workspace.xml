@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1f884639-0cc4-4eee-babb-e4fda5f4bf1e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/model/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/result/RegisterResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/result/RegisterResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/result/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/result/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/service/FillService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/service/FillService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FamilyMapServer/com/teranpeterson/server/service/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/database/FamilyMap.db" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database/FamilyMap.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +16,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/RegisterHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
+            <state relative-caret-position="285">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="34" column="141" selection-start-line="34" selection-start-column="141" selection-end-line="34" selection-end-column="141" />
             </state>
           </provider>
         </entry>
@@ -93,7 +122,6 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/request/FillRequest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/request/LoginRequest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/request/RegisterRequest.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" />
         <option value="$PROJECT_DIR$/test/com/teranpeterson/server/dao/UserDAOTest.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/PersonDAO.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/WebUIHandler.java" />
@@ -107,7 +135,6 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/User.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/FillHandler.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoadHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/PersonHandler.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/EventHandler.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/result/ClearResult.java" />
@@ -121,9 +148,11 @@
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/Service.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/model/Person.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/result/RegisterResult.java" />
-        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/FillService.java" />
         <option value="$PROJECT_DIR$/src/com/teranpeterson/server/dao/Database.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java" />
+        <option value="$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java" />
       </list>
     </option>
   </component>
@@ -223,7 +252,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551991871702" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551992179887" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
@@ -565,7 +594,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551991427861</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Changed database structure">
+      <created>1551991870613</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1551991870613</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Changed database structure">
+      <created>1551991887015</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1551991887015</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -612,7 +655,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -628,7 +671,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4994664" weight="0.32969433" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5010672" side_tool="true" weight="0.3286026" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49893278" visible="true" weight="0.3286026" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49893278" weight="0.3286026" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32969433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -641,7 +684,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added working login service. Plain text passwords" />
     <MESSAGE value="Compiled code" />
     <MESSAGE value="Finished DAOs version 1.1. Ready for testing" />
     <MESSAGE value="New file" />
@@ -666,7 +708,8 @@
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Finalized register handler" />
     <MESSAGE value="Finished testing register" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished testing register" />
+    <MESSAGE value="Changed database structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed database structure" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/request/ClearRequest.java" />
@@ -803,13 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/teranpeterson/server/service/EventServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -943,16 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/PersonHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -1044,26 +1070,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/RegisterHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="69" column="38" lean-forward="true" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/FillService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1102,6 +1108,43 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/RegisterHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/handler/LoginHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/RegisterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/teranpeterson/server/service/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="34" column="141" selection-start-line="34" selection-start-column="141" selection-end-line="34" selection-end-column="141" />
         </state>
       </provider>
     </entry>

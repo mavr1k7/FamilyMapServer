@@ -7,34 +7,39 @@ import com.teranpeterson.server.result.LoginResult;
 import com.teranpeterson.server.service.LoginService;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 
 /**
  * Handler for Login Requests. URL: /user/login
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class LoginHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        LoginService service = new LoginService();
+        try {
+            Reader reader = new InputStreamReader(exchange.getRequestBody());
+            LoginRequest request = Deserializer.loginRequest(reader);
+            LoginResult result = new LoginService().login(request);
 
-        Reader reader = new InputStreamReader(exchange.getRequestBody());
-        LoginRequest request = Deserializer.loginRequest(reader);
-        LoginResult result = service.login(request);
+            String response;
+            if (result.isSuccess()) {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+                response = Serializer.serialize(result);
+            } else {
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+                response = "{\"message\" : \"" + result.getMessage() + "\"}";
+            }
 
-        if (result.isSuccess()) {
-            exchange.sendResponseHeaders(200, 0);
-            String response = Serializer.serialize(result);
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);
             writer.flush();
             body.close();
-        }
-        else {
-            exchange.sendResponseHeaders(400, 0);
-            String response = "{\"message\" : \"" + result.getMessage() + "\"}";
+        } catch (IOException e) {
+            exchange.sendResponseHeaders(HttpURLConnection.HTTP_INTERNAL_ERROR, 0);
+            String response = "{\"message\" : \"ERROR: Internal server error\"}";
             OutputStream body = exchange.getResponseBody();
             OutputStreamWriter writer = new OutputStreamWriter(body);
             writer.write(response);

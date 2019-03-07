@@ -7,7 +7,6 @@ import com.teranpeterson.server.request.RegisterRequest;
 import com.teranpeterson.server.result.RegisterResult;
 
 import java.sql.Connection;
-import java.util.UUID;
 
 /**
  * Creates a new user account, generates 4 generations of ancestor data for the new
@@ -20,7 +19,8 @@ public class RegisterService extends Service {
     /**
      * Creates a blank register service object
      */
-    public RegisterService() {}
+    public RegisterService() {
+    }
 
     /**
      * Creates a new user account, generates 4 generations of ancestor data for the new
@@ -30,13 +30,20 @@ public class RegisterService extends Service {
      * @return Information about the person created or an error
      */
     public RegisterResult register(RegisterRequest request) {
-        if (request.getUserName() == null || request.getUserName().isEmpty()) return new RegisterResult("ERROR: Missing userName parameter");
-        if (request.getPassword() == null || request.getPassword().isEmpty()) return new RegisterResult("ERROR: Missing password parameter");
-        if (request.getEmail() == null || request.getEmail().isEmpty()) return new RegisterResult("ERROR: Missing email parameter");
-        if (request.getFirstName() == null || request.getFirstName().isEmpty()) return new RegisterResult("ERROR: Missing firstName parameter");
-        if (request.getLastName() == null || request.getLastName().isEmpty()) return new RegisterResult("ERROR: Missing lastName parameter");
-        if (request.getGender() == null || request.getGender().isEmpty()) return new RegisterResult("ERROR: Missing gender parameter");
-        if (!request.getGender().equals("m") && !request.getGender().equals("f")) return new RegisterResult("ERROR: Invalid gender parameter");
+        if (request.getUserName() == null || request.getUserName().isEmpty())
+            return new RegisterResult("ERROR: Missing userName parameter");
+        if (request.getPassword() == null || request.getPassword().isEmpty())
+            return new RegisterResult("ERROR: Missing password parameter");
+        if (request.getEmail() == null || request.getEmail().isEmpty())
+            return new RegisterResult("ERROR: Missing email parameter");
+        if (request.getFirstName() == null || request.getFirstName().isEmpty())
+            return new RegisterResult("ERROR: Missing firstName parameter");
+        if (request.getLastName() == null || request.getLastName().isEmpty())
+            return new RegisterResult("ERROR: Missing lastName parameter");
+        if (request.getGender() == null || request.getGender().isEmpty())
+            return new RegisterResult("ERROR: Missing gender parameter");
+        if (!request.getGender().equals("m") && !request.getGender().equals("f"))
+            return new RegisterResult("ERROR: Invalid gender parameter");
         User newUser = new User(request.getUserName(), request.getPassword(), request.getEmail(), request.getFirstName(), request.getLastName(), request.getGender());
 
         Database db = new Database();
