@@ -71,12 +71,14 @@ public class RegisterService {
             PersonDAO personDAO = new PersonDAO(conn);
             Person newPerson = new Person(newUser.getPersonID(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
             personDAO.insert(newPerson);
+            db.closeConnection(true);
 
             // Generate ancestral information for new user
             Generator generator = new Generator();
             generator.generate(newUser.getUserName(), newUser.getPersonID(), 4);
 
             // Establish session and return auth token
+            conn = db.openConnection();
             AuthToken token = new AuthToken(newUser.getUserName());
             AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
             authTokenDAO.insert(token);

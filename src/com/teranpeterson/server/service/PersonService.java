@@ -62,7 +62,7 @@ public class PersonService {
                 Person person = personDAO.find(request.getPersonID());
                 db.closeConnection(true);
                 if (person == null) return new PersonResult("ERROR: Invalid personID");
-                else if (!person.getDescendant().equals(userName)) return new PersonResult("ERROR: Person is not related to you");
+                else if (person.getDescendant() == null || !person.getDescendant().equals(userName)) return new PersonResult("ERROR: Person is not related to you");
                 else return new PersonResult(person);
             }
         } catch (DAOException e) {

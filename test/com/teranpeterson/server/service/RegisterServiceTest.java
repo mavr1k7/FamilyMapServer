@@ -1,17 +1,29 @@
 package com.teranpeterson.server.service;
 
+import com.teranpeterson.server.dao.Database;
+import com.teranpeterson.server.dao.UserDAO;
+import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.RegisterRequest;
 import com.teranpeterson.server.result.LoginResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RegisterServiceTest {
-    private RegisterRequest request;
+import java.sql.Connection;
 
+import static org.junit.Assert.*;
+
+public class RegisterServiceTest {
     @Before
     public void setUp() throws Exception {
-        request = new RegisterRequest("sams", "music", "sam@gmail.com", "Sam", "Smith", "m");
+        Database db = new Database();
+        db.clear();
+        db.createTables();
+        Connection conn = db.openConnection();
+        UserDAO userDAO = new UserDAO(conn);
+        User user = new User("username", "email", "password", "first", "last", "m");
+        userDAO.insert(user);
+        db.closeConnection(true);
     }
 
     @After
@@ -19,14 +31,16 @@ public class RegisterServiceTest {
     }
 
     @Test
-    public void register() throws Exception {
-        RegisterService service = new RegisterService();
-        LoginResult result = service.register(request);
-        if (result.isSuccess()) {
-            System.out.println(result.getAuthToken());
-        }
-        else {
-            System.out.println(result.getMessage());
-        }
+    public void registerPass() throws Exception {
+        RegisterRequest request = new RegisterRequest("sam", "music", "sam@gmail.com", "Sam", "Smith", "m");
+        LoginResult result = new RegisterService().register(request);
+        assertTrue(result.isSuccess());
+    }
+
+    @Test
+    public void registerFail() throws Exception {
+        RegisterRequest request = new RegisterRequest("username", "music", "sam@gmail.com", "Sam", "Smith", "m");
+        LoginResult result = new RegisterService().register(request);
+        assertFalse(result.isSuccess());
     }
 }

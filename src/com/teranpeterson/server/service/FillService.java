@@ -55,6 +55,7 @@ public class FillService {
                     return new FillResult(e.getMessage());
                 }
             }
+            db.closeConnection(true);
 
             // Create ancestral information for the user
             Generator generator = new Generator();
@@ -62,7 +63,6 @@ public class FillService {
 
             // Return the number of person's and event's added
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons (2^(n+1) - 1)
-            db.closeConnection(true);
             return new FillResult(x, (x - 1) * 3); // Calculate number of events (3 per person)
         } catch (DAOException e) {
             e.printStackTrace();

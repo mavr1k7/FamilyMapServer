@@ -1,13 +1,12 @@
 CREATE TABLE `Users` (
 	`username`	TEXT NOT NULL UNIQUE,
 	`password`	TEXT NOT NULL,
-	`email`	TEXT NOT NULL UNIQUE,
+	`email`	TEXT NOT NULL,
 	`firstname`	TEXT NOT NULL,
 	`lastname`	TEXT NOT NULL,
-	`gender`	TEXT NOT NULL CHECK(gender == "f" OR gender == "m"),
-	`person_id`	TEXT NOT NULL UNIQUE,
+	`gender`	TEXT NOT NULL,
+	`person_id`	TEXT NOT NULL,
 	PRIMARY KEY(`username`),
-	FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`)
 );
 
 CREATE TABLE `AuthTokens` (
@@ -21,11 +20,10 @@ CREATE TABLE `Persons` (
 	`descendant`	TEXT,
 	`firstname`	TEXT NOT NULL,
 	`lastname`	TEXT NOT NULL,
-	`gender`	TEXT NOT NULL CHECK(gender == "f" OR gender == "m"),
+	`gender`	TEXT NOT NULL,
 	`father`	TEXT,
 	`mother`	TEXT,
 	`spouse`	TEXT,
-	FOREIGN KEY(`descendant`) REFERENCES `Users`(`username`),
 	PRIMARY KEY(`person_id`)
 );
 
@@ -39,7 +37,5 @@ CREATE TABLE `Events` (
 	`city`	TEXT NOT NULL,
 	`type`	TEXT NOT NULL,
 	`year`	INTEGER NOT NULL,
-	FOREIGN KEY(`descendant`) REFERENCES `Users`(`username`),
 	PRIMARY KEY(`event_id`),
-	FOREIGN KEY(`person_id`) REFERENCES `Persons`(`person_id`)
 );
