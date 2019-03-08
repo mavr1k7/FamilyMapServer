@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Creates and maintains a connection the database used by the server
+ * Creates and maintains a connection to the database used by the server
  *
  * @author Teran Peterson
  * @version v0.1.7
@@ -38,7 +38,6 @@ public class Database {
             e.printStackTrace();
             throw new DAOException("ERROR: Unable to establish connection to database");
         }
-
         return conn;
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
  * Controller used to connect to and modify events in the database
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class EventDAO {
     /**
@@ -67,6 +67,7 @@ public class EventDAO {
         String sql = "SELECT * FROM `Events` WHERE `event_id` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, eventID);
+
             result = stmt.executeQuery();
             if (result.next()) {
                 return new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
@@ -103,6 +104,7 @@ public class EventDAO {
         String sql = "SELECT * FROM `Events` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
+
             result = stmt.executeQuery();
             while (result.next()) {
                 list.add(new Event(result.getString("event_id"), result.getString("descendant"), result.getString("person_id"),
@@ -111,7 +113,7 @@ public class EventDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DAOException("ERROR: Unable to find events for person '" + userName + "' in database");
+            throw new DAOException("ERROR: Unable to find events for user '" + userName + "' in database");
         } finally {
             if (result != null) {
                 try {
@@ -135,25 +137,11 @@ public class EventDAO {
         String sql = "DELETE FROM `Events` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
+
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DAOException("ERROR: Unable to delete events for user '" + userName + "' from database");
-        }
-    }
-
-    /**
-     * Delete all events from database
-     *
-     * @throws DAOException Problem executing sql statements
-     */
-    public void clear() throws DAOException {
-        String sql = "DELETE * FROM `Events`";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DAOException("ERROR: Unable to clear events from database");
         }
     }
 }

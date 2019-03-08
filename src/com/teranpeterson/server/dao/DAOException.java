@@ -1,7 +1,10 @@
 package com.teranpeterson.server.dao;
 
 /**
- * Exception while accessing information in the database
+ * Exception thrown by database errors
+ *
+ * @author Teran Peterson
+ * @version v0.1.1
  */
 public class DAOException extends Exception {
     DAOException(String message) {

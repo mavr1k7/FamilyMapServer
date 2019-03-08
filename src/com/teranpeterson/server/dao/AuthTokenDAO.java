@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Controller used to connect to and modify auth tokens in the database
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class AuthTokenDAO {
     /**
@@ -79,36 +79,21 @@ public class AuthTokenDAO {
         return null;
     }
 
-    /**
-     * Deletes an authentication token from the database. Tokens expire after an hour of no use
-     *
-     * @param token Authentication token to remove from database
-     * @throws DAOException Problem executing sql statements
-     */
-    public void expire(AuthToken token) throws DAOException {
-        String sql = "DELETE * FROM `AuthTokens` WHERE `token` = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, token.getToken());
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DAOException("ERROR: Unable to expire token '" + token.getToken() + "' from database");
-        }
-    }
-
-    /**
-     * Delete all authentication tokens from the database
-     *
-     * @throws DAOException Problem executing sql statements
-     */
-    public void clear() throws DAOException {
-        String sql = "DELETE * FROM `AuthTokens`";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DAOException("ERROR: Unable to clear auth tokens from database");
-        }
-    }
+//    /**
+//     * Deletes an authentication token from the database. Tokens expire after an hour of no use
+//     *
+//     * @param token Authentication token to remove from database
+//     * @throws DAOException Problem executing sql statements
+//     */
+//    public void expire(AuthToken token) throws DAOException {
+//        String sql = "DELETE * FROM `AuthTokens` WHERE `token` = ?";
+//        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+//            stmt.setString(1, token.getToken());
+//
+//            stmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            throw new DAOException("ERROR: Unable to expire token '" + token.getToken() + "' from database");
+//        }
+//    }
 }

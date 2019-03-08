@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Controller used to connect to and modify users in the database
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class UserDAO {
     /**
@@ -99,6 +99,7 @@ public class UserDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
             stmt.setString(2, password);
+
             result = stmt.executeQuery();
             if (result.next()) {
                 return new User(result.getString("userName"), result.getString("password"), result.getString("email"), result.getString("firstName"),
@@ -120,12 +121,20 @@ public class UserDAO {
         return null;
     }
 
+    /**
+     * Checks if a given userName is in use
+     *
+     * @param userName UserName of user logging in
+     * @return True if the login credentials match, otherwise false
+     * @throws DAOException Problem executing sql statements
+     */
     public boolean check(String userName) throws DAOException {
         ResultSet result = null;
 
         String sql = "SELECT * FROM `Users` WHERE `userName` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
+
             result = stmt.executeQuery();
             if (result.next()) {
                 return false;
@@ -144,20 +153,5 @@ public class UserDAO {
 
         }
         return true;
-    }
-
-    /**
-     * Delete all users from the database
-     *
-     * @throws DAOException Problem executing sql statements
-     */
-    public void clear() throws DAOException {
-        String sql = "DELETE * FROM `Users`";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DAOException("ERROR: Unable to clear users from database");
-        }
     }
 }

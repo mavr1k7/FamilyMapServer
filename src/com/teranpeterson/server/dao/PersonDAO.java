@@ -13,7 +13,7 @@ import java.util.List;
  * Controller used to connect to and modify persons in the database
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class PersonDAO {
     /**
@@ -66,6 +66,7 @@ public class PersonDAO {
         String sql = "SELECT * FROM `Persons` WHERE `person_id` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, personID);
+
             result = stmt.executeQuery();
             if (result.next()) {
                 return new Person(result.getString("person_id"), result.getString("descendant"), result.getString("firstName"),
@@ -86,6 +87,14 @@ public class PersonDAO {
         return null;
     }
 
+    /**
+     * Update the parent id fields for a person in the database
+     *
+     * @param personID ID of the person to find
+     * @param fid      ID of the person's father
+     * @param mid      ID of the person's mother
+     * @throws DAOException Problem executing sql statements
+     */
     public void update(String personID, String fid, String mid) throws DAOException {
         String sql = "UPDATE `Persons` SET `father` = ?, `mother` = ? WHERE `person_id` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -148,21 +157,6 @@ public class PersonDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DAOException("ERROR: Unable to delete relatives for user '" + userName + "' from database");
-        }
-    }
-
-    /**
-     * Delete all persons from the database
-     *
-     * @throws DAOException Problem executing sql statements
-     */
-    public void clear() throws DAOException {
-        String sql = "DELETE * FROM `Persons`";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DAOException("ERROR: Unable to clear persons from database");
         }
     }
 }

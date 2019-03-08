@@ -95,40 +95,4 @@ public class UserDAOTest {
         // Check that find doesn't find fake user
         assertNull(findTest);
     }
-
-    @Test
-    public void clearPass() throws Exception {
-        User clearTest = null;
-        try {
-            Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            dao.clear();
-            clearTest = dao.find(user.getUserName());
-            db.closeConnection(true);
-        } catch (DAOException e) {
-            db.closeConnection(false);
-        }
-
-        // Check that the user was deleted
-        assertNull(clearTest);
-    }
-
-    @Test
-    public void clearFail() throws Exception {
-        User clearTest = null;
-        try {
-            Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            dao.clear();
-            clearTest = dao.find("");
-            db.closeConnection(true);
-        } catch (DAOException e) {
-            db.closeConnection(false);
-        }
-
-        // Check that the table is completely empty
-        assertNull(clearTest);
-    }
 }
