@@ -42,7 +42,6 @@ public class Server {
         }
     }
 
-
     public static void run(int port) throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 10);
         server.createContext("/", new WebUIHandler());

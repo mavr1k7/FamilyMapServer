@@ -35,11 +35,13 @@ public class PersonService {
     public PersonResult person(PersonRequest request) {
         Database db = new Database();
         try {
+            // Validate the provided auth token
             db.createTables();
             Connection conn = db.openConnection();
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);
             String userName = aDAO.validate(request.getAuthToken());
 
+            // Return if auth token is invalid
             if (userName == null) {
                 try {
                     db.closeConnection(false);
@@ -50,6 +52,7 @@ public class PersonService {
                 }
             }
 
+            // Return persons requested by user
             PersonDAO pDAO = new PersonDAO(conn);
             if (request.getPersonID() == null) {
                 List<Person> list = pDAO.findRelatives(userName);

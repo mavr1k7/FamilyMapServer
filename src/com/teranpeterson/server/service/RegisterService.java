@@ -32,6 +32,7 @@ public class RegisterService {
      * @return Information about the person created or an error
      */
     public LoginResult register(RegisterRequest request) {
+        // Error check new user information
         if (request.getUserName() == null || request.getUserName().isEmpty())
             return new LoginResult("ERROR: Missing userName parameter");
         if (request.getPassword() == null || request.getPassword().isEmpty())
@@ -54,6 +55,7 @@ public class RegisterService {
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
 
+            // Check that the provided username is not already in use
             if (!uDAO.check(newUser.getUserName())) {
                 try {
                     db.closeConnection(false);
@@ -64,14 +66,17 @@ public class RegisterService {
                 }
             }
 
+            // Add new user to the database
             uDAO.insert(newUser);
             PersonDAO pDAO = new PersonDAO(conn);
             Person newPerson = new Person(newUser.getPersonID(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
             pDAO.insert(newPerson);
 
+            // Generate ancestral information for new user
             Generator generator = new Generator();
             generator.generate(newUser.getUserName(), newUser.getPersonID(), 4);
 
+            // Establish session and return auth token
             AuthToken token = new AuthToken(newUser.getUserName());
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);
             aDAO.insert(token);

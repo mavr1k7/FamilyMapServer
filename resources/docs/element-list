@@ -1,6 +1,7 @@
 com.teranpeterson.server
 com.teranpeterson.server.dao
 com.teranpeterson.server.handler
+com.teranpeterson.server.helpers
 com.teranpeterson.server.model
 com.teranpeterson.server.request
 com.teranpeterson.server.result

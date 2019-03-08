@@ -33,10 +33,12 @@ public class LoadService {
     public LoadResult load(LoadRequest request) {
         Database db = new Database();
         try {
+            // Clear everything from the database
             db.clear();
             db.createTables();
             Connection conn = db.openConnection();
 
+            // Import all users
             int x = 0;
             UserDAO uDAO = new UserDAO(conn);
             for (User u : request.getUsers()) {
@@ -44,6 +46,7 @@ public class LoadService {
                 ++x;
             }
 
+            // Import all persons
             int y = 0;
             PersonDAO pDAO = new PersonDAO(conn);
             for (Person p : request.getPersons()) {
@@ -51,6 +54,7 @@ public class LoadService {
                 ++y;
             }
 
+            // Import all events
             int z = 0;
             EventDAO eDAO = new EventDAO(conn);
             for (Event e : request.getEvents()) {
@@ -58,6 +62,7 @@ public class LoadService {
                 ++z;
             }
 
+            // Return the number of imported objects
             db.closeConnection(true);
             return new LoadResult(x, y, z);
         } catch (DAOException e) {

@@ -29,6 +29,7 @@ public class LoginService {
      * @return Information the user with an auth token for the active session
      */
     public LoginResult login(LoginRequest request) {
+        // Error check the provided parameters
         if (request.getUserName() == null || request.getUserName().isEmpty())
             return new LoginResult("ERROR: Missing userName parameter");
         if (request.getPassword() == null || request.getPassword().isEmpty())
@@ -36,11 +37,13 @@ public class LoginService {
 
         Database db = new Database();
         try {
+            // Authenticate the user
             db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.authenticate(request.getUserName(), request.getPassword());
 
+            // Establish session and return auth token
             if (user != null) {
                 AuthToken token = new AuthToken(user.getUserName());
                 AuthTokenDAO aDAO = new AuthTokenDAO(conn);

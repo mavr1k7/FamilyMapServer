@@ -35,11 +35,13 @@ public class EventService {
     public EventResult event(EventRequest request) {
         Database db = new Database();
         try {
+            // Validate the provided auth token
             db.createTables();
             Connection conn = db.openConnection();
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);
             String userName = aDAO.validate(request.getAuthToken());
 
+            // Return if auth token is invalid
             if (userName == null) {
                 try {
                     db.closeConnection(false);
@@ -50,6 +52,7 @@ public class EventService {
                 }
             }
 
+            // Return events requested by user
             EventDAO eDAO = new EventDAO(conn);
             if (request.getEventID() == null) {
                 List<Event> list = eDAO.personEvents(userName);

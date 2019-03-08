@@ -39,11 +39,13 @@ public class FillService {
 
         Database db = new Database();
         try {
+            // Load the user's information
             db.createTables();
             Connection conn = db.openConnection();
             UserDAO uDAO = new UserDAO(conn);
             User user = uDAO.find(request.getUserName());
 
+            // Validate the provided username
             if (user == null) {
                 try {
                     db.closeConnection(false);
@@ -54,12 +56,14 @@ public class FillService {
                 }
             }
 
+            // Create ancestral information for the user
             Generator generator = new Generator();
             generator.generate(user.getUserName(), user.getPersonID(), request.getGenerations());
 
+            // Return the number of person's and event's added
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons (2^(n+1) - 1)
             db.closeConnection(true);
-            return new FillResult(x, (x * 3)); // Calculate number of events (3 per person)
+            return new FillResult(x, (x - 1) * 3); // Calculate number of events (3 per person)
         } catch (DAOException e) {
             e.printStackTrace();
             try {
