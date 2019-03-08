@@ -2,6 +2,7 @@ package com.teranpeterson.server.handler;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import com.teranpeterson.server.helpers.Serializer;
 import com.teranpeterson.server.request.PersonRequest;
 import com.teranpeterson.server.result.PersonResult;
 import com.teranpeterson.server.service.PersonService;

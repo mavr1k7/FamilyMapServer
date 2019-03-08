@@ -1,6 +1,7 @@
 package com.teranpeterson.server.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Persons are relatives and ancestors to users in the system. Each person contains information about their relationships
@@ -75,6 +76,21 @@ public class Person {
     }
 
     /**
+     * Creates a person with the given data and automatically generates an id
+     *
+     * @param descendant UserName of the user the person belongs to (default null)
+     * @param firstName  First name of the person
+     * @param lastName   Last name of the person
+     * @param gender     Gender of the person ('m' or 'f')
+     * @param father     Father of the person (default null)
+     * @param mother     Mother of the person (default null)
+     * @param spouse     Spouse of the person (default null)
+     */
+    public Person(String descendant, String firstName, String lastName, String gender, String father, String mother, String spouse) {
+        this(UUID.randomUUID().toString().substring(0, 6), descendant, firstName, lastName, gender, father, mother, spouse);
+    }
+
+    /**
      * Creates a person with the given data and sets relatives all to null
      *
      * @param personID   Person's id
@@ -84,6 +100,17 @@ public class Person {
      */
     public Person(String personID, String firstName, String lastName, String gender) {
         this(personID, null, firstName, lastName, gender, null, null, null);
+    }
+
+    /**
+     * Creates a person with the given data, sets relatives all to null and automatically generates an id
+     *
+     * @param firstName  First name of the person
+     * @param lastName   Last name of the person
+     * @param gender     Gender of the person ('m' or 'f')
+     */
+    public Person(String personID, String descendant, String firstName, String lastName, String gender, String spouse) {
+        this(personID, descendant, firstName, lastName, gender, null, null, spouse);
     }
 
     /**

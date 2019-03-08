@@ -15,7 +15,7 @@ import java.sql.Connection;
  * @author Teran Peterson
  * @version v0.1.1
  */
-public class LoadService extends Service {
+public class LoadService {
     /**
      * Creates a blank load service object
      */

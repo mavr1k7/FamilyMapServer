@@ -1,6 +1,7 @@
 package com.teranpeterson.server.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Events store information about significant events from a persons life, ie. birth, marriage, death, etc. Each event
@@ -56,8 +57,9 @@ public class Event {
     }
 
     /**
-     * Creates an event with the given data and automatically assigns an eventID
+     * Creates an event with the given data
      *
+     * @param eventID    Event's id
      * @param descendant UserName of the user this event belongs to
      * @param personID   ID of the person the event happened to
      * @param latitude   Latitude where the event took place
@@ -77,6 +79,22 @@ public class Event {
         this.city = city;
         this.eventType = eventType;
         this.year = year;
+    }
+
+    /**
+     * Creates an event with the given data and automatically generates an eventID
+     *
+     * @param descendant UserName of the user this event belongs to
+     * @param personID   ID of the person the event happened to
+     * @param latitude   Latitude where the event took place
+     * @param longitude  Longitude where the event took place
+     * @param country    Country where the event took place
+     * @param city       City where the event took place
+     * @param eventType       Type of event (birth, baptism, christening, marriage, death, or burial)
+     * @param year       Year the event took place
+     */
+    public Event(String descendant, String personID, double latitude, double longitude, String country, String city, String eventType, int year) {
+        this(UUID.randomUUID().toString().substring(0, 6), descendant, personID, latitude, longitude, country, city, eventType, year);
     }
 
     /**

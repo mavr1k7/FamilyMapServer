@@ -3,6 +3,7 @@ package com.teranpeterson.server.service;
 import com.teranpeterson.server.dao.DAOException;
 import com.teranpeterson.server.dao.Database;
 import com.teranpeterson.server.dao.UserDAO;
+import com.teranpeterson.server.helpers.Generator;
 import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.FillRequest;
 import com.teranpeterson.server.result.FillResult;
@@ -15,7 +16,7 @@ import java.sql.Connection;
  * @author Teran Peterson
  * @version v0.1.2
  */
-public class FillService extends Service {
+public class FillService {
     /**
      * Creates a blank fill service object
      */
@@ -53,7 +54,9 @@ public class FillService extends Service {
                 }
             }
 
-            //super.generate(conn, user, request.getGenerations());
+            Generator generator = new Generator(user.getUserName());
+            generator.generate(user.getPersonID(), request.getGenerations());
+
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons (2^(n+1) - 1)
             db.closeConnection(true);
             return new FillResult(x, (x * 3)); // Calculate number of events (3 per person)

@@ -2,6 +2,8 @@ package com.teranpeterson.server.handler;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import com.teranpeterson.server.helpers.Deserializer;
+import com.teranpeterson.server.helpers.Serializer;
 import com.teranpeterson.server.request.RegisterRequest;
 import com.teranpeterson.server.result.LoginResult;
 import com.teranpeterson.server.service.RegisterService;

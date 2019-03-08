@@ -1,6 +1,8 @@
 package com.teranpeterson.server.service;
 
 import com.teranpeterson.server.dao.*;
+import com.teranpeterson.server.helpers.Generator;
+import com.teranpeterson.server.model.AuthToken;
 import com.teranpeterson.server.model.Person;
 import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.RegisterRequest;
@@ -15,7 +17,7 @@ import java.sql.Connection;
  * @author Teran Peterson
  * @version v0.1.2
  */
-public class RegisterService extends Service {
+public class RegisterService {
     /**
      * Creates a blank register service object
      */
@@ -62,15 +64,19 @@ public class RegisterService extends Service {
                 }
             }
 
+            uDAO.insert(newUser);
             PersonDAO pDAO = new PersonDAO(conn);
             Person newPerson = new Person(newUser.getPersonID(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
             pDAO.insert(newPerson);
 
-//            super.generate(conn, newUser, 4);
-            uDAO.insert(newUser);
-            String token = super.login(conn, newUser.getUserName());
+            Generator generator = new Generator(newUser.getUserName());
+            generator.generate(newUser.getPersonID(), 4);
+
+            AuthToken token = new AuthToken(newUser.getUserName());
+            AuthTokenDAO aDAO = new AuthTokenDAO(conn);
+            aDAO.insert(token);
             db.closeConnection(true);
-            return new LoginResult(token, newUser.getUserName(), newUser.getPersonID(), newPerson);
+            return new LoginResult(token.getToken(), newUser.getUserName(), newUser.getPersonID(), newPerson);
         } catch (DAOException e) {
             e.printStackTrace();
             try {

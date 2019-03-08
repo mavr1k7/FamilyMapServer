@@ -132,7 +132,7 @@ public class EventDAO {
      * @throws DAOException Problem executing sql statements
      */
     public void deleteEvents(String userName) throws DAOException {
-        String sql = "DELETE * FROM `Events` WHERE `descendant` = ?";
+        String sql = "DELETE FROM `Events` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
             stmt.executeUpdate();

@@ -17,7 +17,7 @@ import java.util.List;
  * @author Teran Peterson
  * @version v0.1.1
  */
-public class PersonService extends Service {
+public class PersonService {
     /**
      * Create a blank person service object
      */

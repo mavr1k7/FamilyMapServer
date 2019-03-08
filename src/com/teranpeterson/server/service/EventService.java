@@ -17,7 +17,7 @@ import java.util.List;
  * @author Teran Peterson
  * @version v0.1.1
  */
-public class EventService extends Service {
+public class EventService {
     /**
      * Creates a blank event service object
      */

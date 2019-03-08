@@ -82,9 +82,22 @@ public class PersonDAO {
                     e.printStackTrace();
                 }
             }
-
         }
         return null;
+    }
+
+    public void update(String personID, String fid, String mid) throws DAOException {
+        String sql = "UPDATE `Persons` SET `father` = ?, `mother` = ? WHERE `person_id` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, fid);
+            stmt.setString(2, mid);
+            stmt.setString(3, personID);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DAOException("ERROR: Unable to update person '" + personID + "' in database");
+        }
     }
 
     /**
@@ -128,7 +141,7 @@ public class PersonDAO {
      * @throws DAOException Problem executing sql statements
      */
     public void deleteRelatives(String userName) throws DAOException {
-        String sql = "DELETE * FROM `Persons` WHERE `descendant` = ?";
+        String sql = "DELETE FROM `Persons` WHERE `descendant` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, userName);
             stmt.executeUpdate();

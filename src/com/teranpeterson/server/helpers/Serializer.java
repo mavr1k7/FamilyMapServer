@@ -1,4 +1,4 @@
-package com.teranpeterson.server.handler;
+package com.teranpeterson.server.helpers;
 
 import com.google.gson.Gson;
 import com.teranpeterson.server.result.EventResult;

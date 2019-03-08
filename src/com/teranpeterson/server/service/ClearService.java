@@ -11,7 +11,7 @@ import com.teranpeterson.server.result.ClearResult;
  * @author Teran Peterson
  * @version v0.1.1
  */
-public class ClearService extends Service {
+public class ClearService {
     /**
      * Creates a blank clear service object
      */
