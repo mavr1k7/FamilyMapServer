@@ -19,9 +19,11 @@ public class FillHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         try {
+            // Split URL request to find username and num generations
             String url = exchange.getRequestURI().toString().substring(6);
             String[] params = url.split("/");
 
+            // If num generations are provided, use it. Default 4
             boolean success = true;
             FillRequest request = null;
             if (params.length == 1) {
@@ -36,10 +38,12 @@ public class FillHandler implements HttpHandler {
                 success = false;
             }
 
+            // Run service and get result
             FillResult result;
             if (success) result = new FillService().fill(request);
             else result = new FillResult("ERROR: Invalid parameters");
 
+            // Build response
             if (result.isSuccess()) {
                 exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
             } else {

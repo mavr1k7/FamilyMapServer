@@ -17,6 +17,7 @@ public class WebUIHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String url = exchange.getRequestURI().toString();
 
+        // Redirect user to index.html or requested url
         if (url.length() == 1) {
             url = "resources/web/index.html";
         }

@@ -20,10 +20,12 @@ public class PersonHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         try {
+            // Split URL request to find personID
             String url = exchange.getRequestURI().toString().substring(7);
             String token = exchange.getRequestHeaders().getFirst("Authorization");
             String[] params = url.split("/");
 
+            // If personID is provided, return that person. Otherwise return ALL persons
             boolean success = true;
             PersonRequest request = null;
             if (params.length == 0 || params.length == 1) {
@@ -34,10 +36,12 @@ public class PersonHandler implements HttpHandler {
                 success = false;
             }
 
+            // Run service and get result
             PersonResult result;
             if (success) result = new PersonService().person(request);
             else result = new PersonResult("ERROR: Invalid parameters");
 
+            // Build response
             String response;
             if (result.isSuccess()) {
                 exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);

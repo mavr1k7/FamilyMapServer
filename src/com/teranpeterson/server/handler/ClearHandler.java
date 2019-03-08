@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
  * Handler for Clear Requests. URL: /clear
  *
  * @author Teran Peterson
- * @version v0.1.1
+ * @version v0.1.2
  */
 public class ClearHandler implements HttpHandler {
     @Override
@@ -20,6 +20,7 @@ public class ClearHandler implements HttpHandler {
         try {
             ClearResult result = new ClearService().clear();
 
+            // Build response
             if (result.isSuccess()) {
                 exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
             } else {

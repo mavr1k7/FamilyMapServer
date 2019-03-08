@@ -14,7 +14,7 @@ import java.net.HttpURLConnection;
  * Handler for Load Requests. URL: /load
  *
  * @author Teran Peterson
- * @version v0.0.1
+ * @version v0.1.2
  */
 public class LoadHandler implements HttpHandler {
     @Override
