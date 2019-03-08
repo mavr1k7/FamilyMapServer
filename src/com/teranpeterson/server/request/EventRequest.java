@@ -22,7 +22,6 @@ public class EventRequest {
      * @param authToken Authentication token of the current user
      */
     public EventRequest(String authToken) {
-        this.eventID = "ALL";
         this.authToken = authToken;
     }
 

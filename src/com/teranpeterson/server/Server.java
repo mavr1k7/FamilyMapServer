@@ -37,8 +37,13 @@ public class Server {
             run(port);
         } catch (NumberFormatException e) {
             System.out.println("ERROR: Invalid port number");
+            System.exit(1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("USAGE: java Server [port number]");
+            System.exit(1);
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
