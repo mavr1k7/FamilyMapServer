@@ -1,39 +1,34 @@
 package com.teranpeterson.server.dao;
 
-import com.teranpeterson.server.model.User;
-import org.junit.After;
+import com.teranpeterson.server.model.Event;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class UserDAOTest {
+public class EventDAOTest {
     private Database db;
-    private User user;
+    private Event event;
 
     @Before
     public void setUp() throws Exception {
+        event = new Event("12345", "johng", "john", 1, 1, "country", "city", "type", 2019);
         db = new Database();
-        user = new User("sam", "irock", "samsmith@gmail.com", "sam", "smith", "m", "as8sd9fui");
         db.clear();
         db.createTables();
     }
 
-    @After
-    public void tearDown() throws Exception {
-        db.clear();
-    }
-
     @Test
     public void insertPass() throws Exception {
-        User insertTest = null;
+        Event insertTest = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            insertTest = dao.find(user.getUserName());
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            insertTest = dao.find(event.getEventID());
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
@@ -41,7 +36,7 @@ public class UserDAOTest {
 
         // Check that the user was entered correctly to database
         assertNotNull(insertTest);
-        assertEquals(user, insertTest);
+        assertEquals(event, insertTest);
     }
 
     @Test
@@ -49,9 +44,9 @@ public class UserDAOTest {
         boolean success = true;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            dao.insert(user);
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            dao.insert(event);
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
@@ -64,12 +59,12 @@ public class UserDAOTest {
 
     @Test
     public void findPass() throws Exception {
-        User findTest = null;
+        Event findTest = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            findTest = dao.find(user.getUserName());
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            findTest = dao.find(event.getEventID());
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
@@ -77,17 +72,17 @@ public class UserDAOTest {
 
         // Check that we were able to find user in database
         assertNotNull(findTest);
-        assertEquals(user, findTest);
+        assertEquals(event, findTest);
     }
 
     @Test
     public void findFail() throws Exception {
-        User findTest = null;
+        Event findTest = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            findTest = dao.find("johnnyg");
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            findTest = dao.find("sams");
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
@@ -98,70 +93,72 @@ public class UserDAOTest {
     }
 
     @Test
-    public void authenticatePass() throws Exception {
-        User authTest = null;
+    public void personEventsPass() throws Exception {
+        List<Event> list = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            authTest = dao.authenticate("sam", "irock");
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            list = dao.personEvents(event.getDescendant());
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
         }
 
-        // Check that password worked
-        assertEquals("sam", authTest.getUserName());
+        // Check that it found all events
+        assertFalse(list.isEmpty());
     }
 
     @Test
-    public void authenticateFail() throws Exception {
-        User authTest = null;
+    public void personEventsFail() throws Exception {
+        List<Event> list = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            authTest = dao.authenticate("sam", "urock");
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            list = dao.personEvents("sams");
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
         }
 
-        // Check that password failed
-        assertNull(authTest);
+        // Check that it didn't find any events
+        assertTrue(list.isEmpty());
     }
 
     @Test
-    public void checkPass() throws Exception {
-        boolean checkTest = true;
+    public void deleteEventsPass() throws Exception {
+        Event deleteTest = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            checkTest = dao.check("sam");
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            dao.deleteEvents(event.getDescendant());
+            deleteTest = dao.find("12345");
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
         }
 
-        // Check that username was shown as taken
-        assertFalse(checkTest);
+        // Check that all events were deleted
+        assertNull(deleteTest);
     }
 
     @Test
-    public void checkFail() throws Exception {
-        boolean checkTest = true;
+    public void deleteEventsFail() throws Exception {
+        Event deleteTest = null;
         try {
             Connection conn = db.openConnection();
-            UserDAO dao = new UserDAO(conn);
-            dao.insert(user);
-            checkTest = dao.check("username");
+            EventDAO dao = new EventDAO(conn);
+            dao.insert(event);
+            dao.deleteEvents("sams");
+            deleteTest = dao.find("12345");
             db.closeConnection(true);
         } catch (DAOException e) {
             db.closeConnection(false);
         }
 
-        // Check that username is actually available
-        assertTrue(checkTest);
+        // Check that only events related to the user were deleted
+        assertNotNull(deleteTest);
     }
 }

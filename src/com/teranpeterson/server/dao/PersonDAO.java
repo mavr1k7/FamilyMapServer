@@ -91,15 +91,15 @@ public class PersonDAO {
      * Update the parent id fields for a person in the database
      *
      * @param personID ID of the person to find
-     * @param fid      ID of the person's father
-     * @param mid      ID of the person's mother
+     * @param fatherID ID of the person's father
+     * @param motherID ID of the person's mother
      * @throws DAOException Problem executing sql statements
      */
-    public void update(String personID, String fid, String mid) throws DAOException {
+    public void update(String personID, String fatherID, String motherID) throws DAOException {
         String sql = "UPDATE `Persons` SET `father` = ?, `mother` = ? WHERE `person_id` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, fid);
-            stmt.setString(2, mid);
+            stmt.setString(1, fatherID);
+            stmt.setString(2, motherID);
             stmt.setString(3, personID);
 
             stmt.executeUpdate();
