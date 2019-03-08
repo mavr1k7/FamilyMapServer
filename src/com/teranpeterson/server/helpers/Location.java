@@ -1,5 +1,8 @@
 package com.teranpeterson.server.helpers;
 
+/**
+ * Location object built from json file. Used to store latitude, longitude, city and country of an event
+ */
 public class Location {
     private String country;
     private String city;

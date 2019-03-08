@@ -2,8 +2,11 @@
   <dictionary name="teran">
     <words>
       <w>firstname</w>
+      <w>fnames</w>
       <w>jdbc</w>
       <w>lastname</w>
+      <w>mnames</w>
+      <w>snames</w>
       <w>sqlite</w>
     </words>
   </dictionary>

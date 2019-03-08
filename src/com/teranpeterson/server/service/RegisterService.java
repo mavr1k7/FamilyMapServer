@@ -69,8 +69,8 @@ public class RegisterService {
             Person newPerson = new Person(newUser.getPersonID(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
             pDAO.insert(newPerson);
 
-            Generator generator = new Generator(newUser.getUserName());
-            generator.generate(newUser.getPersonID(), 4);
+            Generator generator = new Generator();
+            generator.generate(newUser.getUserName(), newUser.getPersonID(), 4);
 
             AuthToken token = new AuthToken(newUser.getUserName());
             AuthTokenDAO aDAO = new AuthTokenDAO(conn);

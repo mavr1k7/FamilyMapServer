@@ -54,8 +54,8 @@ public class FillService {
                 }
             }
 
-            Generator generator = new Generator(user.getUserName());
-            generator.generate(user.getPersonID(), request.getGenerations());
+            Generator generator = new Generator();
+            generator.generate(user.getUserName(), user.getPersonID(), request.getGenerations());
 
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons (2^(n+1) - 1)
             db.closeConnection(true);

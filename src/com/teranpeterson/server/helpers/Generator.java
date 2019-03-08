@@ -13,77 +13,136 @@ import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.util.*;
 
+/**
+ * Generates random ancestors and corresponding events for a user. Uses json files with names and locations to randomly generate
+ * location for the persons and events. Uses sudo random calculations to keep events in chronological order
+ *
+ * @author Teran Peterson
+ * @version v0.1.2
+ */
 public class Generator {
     private Data data = new Data();
     private Database db = new Database();
     private String username;
 
-    public Generator(String username) {
+    /**
+     * Constructor for Generator. Loads the json files and sets the username
+     */
+    public Generator() {
         loadFiles();
-        this.username = username;
     }
 
-    public void generate(String personID, int n) throws DAOException {
+    /**
+     * Loads the current person and recursively adds specified number of generations. Each generation is approximately 23
+     * years apart and uses sudo random numbers to add variability. Birth, marriage and death are generated for each new person
+     *
+     * @param username       Username of user to create ancestors for
+     * @param personID       PersonID of user's person
+     * @param numGenerations Number of generations back to go
+     * @throws DAOException Database exception
+     */
+    public void generate(String username, String personID, int numGenerations) throws DAOException {
+        // Loads the current user's person info
+        this.username = username;
         Connection conn = db.openConnection();
-        PersonDAO pDAO = new PersonDAO(conn);
-        EventDAO eDAO = new EventDAO(conn);
-        Person person = pDAO.find(personID);
-        pDAO.deleteRelatives(username);
-        eDAO.deleteEvents(username);
+        PersonDAO personDAO = new PersonDAO(conn);
+        EventDAO eventDAO = new EventDAO(conn);
+        Person person = personDAO.find(personID);
+
+        // Removes all persons and events related to the user
+        personDAO.deleteRelatives(username);
+        eventDAO.deleteEvents(username);
         db.closeConnection(true);
 
+        // Generates events for the user
         generateEvents(personID, 1995);
 
+        // Calls recursive function to create ancestors
         String fid = UUID.randomUUID().toString().substring(0, 6);
         String mid = UUID.randomUUID().toString().substring(0, 6);
-        person.setFather(generatePerson("m", fid, mid, 1995 - 23, n - 1));
-        person.setMother(generatePerson("f", mid, fid, 1995 - 23, n - 1));
+        person.setFather(generatePerson("m", fid, mid, 1995 - 23, numGenerations - 1));
+        person.setMother(generatePerson("f", mid, fid, 1995 - 23, numGenerations - 1));
 
-
+        // Updates the user's person data in the database
         conn = db.openConnection();
-        pDAO = new PersonDAO(conn);
-        pDAO.update(personID, fid, mid);
+        personDAO = new PersonDAO(conn);
+        personDAO.update(personID, fid, mid);
         db.closeConnection(true);
     }
 
-    private String generatePerson(String gender, String pid, String sid, int year, int n) throws DAOException {
-        Person person = new Person(pid, username, getFirstName(gender), getSurname(), gender, sid);
+    /**
+     * Recursive function that creates ancestors for a person. A person is created and a set of events are generated for that
+     * person. Recursively adds a mother and father to the created person. Adds everything to the database.
+     *
+     * @param gender         Gender (m or f)
+     * @param personID       ID assigned by last iteration (used by spouse)
+     * @param spouseID       Spouse's id
+     * @param year           Current year to create events with
+     * @param numGenerations Number of generations left to go
+     * @return ID of the person just created
+     * @throws DAOException Database exception
+     */
+    private String generatePerson(String gender, String personID, String spouseID, int year, int numGenerations) throws DAOException {
+        // Creates a new person and corresponding events
+        Person person = new Person(personID, username, getFirstName(gender), getSurname(), gender, spouseID);
         generateEvents(person.getPersonID(), year);
 
-        if (n != 0) {
+        // Recursively creates ancestors for that person
+        if (numGenerations != 0) {
             Random rand = new Random();
-            int x = rand.nextInt(4);
-            String fid = UUID.randomUUID().toString().substring(0, 6);
-            String mid = UUID.randomUUID().toString().substring(0, 6);
-            person.setFather(generatePerson("m", fid, mid, year - 23 + x, n - 1));
-            person.setMother(generatePerson("f", mid, fid, year - 23 + x, n - 1));
+            int r = rand.nextInt(4);
+            String fatherID = UUID.randomUUID().toString().substring(0, 6);
+            String motherID = UUID.randomUUID().toString().substring(0, 6);
+            person.setFather(generatePerson("m", fatherID, motherID, year - 23 + r, numGenerations - 1));
+            person.setMother(generatePerson("f", motherID, fatherID, year - 23 + r, numGenerations - 1));
         }
 
+        // Adds new person to the database
         Connection conn = db.openConnection();
-        PersonDAO pDAO = new PersonDAO(conn);
-        pDAO.insert(person);
+        PersonDAO personDAO = new PersonDAO(conn);
+        personDAO.insert(person);
         db.closeConnection(true);
         return person.getPersonID();
     }
 
-    private void generateEvents(String pid, int year) throws DAOException {
+    /**
+     * Creates a birth, marriage and death for a given person. Uses sudo random numbers to add variability to dates. Year is
+     * used to set location for marriage so that it matches for husband and wife.
+     *
+     * @param personID ID of person the event belongs to
+     * @param year     Current year to make events with
+     * @throws DAOException Database exception
+     */
+    private void generateEvents(String personID, int year) throws DAOException {
         Random rand = new Random();
 
+        // Creates birth with random location and date within 3 years of current year
         Location birthLoc = getLocation();
-        Event birth = new Event(username, pid, birthLoc.getLatitude(), birthLoc.getLongitude(), birthLoc.getCountry(), birthLoc.getCity(), "Birth", year + rand.nextInt(3));
-        Location marLoc = getLocation(year);
-        Event marriage = new Event(username, pid, marLoc.getLatitude(), marLoc.getLongitude(), marLoc.getCountry(), marLoc.getCity(), "Marriage", year + 23);
-        Location deathLoc = getLocation();
-        Event death = new Event(username, pid, deathLoc.getLatitude(), deathLoc.getLongitude(), deathLoc.getCountry(), deathLoc.getCity(), "Death", year + 67 + rand.nextInt(20));
+        Event birth = new Event(username, personID, birthLoc.getLatitude(), birthLoc.getLongitude(), birthLoc.getCountry(), birthLoc.getCity(), "Birth", year + rand.nextInt(3));
 
+        // Creates marriage with location specified by year and date 23 years after birth
+        Location marLoc = getLocation(year);
+        Event marriage = new Event(username, personID, marLoc.getLatitude(), marLoc.getLongitude(), marLoc.getCountry(), marLoc.getCity(), "Marriage", year + 23);
+
+        // Creates death with random location and date 67-87 years after current year
+        Location deathLoc = getLocation();
+        Event death = new Event(username, personID, deathLoc.getLatitude(), deathLoc.getLongitude(), deathLoc.getCountry(), deathLoc.getCity(), "Death", year + 67 + rand.nextInt(20));
+
+        // Only adds event to database if it happened in the past
         Connection conn = db.openConnection();
-        EventDAO eDAO = new EventDAO(conn);
-        eDAO.insert(birth);
-        if (marriage.getYear() < 2019) eDAO.insert(marriage);
-        if (death.getYear() < 2019) eDAO.insert(death);
+        EventDAO eventDAO = new EventDAO(conn);
+        if (birth.getYear() < 2019) eventDAO.insert(birth);
+        if (marriage.getYear() < 2019) eventDAO.insert(marriage);
+        if (death.getYear() < 2019) eventDAO.insert(death);
         db.closeConnection(true);
     }
 
+    /**
+     * Return a random first name for a specified gender using predefined list
+     *
+     * @param gender Gender of name (m or f)
+     * @return Random first name
+     */
     private String getFirstName(String gender) {
         Random rand = new Random();
         if (gender.equals("m")) {
@@ -95,27 +154,41 @@ public class Generator {
         return null;
     }
 
-
+    /**
+     * Returns a random last name using predefined list
+     *
+     * @return Random surname
+     */
     private String getSurname() {
         Random rand = new Random();
         return data.sur.get(rand.nextInt(152));
     }
 
-    public Location getLocation() {
+    /**
+     * Returns a random location using predefined list
+     *
+     * @return Random location
+     */
+    private Location getLocation() {
         Random rand = new Random();
         return data.locations.get(rand.nextInt(978));
     }
 
+    /**
+     * Returns a location based on number given. Used for marriage events
+     *
+     * @param n Number for location
+     * @return Sudo random location
+     */
     private Location getLocation(int n) {
         return data.locations.get(n % 978);
     }
 
-    public String getGender() {
-        Random rand = new Random();
-        return (rand.nextInt(2) == 1) ? "m" : "f";
-    }
-
+    /**
+     * Loads lists of random names and locations from 4 different json files and stores them in a Data object
+     */
     private void loadFiles() {
+        // Load male names
         StringBuilder male = new StringBuilder();
         try (Scanner scanner = new Scanner(new File("resources/json/mnames.json"))) {
             while (scanner.hasNext()) {
@@ -125,9 +198,11 @@ public class Generator {
             e.printStackTrace();
         }
 
+        // Deserialize and add to data object
         Names mnames = new Gson().fromJson(male.toString(), Names.class);
         data.male = mnames.data;
 
+        // Load female names
         StringBuilder female = new StringBuilder();
         try (Scanner scanner = new Scanner(new File("resources/json/fnames.json"))) {
             while (scanner.hasNext()) {
@@ -137,9 +212,11 @@ public class Generator {
             e.printStackTrace();
         }
 
+        // Deserialize and add to data object
         Names fnames = new Gson().fromJson(female.toString(), Names.class);
         data.female = fnames.data;
 
+        // Load surnames
         StringBuilder sur = new StringBuilder();
         try (Scanner scanner = new Scanner(new File("resources/json/snames.json"))) {
             while (scanner.hasNext()) {
@@ -149,9 +226,11 @@ public class Generator {
             e.printStackTrace();
         }
 
+        // Deserialize and add to data object
         Names snames = new Gson().fromJson(sur.toString(), Names.class);
         data.sur = snames.data;
 
+        // Load locations
         StringBuilder loc = new StringBuilder();
         try (Scanner scanner = new Scanner(new File("resources/json/locations.json"))) {
             while (scanner.hasNext()) {
@@ -161,11 +240,15 @@ public class Generator {
             e.printStackTrace();
         }
 
+        // Deserialize and add to data object
         Locations locations = new Gson().fromJson(loc.toString(), Locations.class);
         data.locations = locations.data;
     }
 }
 
+/**
+ * Class containing lists of names and locations to use in the generator
+ */
 class Data {
     List<String> male;
     List<String> female;
@@ -180,6 +263,9 @@ class Data {
     }
 }
 
+/**
+ * Temporary class used to deserialize json files
+ */
 class Names {
     List<String> data;
 
@@ -194,6 +280,9 @@ class Names {
     }
 }
 
+/**
+ * Temporary class used to deserialize json files
+ */
 class Locations {
     List<Location> data;
 
