@@ -59,11 +59,11 @@ public class FillService {
 
             // Create ancestral information for the user
             Generator generator = new Generator();
-            generator.generate(user.getUserName(), user.getPersonID(), request.getGenerations());
+            generator.generate(user.getPersonID(), request.getGenerations());
 
             // Return the number of person's and event's added
             int x = (int) Math.pow(2, (request.getGenerations() + 1)) - 1; // Calculate number of added persons (2^(n+1) - 1)
-            return new FillResult(x, (x - 1) * 3); // Calculate number of events (3 per person)
+            return new FillResult(x, (x - 1) * 4 + 2); // Calculate number of events (4 per person except user)
         } catch (DAOException e) {
             e.printStackTrace();
             try {

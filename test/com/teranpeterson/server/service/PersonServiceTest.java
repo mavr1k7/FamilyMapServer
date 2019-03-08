@@ -34,6 +34,9 @@ public class PersonServiceTest {
     public void personPass() {
         PersonRequest request = new PersonRequest("12345", "token");
         PersonResult result = new PersonService().person(request);
+
+        // Check that the event was successfully found
+        assertEquals("12345", result.getPerson().getPersonID());
         assertTrue(result.isSuccess());
     }
 
@@ -41,6 +44,9 @@ public class PersonServiceTest {
     public void personFail() {
         PersonRequest request = new PersonRequest("12345", "nottoken");
         PersonResult result = new PersonService().person(request);
+
+        // Check that you can't load an event without an auth token
+        assertNull(result.getPerson());
         assertFalse(result.isSuccess());
     }
 }

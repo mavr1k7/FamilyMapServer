@@ -55,6 +55,12 @@ public class EventDAOTest {
 
         // Check that duplicate insert bounced
         assertFalse(success);
+        Connection conn = db.openConnection();
+        EventDAO eventDAO = new EventDAO(conn);
+        Event event = eventDAO.find("12345");
+        assertNull(event);
+
+        db.closeConnection(true);
     }
 
     @Test
@@ -107,6 +113,7 @@ public class EventDAOTest {
 
         // Check that it found all events
         assertFalse(list.isEmpty());
+        assertEquals(1, list.size());
     }
 
     @Test
@@ -160,5 +167,6 @@ public class EventDAOTest {
 
         // Check that only events related to the user were deleted
         assertNotNull(deleteTest);
+        assertEquals("johng", deleteTest.getDescendant());
     }
 }

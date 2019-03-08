@@ -2,7 +2,6 @@ package com.teranpeterson.server.service;
 
 import com.teranpeterson.server.dao.*;
 import com.teranpeterson.server.model.AuthToken;
-import com.teranpeterson.server.model.Person;
 import com.teranpeterson.server.model.User;
 import com.teranpeterson.server.request.LoginRequest;
 import com.teranpeterson.server.result.LoginResult;
@@ -49,10 +48,8 @@ public class LoginService {
                 AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
                 authTokenDAO.insert(token);
 
-                PersonDAO personDAO = new PersonDAO(conn);
-                Person person = personDAO.find(user.getPersonID());
                 db.closeConnection(true);
-                return new LoginResult(token.getToken(), user.getUserName(), user.getPersonID(), person);
+                return new LoginResult(token.getToken(), user.getUserName(), user.getPersonID());
             } else {
                 db.closeConnection(false);
                 return new LoginResult("ERROR: Invalid userName or password");

@@ -1,5 +1,8 @@
 package com.teranpeterson.server.service;
 
+import com.teranpeterson.server.dao.Database;
+import com.teranpeterson.server.dao.EventDAO;
+import com.teranpeterson.server.dao.UserDAO;
 import com.teranpeterson.server.model.Event;
 import com.teranpeterson.server.model.Person;
 import com.teranpeterson.server.model.User;
@@ -8,6 +11,7 @@ import com.teranpeterson.server.result.LoadResult;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,21 +39,49 @@ public class LoadServiceTest {
     }
 
     @Test
-    public void loadPass() {
+    public void loadPass() throws Exception {
         LoadService service = new LoadService();
         LoadResult result = service.load(request);
         assertTrue(result.isSuccess());
+
+        // Check that all the information was added
+        assertEquals("Successfully added 2 users, 2 persons, and 2 events to the database.", result.getMessage());
+
+        // Check for correct input
+        Database db = new Database();
+        Connection conn = db.openConnection();
+
+        UserDAO userDAO = new UserDAO(conn);
+        User user = userDAO.find("username1");
+        assertEquals("password1", user.getPassword());
+
+        EventDAO eventDAO = new EventDAO(conn);
+        Event event = eventDAO.find("9");
+        assertEquals("country2", event.getCountry());
+
+        db.closeConnection(true);
     }
 
     @Test
-    public void loadFail() {
+    public void loadFail() throws Exception {
         List<User> users = new ArrayList<>();
         users.add(new User("username1", "password1", "email1", "firstname1", "lastname1", "m", "1"));
         users.add(new User("username1", "password2", "email2", "firstname2", "lastname2", "f", "2"));
         request.setUsers(users);
 
+        // Check that load doesn't work with duplicates
         LoadService service = new LoadService();
         LoadResult result = service.load(request);
         assertFalse(result.isSuccess());
+
+        // Check that the database rolled back
+        Database db = new Database();
+        Connection conn = db.openConnection();
+
+        UserDAO userDAO = new UserDAO(conn);
+        User user = userDAO.find("username1");
+        assertNull(user);
+
+        db.closeConnection(true);
     }
 }

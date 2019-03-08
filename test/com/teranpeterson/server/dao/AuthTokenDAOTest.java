@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class AuthTokenDAOTest {
     private AuthToken token;
-    Database db;
+    private Database db;
 
     @Before
     public void setUp() throws Exception {
@@ -35,6 +35,12 @@ public class AuthTokenDAOTest {
 
         // Check that the token was inserted correctly
         assertTrue(success);
+        Connection conn = db.openConnection();
+        AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+        String username = authTokenDAO.validate("token");
+        assertEquals("username", username);
+
+        db.closeConnection(true);
     }
 
     @Test
@@ -53,6 +59,12 @@ public class AuthTokenDAOTest {
 
         // Check that duplicate insert bounced
         assertFalse(success);
+        Connection conn = db.openConnection();
+        AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+        String username = authTokenDAO.validate("token");
+        assertNull(username);
+
+        db.closeConnection(true);
     }
 
     @Test

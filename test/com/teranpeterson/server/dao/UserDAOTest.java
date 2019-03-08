@@ -1,7 +1,6 @@
 package com.teranpeterson.server.dao;
 
 import com.teranpeterson.server.model.User;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,11 +18,6 @@ public class UserDAOTest {
         user = new User("sam", "irock", "samsmith@gmail.com", "sam", "smith", "m", "as8sd9fui");
         db.clear();
         db.createTables();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        db.clear();
     }
 
     @Test
@@ -60,6 +54,12 @@ public class UserDAOTest {
 
         // Check that duplicate insert bounced
         assertFalse(success);
+        Connection conn = db.openConnection();
+        UserDAO userDAO = new UserDAO(conn);
+        User user = userDAO.find("sam");
+        assertNull(user);
+
+        db.closeConnection(true);
     }
 
     @Test

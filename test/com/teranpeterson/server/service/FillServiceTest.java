@@ -25,7 +25,7 @@ public class FillServiceTest {
         User user = new User("username", "password", "email", "first", "last", "m", "12345");
         userDAO.insert(user);
         PersonDAO personDAO = new PersonDAO(conn);
-        Person person = new Person("12345", "first", "last", "m");
+        Person person = new Person("12345", "username", "first", "last", "m");
         personDAO.insert(person);
         db.closeConnection(true);
     }
@@ -34,6 +34,9 @@ public class FillServiceTest {
     public void fillPass() {
         FillRequest request = new FillRequest("username");
         FillResult result = new FillService().fill(request);
+
+        // Check that the correct number of people and events were added
+        assertEquals("Successfully added 31 persons and 122 events to the database.", result.getMessage());
         assertTrue(result.isSuccess());
     }
 
@@ -41,6 +44,9 @@ public class FillServiceTest {
     public void fillFail() {
         FillRequest request = new FillRequest("not");
         FillResult result = new FillService().fill(request);
+
+        // Check that no data was added for invalid user
+        assertEquals("ERROR: Invalid userName", result.getMessage());
         assertFalse(result.isSuccess());
     }
 }

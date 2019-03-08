@@ -36,18 +36,17 @@ public class Generator {
      * Loads the current person and recursively adds specified number of generations. Each generation is approximately 23
      * years apart and uses sudo random numbers to add variability. Birth, marriage and death are generated for each new person
      *
-     * @param username       Username of user to create ancestors for
      * @param personID       PersonID of user's person
      * @param numGenerations Number of generations back to go
      * @throws DAOException Database exception
      */
-    public void generate(String username, String personID, int numGenerations) throws DAOException {
+    public void generate(String personID, int numGenerations) throws DAOException {
         // Loads the current user's person info
-        this.username = username;
         Connection conn = db.openConnection();
         PersonDAO personDAO = new PersonDAO(conn);
         EventDAO eventDAO = new EventDAO(conn);
         Person person = personDAO.find(personID);
+        this.username = person.getDescendant();
 
         // Removes all persons and events related to the user
         personDAO.deleteRelatives(username);
@@ -55,18 +54,18 @@ public class Generator {
         db.closeConnection(true);
 
         // Generates events for the user
-        generateEvents(personID, 1995);
+        generateEvents(personID, 1997);
 
         // Calls recursive function to create ancestors
         String fid = UUID.randomUUID().toString().substring(0, 6);
         String mid = UUID.randomUUID().toString().substring(0, 6);
-        person.setFather(generatePerson("m", fid, mid, 1995 - 23, numGenerations - 1));
-        person.setMother(generatePerson("f", mid, fid, 1995 - 23, numGenerations - 1));
+        person.setFather(generatePerson("m", fid, mid, 1997 - 23, numGenerations - 1));
+        person.setMother(generatePerson("f", mid, fid, 1997 - 23, numGenerations - 1));
 
         // Updates the user's person data in the database
         conn = db.openConnection();
         personDAO = new PersonDAO(conn);
-        personDAO.update(personID, fid, mid);
+        personDAO.insert(person);
         db.closeConnection(true);
     }
 
@@ -120,6 +119,10 @@ public class Generator {
         Location birthLoc = getLocation();
         Event birth = new Event(username, personID, birthLoc.getLatitude(), birthLoc.getLongitude(), birthLoc.getCountry(), birthLoc.getCity(), "Birth", year + rand.nextInt(3));
 
+        // Creates baptism with random location and date 10 years after current year
+        Location baptismLoc = getLocation();
+        Event baptism = new Event(username, personID, baptismLoc.getLatitude(), baptismLoc.getLongitude(), baptismLoc.getCountry(), baptismLoc.getCity(), "Baptism", year + 10);
+
         // Creates marriage with location specified by year and date 23 years after birth
         Location marLoc = getLocation(year);
         Event marriage = new Event(username, personID, marLoc.getLatitude(), marLoc.getLongitude(), marLoc.getCountry(), marLoc.getCity(), "Marriage", year + 23);
@@ -132,6 +135,7 @@ public class Generator {
         Connection conn = db.openConnection();
         EventDAO eventDAO = new EventDAO(conn);
         if (birth.getYear() < 2019) eventDAO.insert(birth);
+        if (baptism.getYear() < 2019) eventDAO.insert(baptism);
         if (marriage.getYear() < 2019) eventDAO.insert(marriage);
         if (death.getYear() < 2019) eventDAO.insert(death);
         db.closeConnection(true);

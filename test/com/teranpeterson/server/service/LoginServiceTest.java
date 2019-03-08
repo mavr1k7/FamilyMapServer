@@ -1,5 +1,6 @@
 package com.teranpeterson.server.service;
 
+import com.teranpeterson.server.dao.AuthTokenDAO;
 import com.teranpeterson.server.dao.Database;
 import com.teranpeterson.server.dao.UserDAO;
 import com.teranpeterson.server.model.User;
@@ -31,12 +32,32 @@ public class LoginServiceTest {
         LoginRequest request = new LoginRequest("username", "password");
         LoginResult result = new LoginService().login(request);
         assertTrue(result.isSuccess());
+
+        // Check that the auth token is correct
+        Database db = new Database();
+        Connection conn = db.openConnection();
+
+        AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+        String username = authTokenDAO.validate(result.getAuthToken());
+        assertEquals("username", username);
+
+        db.closeConnection(true);
     }
 
     @Test
     public void loginFail() throws Exception {
-        LoginRequest request = new LoginRequest("username", "drowssap");
+        LoginRequest request = new LoginRequest("username", "notpassword");
         LoginResult result = new LoginService().login(request);
         assertFalse(result.isSuccess());
+
+        // Check that no auth token was created
+        Database db = new Database();
+        Connection conn = db.openConnection();
+
+        AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+        String username = authTokenDAO.validate(result.getAuthToken());
+        assertNull(username);
+
+        db.closeConnection(true);
     }
 }

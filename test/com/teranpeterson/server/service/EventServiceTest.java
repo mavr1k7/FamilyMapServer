@@ -34,6 +34,9 @@ public class EventServiceTest {
     public void eventPass() {
         EventRequest request = new EventRequest("12345", "token");
         EventResult result = new EventService().event(request);
+
+        // Check that the event was successfully found
+        assertEquals("12345", result.getEvent().getEventID());
         assertTrue(result.isSuccess());
     }
 
@@ -41,6 +44,9 @@ public class EventServiceTest {
     public void eventFail() {
         EventRequest request = new EventRequest("12345", "nottoken");
         EventResult result = new EventService().event(request);
+
+        // Check that you can't load an event without an auth token
+        assertNull(result.getEvent());
         assertFalse(result.isSuccess());
     }
 }

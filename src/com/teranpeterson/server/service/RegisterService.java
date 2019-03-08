@@ -69,21 +69,22 @@ public class RegisterService {
             // Add new user to the database
             userDAO.insert(newUser);
             PersonDAO personDAO = new PersonDAO(conn);
-            Person newPerson = new Person(newUser.getPersonID(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
+            Person newPerson = new Person(newUser.getPersonID(), newUser.getUserName(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
             personDAO.insert(newPerson);
             db.closeConnection(true);
 
             // Generate ancestral information for new user
             Generator generator = new Generator();
-            generator.generate(newUser.getUserName(), newUser.getPersonID(), 4);
+            generator.generate(newUser.getPersonID(), 4);
 
             // Establish session and return auth token
             conn = db.openConnection();
             AuthToken token = new AuthToken(newUser.getUserName());
             AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
             authTokenDAO.insert(token);
+
             db.closeConnection(true);
-            return new LoginResult(token.getToken(), newUser.getUserName(), newUser.getPersonID(), newPerson);
+            return new LoginResult(token.getToken(), newUser.getUserName(), newUser.getPersonID());
         } catch (DAOException e) {
             e.printStackTrace();
             try {

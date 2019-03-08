@@ -21,10 +21,6 @@ public class LoginResult extends Result {
      * PersonID of person created for the user
      */
     private String personID;
-    /**
-     * Person object created for the user
-     */
-    private Person person;
 
     /**
      * Creates a failing register result with the given error message
@@ -43,11 +39,10 @@ public class LoginResult extends Result {
      * @param userName UserName of registered user
      * @param id       PersonID of person created for the user
      */
-    public LoginResult(String token, String userName, String id, Person person) {
+    public LoginResult(String token, String userName, String id) {
         this.authToken = token;
         this.userName = userName;
         this.personID = id;
-        this.person = person;
         super.success = true;
     }
 

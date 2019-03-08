@@ -88,28 +88,6 @@ public class PersonDAO {
     }
 
     /**
-     * Update the parent id fields for a person in the database
-     *
-     * @param personID ID of the person to find
-     * @param fatherID ID of the person's father
-     * @param motherID ID of the person's mother
-     * @throws DAOException Problem executing sql statements
-     */
-    public void update(String personID, String fatherID, String motherID) throws DAOException {
-        String sql = "UPDATE `Persons` SET `father` = ?, `mother` = ? WHERE `person_id` = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, fatherID);
-            stmt.setString(2, motherID);
-            stmt.setString(3, personID);
-
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DAOException("ERROR: Unable to update person '" + personID + "' in database");
-        }
-    }
-
-    /**
      * Return a list of all persons related to a user
      *
      * @param userName userName of the user to find relatives for

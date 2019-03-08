@@ -55,6 +55,12 @@ public class PersonDAOTest {
 
         // Check that duplicate insert bounced
         assertFalse(success);
+        Connection conn = db.openConnection();
+        PersonDAO personDAO = new PersonDAO(conn);
+        Person person = personDAO.find("12345");
+        assertNull(person);
+
+        db.closeConnection(true);
     }
 
     @Test
@@ -93,43 +99,6 @@ public class PersonDAOTest {
     }
 
     @Test
-    public void updatePass() throws Exception {
-        Person updateTest = null;
-        try {
-            Connection conn = db.openConnection();
-            PersonDAO dao = new PersonDAO(conn);
-            dao.insert(person);
-            dao.update(person.getPersonID(), "father", "mother");
-            updateTest = dao.find(person.getPersonID());
-            db.closeConnection(true);
-        } catch (DAOException e) {
-            db.closeConnection(false);
-        }
-
-        // Check that update worked
-        assertEquals("father", updateTest.getFather());
-        assertEquals("mother", updateTest.getMother());
-    }
-
-    @Test
-    public void updateFail() throws Exception {
-        Person updateTest = null;
-        try {
-            Connection conn = db.openConnection();
-            PersonDAO dao = new PersonDAO(conn);
-            dao.insert(person);
-            dao.update("sams", "father", "mother");
-            updateTest = dao.find("sams");
-            db.closeConnection(true);
-        } catch (DAOException e) {
-            db.closeConnection(false);
-        }
-
-        // Check that update didn't work
-        assertNull(updateTest);
-    }
-
-    @Test
     public void findRelativesPass() throws Exception {
         List<Person> list = null;
         try {
@@ -144,6 +113,7 @@ public class PersonDAOTest {
 
         // Check that it found all relatives
         assertFalse(list.isEmpty());
+        assertEquals(1, list.size());
     }
 
     @Test
@@ -197,5 +167,6 @@ public class PersonDAOTest {
 
         // Check that only users relatives were deleted
         assertNotNull(deleteTest);
+        assertEquals("johng", person.getDescendant());
     }
 }
