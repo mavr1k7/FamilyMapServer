@@ -40,17 +40,17 @@ public class LoginService {
             // Authenticate the user
             db.createTables();
             Connection conn = db.openConnection();
-            UserDAO uDAO = new UserDAO(conn);
-            User user = uDAO.authenticate(request.getUserName(), request.getPassword());
+            UserDAO userDAO = new UserDAO(conn);
+            User user = userDAO.authenticate(request.getUserName(), request.getPassword());
 
             // Establish session and return auth token
             if (user != null) {
                 AuthToken token = new AuthToken(user.getUserName());
-                AuthTokenDAO aDAO = new AuthTokenDAO(conn);
-                aDAO.insert(token);
+                AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+                authTokenDAO.insert(token);
 
-                PersonDAO pDAO = new PersonDAO(conn);
-                Person person = pDAO.find(user.getPersonID());
+                PersonDAO personDAO = new PersonDAO(conn);
+                Person person = personDAO.find(user.getPersonID());
                 db.closeConnection(true);
                 return new LoginResult(token.getToken(), user.getUserName(), user.getPersonID(), person);
             } else {

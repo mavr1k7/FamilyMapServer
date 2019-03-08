@@ -38,8 +38,8 @@ public class PersonService {
             // Validate the provided auth token
             db.createTables();
             Connection conn = db.openConnection();
-            AuthTokenDAO aDAO = new AuthTokenDAO(conn);
-            String userName = aDAO.validate(request.getAuthToken());
+            AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+            String userName = authTokenDAO.validate(request.getAuthToken());
 
             // Return if auth token is invalid
             if (userName == null) {
@@ -53,13 +53,13 @@ public class PersonService {
             }
 
             // Return persons requested by user
-            PersonDAO pDAO = new PersonDAO(conn);
+            PersonDAO personDAO = new PersonDAO(conn);
             if (request.getPersonID() == null) {
-                List<Person> list = pDAO.findRelatives(userName);
+                List<Person> list = personDAO.findRelatives(userName);
                 db.closeConnection(true);
                 return new PersonResult(list);
             } else {
-                Person person = pDAO.find(request.getPersonID());
+                Person person = personDAO.find(request.getPersonID());
                 db.closeConnection(true);
                 if (person == null) return new PersonResult("ERROR: Invalid personID");
                 else if (!person.getDescendant().equals(userName)) return new PersonResult("ERROR: Person is not related to you");

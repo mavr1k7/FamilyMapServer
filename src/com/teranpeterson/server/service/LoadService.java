@@ -40,25 +40,25 @@ public class LoadService {
 
             // Import all users
             int x = 0;
-            UserDAO uDAO = new UserDAO(conn);
+            UserDAO userDAO = new UserDAO(conn);
             for (User u : request.getUsers()) {
-                uDAO.insert(u);
+                userDAO.insert(u);
                 ++x;
             }
 
             // Import all persons
             int y = 0;
-            PersonDAO pDAO = new PersonDAO(conn);
+            PersonDAO personDAO = new PersonDAO(conn);
             for (Person p : request.getPersons()) {
-                pDAO.insert(p);
+                personDAO.insert(p);
                 ++y;
             }
 
             // Import all events
             int z = 0;
-            EventDAO eDAO = new EventDAO(conn);
+            EventDAO eventDAO = new EventDAO(conn);
             for (Event e : request.getEvents()) {
-                eDAO.insert(e);
+                eventDAO.insert(e);
                 ++z;
             }
 

@@ -38,8 +38,8 @@ public class EventService {
             // Validate the provided auth token
             db.createTables();
             Connection conn = db.openConnection();
-            AuthTokenDAO aDAO = new AuthTokenDAO(conn);
-            String userName = aDAO.validate(request.getAuthToken());
+            AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+            String userName = authTokenDAO.validate(request.getAuthToken());
 
             // Return if auth token is invalid
             if (userName == null) {
@@ -53,13 +53,13 @@ public class EventService {
             }
 
             // Return events requested by user
-            EventDAO eDAO = new EventDAO(conn);
+            EventDAO eventDAO = new EventDAO(conn);
             if (request.getEventID() == null) {
-                List<Event> list = eDAO.personEvents(userName);
+                List<Event> list = eventDAO.personEvents(userName);
                 db.closeConnection(true);
                 return new EventResult(list);
             } else {
-                Event event = eDAO.find(request.getEventID());
+                Event event = eventDAO.find(request.getEventID());
                 db.closeConnection(true);
                 if (event == null) return new EventResult("ERROR: Invalid eventID");
                 else if (!event.getDescendant().equals(userName)) return new EventResult("ERROR: Event is not related to you");

@@ -42,8 +42,8 @@ public class FillService {
             // Load the user's information
             db.createTables();
             Connection conn = db.openConnection();
-            UserDAO uDAO = new UserDAO(conn);
-            User user = uDAO.find(request.getUserName());
+            UserDAO userDAO = new UserDAO(conn);
+            User user = userDAO.find(request.getUserName());
 
             // Validate the provided username
             if (user == null) {

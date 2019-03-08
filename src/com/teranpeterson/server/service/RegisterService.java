@@ -53,10 +53,10 @@ public class RegisterService {
         try {
             db.createTables();
             Connection conn = db.openConnection();
-            UserDAO uDAO = new UserDAO(conn);
+            UserDAO userDAO = new UserDAO(conn);
 
             // Check that the provided username is not already in use
-            if (!uDAO.check(newUser.getUserName())) {
+            if (!userDAO.check(newUser.getUserName())) {
                 try {
                     db.closeConnection(false);
                     return new LoginResult("ERROR: Username is already in use");
@@ -67,10 +67,10 @@ public class RegisterService {
             }
 
             // Add new user to the database
-            uDAO.insert(newUser);
-            PersonDAO pDAO = new PersonDAO(conn);
+            userDAO.insert(newUser);
+            PersonDAO personDAO = new PersonDAO(conn);
             Person newPerson = new Person(newUser.getPersonID(), newUser.getFirstName(), newUser.getLastName(), newUser.getGender());
-            pDAO.insert(newPerson);
+            personDAO.insert(newPerson);
 
             // Generate ancestral information for new user
             Generator generator = new Generator();
@@ -78,8 +78,8 @@ public class RegisterService {
 
             // Establish session and return auth token
             AuthToken token = new AuthToken(newUser.getUserName());
-            AuthTokenDAO aDAO = new AuthTokenDAO(conn);
-            aDAO.insert(token);
+            AuthTokenDAO authTokenDAO = new AuthTokenDAO(conn);
+            authTokenDAO.insert(token);
             db.closeConnection(true);
             return new LoginResult(token.getToken(), newUser.getUserName(), newUser.getPersonID(), newPerson);
         } catch (DAOException e) {
